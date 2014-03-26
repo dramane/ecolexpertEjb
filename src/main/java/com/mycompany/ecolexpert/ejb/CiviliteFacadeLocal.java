@@ -6,7 +6,7 @@
 
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexperte.jpa.Civilite;
+import com.mycompany.ecolexpert.jpa.Civilite;
 import java.util.List;
 import javax.ejb.Local;
 

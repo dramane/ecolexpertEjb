@@ -6,7 +6,7 @@
 
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexperte.jpa.Cycle;
+import com.mycompany.ecolexpert.jpa.Cycle;
 import java.util.List;
 import javax.ejb.Local;
 
