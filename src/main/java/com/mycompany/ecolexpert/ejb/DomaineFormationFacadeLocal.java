@@ -6,7 +6,7 @@
 
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexperte.jpa.DomaineFormation;
+import com.mycompany.ecolexpert.jpa.DomaineFormation;
 import java.util.List;
 import javax.ejb.Local;
 

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.mycompany.ecolexperte.jpa;
+package com.mycompany.ecolexpert.jpa;
 
 import java.io.Serializable;
 import java.util.Date;

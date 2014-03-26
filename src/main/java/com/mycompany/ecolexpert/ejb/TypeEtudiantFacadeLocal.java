@@ -6,7 +6,7 @@
 
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexperte.jpa.TypeEtudiant;
+import com.mycompany.ecolexpert.jpa.TypeEtudiant;
 import java.util.List;
 import javax.ejb.Local;
 
