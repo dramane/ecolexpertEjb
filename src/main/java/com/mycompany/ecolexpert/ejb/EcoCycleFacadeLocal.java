@@ -31,6 +31,6 @@ public interface EcoCycleFacadeLocal {
 
     int count();
     
-    EcoCycle findAllDistinct(Object vCodecycle, Object vCode3);
+    EcoCycle findAllDistinct();
     
 }
