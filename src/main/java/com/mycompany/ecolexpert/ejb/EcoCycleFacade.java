@@ -10,6 +10,7 @@ import com.mycompany.ecolexpert.jpa.EcoCycle;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +28,15 @@ public class EcoCycleFacade extends AbstractFacade<EcoCycle> implements EcoCycle
 
     public EcoCycleFacade() {
         super(EcoCycle.class);
+    }
+    
+    @Override
+    public EcoCycle findAllDistinct(Object vCodecycle, Object vCode3){                   
+        Query nQuery = em.createNamedQuery("EcoUtilisateur.findByLoginAndPassword");
+        nQuery.setParameter("login", vCodecycle); 
+        nQuery.setParameter("motDePasse", vCode3);
+
+        return (EcoCycle) nQuery.getResultList(); 
     }
     
 }
