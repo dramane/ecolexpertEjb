@@ -33,7 +33,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoCycle.findByDesignation", query = "SELECT c FROM EcoCycle c WHERE c.designation = :designation"),
     @NamedQuery(name = "EcoCycle.findByCodecycle", query = "SELECT c FROM EcoCycle c WHERE c.codecycle = :codecycle"),
     @NamedQuery(name = "EcoCycle.findByCode3", query = "SELECT c FROM EcoCycle c WHERE c.code3 = :code3"),
-    @NamedQuery(name = "EcoCycle.findByCodefiliere", query = "SELECT c FROM EcoCycle c WHERE c.codefiliere = :codefiliere")})
+    @NamedQuery(name = "EcoCycle.findByCodefiliere", query = "SELECT c FROM EcoCycle c WHERE c.codefiliere = :codefiliere"),
+    @NamedQuery(name = "EcoCycle.findAllDistinct", query = "SELECT DISTINCT c.codecycle, c.code3 FROM EcoCycle c")})
 public class EcoCycle implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

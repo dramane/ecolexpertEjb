@@ -33,9 +33,6 @@ public class EcoCycleFacade extends AbstractFacade<EcoCycle> implements EcoCycle
     @Override
     public EcoCycle findAllDistinct(Object vCodecycle, Object vCode3){                   
         Query nQuery = em.createNamedQuery("EcoUtilisateur.findByLoginAndPassword");
-        nQuery.setParameter("login", vCodecycle); 
-        nQuery.setParameter("motDePasse", vCode3);
-
         return (EcoCycle) nQuery.getResultList(); 
     }
     
