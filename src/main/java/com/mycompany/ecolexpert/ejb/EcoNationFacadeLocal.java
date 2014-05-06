@@ -6,7 +6,7 @@
 
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexpert.jpa.Formation;
+import com.mycompany.ecolexpert.jpa.EcoNation;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,19 +15,19 @@ import javax.ejb.Local;
  * @author TOSHIBA
  */
 @Local
-public interface FormationFacadeLocal {
+public interface EcoNationFacadeLocal {
 
-    void create(Formation formation);
+    void create(EcoNation nation);
 
-    void edit(Formation formation);
+    void edit(EcoNation nation);
 
-    void remove(Formation formation);
+    void remove(EcoNation nation);
 
-    Formation find(Object id);
+    EcoNation find(Object id);
 
-    List<Formation> findAll();
+    List<EcoNation> findAll();
 
-    List<Formation> findRange(int[] range);
+    List<EcoNation> findRange(int[] range);
 
     int count();
     

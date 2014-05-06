@@ -6,7 +6,7 @@
 
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexpert.jpa.Civilite;
+import com.mycompany.ecolexpert.jpa.EcoCivilite;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,19 +15,19 @@ import javax.ejb.Local;
  * @author TOSHIBA
  */
 @Local
-public interface CiviliteFacadeLocal {
+public interface EcoCiviliteFacadeLocal {
 
-    void create(Civilite civilite);
+    void create(EcoCivilite civilite);
 
-    void edit(Civilite civilite);
+    void edit(EcoCivilite civilite);
 
-    void remove(Civilite civilite);
+    void remove(EcoCivilite civilite);
 
-    Civilite find(Object id);
+    EcoCivilite find(Object id);
 
-    List<Civilite> findAll();
+    List<EcoCivilite> findAll();
 
-    List<Civilite> findRange(int[] range);
+    List<EcoCivilite> findRange(int[] range);
 
     int count();
     

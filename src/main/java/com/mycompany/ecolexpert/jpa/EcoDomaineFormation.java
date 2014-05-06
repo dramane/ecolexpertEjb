@@ -25,14 +25,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author TOSHIBA
  */
 @Entity
-@Table(name = "domaine_formation")
+@Table(name = "eco_domaine_formation")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "DomaineFormation.findAll", query = "SELECT d FROM DomaineFormation d"),
-    @NamedQuery(name = "DomaineFormation.findByIddomaine", query = "SELECT d FROM DomaineFormation d WHERE d.iddomaine = :iddomaine"),
-    @NamedQuery(name = "DomaineFormation.findByCodedomaine", query = "SELECT d FROM DomaineFormation d WHERE d.codedomaine = :codedomaine"),
-    @NamedQuery(name = "DomaineFormation.findByLibelledomaine", query = "SELECT d FROM DomaineFormation d WHERE d.libelledomaine = :libelledomaine")})
-public class DomaineFormation implements Serializable {
+    @NamedQuery(name = "EcoDomaineFormation.findAll", query = "SELECT d FROM EcoDomaineFormation d"),
+    @NamedQuery(name = "EcoDomaineFormation.findByIddomaine", query = "SELECT d FROM EcoDomaineFormation d WHERE d.iddomaine = :iddomaine"),
+    @NamedQuery(name = "EcoDomaineFormation.findByCodedomaine", query = "SELECT d FROM EcoDomaineFormation d WHERE d.codedomaine = :codedomaine"),
+    @NamedQuery(name = "EcoDomaineFormation.findByLibelledomaine", query = "SELECT d FROM EcoDomaineFormation d WHERE d.libelledomaine = :libelledomaine")})
+public class EcoDomaineFormation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,14 +50,14 @@ public class DomaineFormation implements Serializable {
     @Column(name = "libelledomaine")
     private String libelledomaine;
 
-    public DomaineFormation() {
+    public EcoDomaineFormation() {
     }
 
-    public DomaineFormation(Integer iddomaine) {
+    public EcoDomaineFormation(Integer iddomaine) {
         this.iddomaine = iddomaine;
     }
 
-    public DomaineFormation(Integer iddomaine, String codedomaine, String libelledomaine) {
+    public EcoDomaineFormation(Integer iddomaine, String codedomaine, String libelledomaine) {
         this.iddomaine = iddomaine;
         this.codedomaine = codedomaine;
         this.libelledomaine = libelledomaine;
@@ -97,10 +97,10 @@ public class DomaineFormation implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof DomaineFormation)) {
+        if (!(object instanceof EcoDomaineFormation)) {
             return false;
         }
-        DomaineFormation other = (DomaineFormation) object;
+        EcoDomaineFormation other = (EcoDomaineFormation) object;
         if ((this.iddomaine == null && other.iddomaine != null) || (this.iddomaine != null && !this.iddomaine.equals(other.iddomaine))) {
             return false;
         }

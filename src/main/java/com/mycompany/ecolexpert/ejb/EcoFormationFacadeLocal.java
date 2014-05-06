@@ -6,7 +6,7 @@
 
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexpert.jpa.Academique;
+import com.mycompany.ecolexpert.jpa.EcoFormation;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,19 +15,19 @@ import javax.ejb.Local;
  * @author TOSHIBA
  */
 @Local
-public interface AcademiqueFacadeLocal {
+public interface EcoFormationFacadeLocal {
 
-    void create(Academique academique);
+    void create(EcoFormation formation);
 
-    void edit(Academique academique);
+    void edit(EcoFormation formation);
 
-    void remove(Academique academique);
+    void remove(EcoFormation formation);
 
-    Academique find(Object id);
+    EcoFormation find(Object id);
 
-    List<Academique> findAll();
+    List<EcoFormation> findAll();
 
-    List<Academique> findRange(int[] range);
+    List<EcoFormation> findRange(int[] range);
 
     int count();
     

@@ -25,16 +25,16 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author TOSHIBA
  */
 @Entity
-@Table(name = "formation")
+@Table(name = "eco_formation")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Formation.findAll", query = "SELECT f FROM Formation f"),
-    @NamedQuery(name = "Formation.findByIdformation", query = "SELECT f FROM Formation f WHERE f.idformation = :idformation"),
-    @NamedQuery(name = "Formation.findByFormation", query = "SELECT f FROM Formation f WHERE f.formation = :formation"),
-    @NamedQuery(name = "Formation.findByDescription", query = "SELECT f FROM Formation f WHERE f.description = :description"),
-    @NamedQuery(name = "Formation.findByCodeformation", query = "SELECT f FROM Formation f WHERE f.codeformation = :codeformation"),
-    @NamedQuery(name = "Formation.findByActif", query = "SELECT f FROM Formation f WHERE f.actif = :actif")})
-public class Formation implements Serializable {
+    @NamedQuery(name = "EcoFormation.findAll", query = "SELECT f FROM EcoFormation f"),
+    @NamedQuery(name = "EcoFormation.findByIdformation", query = "SELECT f FROM EcoFormation f WHERE f.idformation = :idformation"),
+    @NamedQuery(name = "EcoFormation.findByFormation", query = "SELECT f FROM EcoFormation f WHERE f.formation = :formation"),
+    @NamedQuery(name = "EcoFormation.findByDescription", query = "SELECT f FROM EcoFormation f WHERE f.description = :description"),
+    @NamedQuery(name = "EcoFormation.findByCodeformation", query = "SELECT f FROM EcoFormation f WHERE f.codeformation = :codeformation"),
+    @NamedQuery(name = "EcoFormation.findByActif", query = "SELECT f FROM EcoFormation f WHERE f.actif = :actif")})
+public class EcoFormation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,14 +59,14 @@ public class Formation implements Serializable {
     @Column(name = "ACTIF")
     private String actif;
 
-    public Formation() {
+    public EcoFormation() {
     }
 
-    public Formation(Integer idformation) {
+    public EcoFormation(Integer idformation) {
         this.idformation = idformation;
     }
 
-    public Formation(Integer idformation, String formation, char codeformation, String actif) {
+    public EcoFormation(Integer idformation, String formation, char codeformation, String actif) {
         this.idformation = idformation;
         this.formation = formation;
         this.codeformation = codeformation;
@@ -123,10 +123,10 @@ public class Formation implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Formation)) {
+        if (!(object instanceof EcoFormation)) {
             return false;
         }
-        Formation other = (Formation) object;
+        EcoFormation other = (EcoFormation) object;
         if ((this.idformation == null && other.idformation != null) || (this.idformation != null && !this.idformation.equals(other.idformation))) {
             return false;
         }

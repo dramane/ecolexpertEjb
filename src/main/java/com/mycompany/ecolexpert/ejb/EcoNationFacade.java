@@ -6,7 +6,7 @@
 
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexpert.jpa.Cycle;
+import com.mycompany.ecolexpert.jpa.EcoNation;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  * @author TOSHIBA
  */
 @Stateless
-public class CycleFacade extends AbstractFacade<Cycle> implements CycleFacadeLocal {
+public class EcoNationFacade extends AbstractFacade<EcoNation> implements EcoNationFacadeLocal {
     @PersistenceContext(unitName = "com.mycompany_ecolexpertEjb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -25,8 +25,8 @@ public class CycleFacade extends AbstractFacade<Cycle> implements CycleFacadeLoc
         return em;
     }
 
-    public CycleFacade() {
-        super(Cycle.class);
+    public EcoNationFacade() {
+        super(EcoNation.class);
     }
     
 }

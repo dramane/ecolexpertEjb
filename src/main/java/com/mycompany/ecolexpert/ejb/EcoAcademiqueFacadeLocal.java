@@ -6,7 +6,7 @@
 
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexpert.jpa.TypeEtudiant;
+import com.mycompany.ecolexpert.jpa.EcoAcademique;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,19 +15,19 @@ import javax.ejb.Local;
  * @author TOSHIBA
  */
 @Local
-public interface TypeEtudiantFacadeLocal {
+public interface EcoAcademiqueFacadeLocal {
 
-    void create(TypeEtudiant typeEtudiant);
+    void create(EcoAcademique academique);
 
-    void edit(TypeEtudiant typeEtudiant);
+    void edit(EcoAcademique academique);
 
-    void remove(TypeEtudiant typeEtudiant);
+    void remove(EcoAcademique academique);
 
-    TypeEtudiant find(Object id);
+    EcoAcademique find(Object id);
 
-    List<TypeEtudiant> findAll();
+    List<EcoAcademique> findAll();
 
-    List<TypeEtudiant> findRange(int[] range);
+    List<EcoAcademique> findRange(int[] range);
 
     int count();
     

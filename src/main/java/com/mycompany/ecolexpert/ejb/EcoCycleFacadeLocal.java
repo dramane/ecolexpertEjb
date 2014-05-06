@@ -6,7 +6,7 @@
 
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexpert.jpa.Cycle;
+import com.mycompany.ecolexpert.jpa.EcoCycle;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,19 +15,19 @@ import javax.ejb.Local;
  * @author TOSHIBA
  */
 @Local
-public interface CycleFacadeLocal {
+public interface EcoCycleFacadeLocal {
 
-    void create(Cycle cycle);
+    void create(EcoCycle cycle);
 
-    void edit(Cycle cycle);
+    void edit(EcoCycle cycle);
 
-    void remove(Cycle cycle);
+    void remove(EcoCycle cycle);
 
-    Cycle find(Object id);
+    EcoCycle find(Object id);
 
-    List<Cycle> findAll();
+    List<EcoCycle> findAll();
 
-    List<Cycle> findRange(int[] range);
+    List<EcoCycle> findRange(int[] range);
 
     int count();
     

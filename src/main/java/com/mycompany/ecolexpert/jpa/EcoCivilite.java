@@ -24,14 +24,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author TOSHIBA
  */
 @Entity
-@Table(name = "civilite")
+@Table(name = "eco_civilite")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Civilite.findAll", query = "SELECT c FROM Civilite c"),
-    @NamedQuery(name = "Civilite.findByIdcivilite", query = "SELECT c FROM Civilite c WHERE c.idcivilite = :idcivilite"),
-    @NamedQuery(name = "Civilite.findByCivilite", query = "SELECT c FROM Civilite c WHERE c.civilite = :civilite"),
-    @NamedQuery(name = "Civilite.findByLibelle", query = "SELECT c FROM Civilite c WHERE c.libelle = :libelle")})
-public class Civilite implements Serializable {
+    @NamedQuery(name = "EcoCivilite.findAll", query = "SELECT c FROM EcoCivilite c"),
+    @NamedQuery(name = "EcoCivilite.findByIdcivilite", query = "SELECT c FROM EcoCivilite c WHERE c.idcivilite = :idcivilite"),
+    @NamedQuery(name = "EcoCivilite.findByCivilite", query = "SELECT c FROM EcoCivilite c WHERE c.civilite = :civilite"),
+    @NamedQuery(name = "EcoCivilite.findByLibelle", query = "SELECT c FROM EcoCivilite c WHERE c.libelle = :libelle")})
+public class EcoCivilite implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,10 +45,10 @@ public class Civilite implements Serializable {
     @Column(name = "LIBELLE")
     private String libelle;
 
-    public Civilite() {
+    public EcoCivilite() {
     }
 
-    public Civilite(Integer idcivilite) {
+    public EcoCivilite(Integer idcivilite) {
         this.idcivilite = idcivilite;
     }
 
@@ -86,10 +86,10 @@ public class Civilite implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Civilite)) {
+        if (!(object instanceof EcoCivilite)) {
             return false;
         }
-        Civilite other = (Civilite) object;
+        EcoCivilite other = (EcoCivilite) object;
         if ((this.idcivilite == null && other.idcivilite != null) || (this.idcivilite != null && !this.idcivilite.equals(other.idcivilite))) {
             return false;
         }

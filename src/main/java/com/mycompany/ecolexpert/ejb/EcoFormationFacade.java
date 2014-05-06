@@ -6,7 +6,7 @@
 
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexpert.jpa.TypeEtudiant;
+import com.mycompany.ecolexpert.jpa.EcoFormation;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  * @author TOSHIBA
  */
 @Stateless
-public class TypeEtudiantFacade extends AbstractFacade<TypeEtudiant> implements TypeEtudiantFacadeLocal {
+public class EcoFormationFacade extends AbstractFacade<EcoFormation> implements EcoFormationFacadeLocal {
     @PersistenceContext(unitName = "com.mycompany_ecolexpertEjb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -25,8 +25,8 @@ public class TypeEtudiantFacade extends AbstractFacade<TypeEtudiant> implements 
         return em;
     }
 
-    public TypeEtudiantFacade() {
-        super(TypeEtudiant.class);
+    public EcoFormationFacade() {
+        super(EcoFormation.class);
     }
     
 }

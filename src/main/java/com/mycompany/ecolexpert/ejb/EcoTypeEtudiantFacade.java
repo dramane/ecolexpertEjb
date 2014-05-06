@@ -6,7 +6,7 @@
 
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexpert.jpa.DomaineFormation;
+import com.mycompany.ecolexpert.jpa.EcoTypeEtudiant;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  * @author TOSHIBA
  */
 @Stateless
-public class DomaineFormationFacade extends AbstractFacade<DomaineFormation> implements DomaineFormationFacadeLocal {
+public class EcoTypeEtudiantFacade extends AbstractFacade<EcoTypeEtudiant> implements EcoTypeEtudiantFacadeLocal {
     @PersistenceContext(unitName = "com.mycompany_ecolexpertEjb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -25,8 +25,8 @@ public class DomaineFormationFacade extends AbstractFacade<DomaineFormation> imp
         return em;
     }
 
-    public DomaineFormationFacade() {
-        super(DomaineFormation.class);
+    public EcoTypeEtudiantFacade() {
+        super(EcoTypeEtudiant.class);
     }
     
 }

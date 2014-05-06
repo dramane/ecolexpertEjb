@@ -6,7 +6,7 @@
 
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexpert.jpa.Formation;
+import com.mycompany.ecolexpert.jpa.EcoCivilite;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  * @author TOSHIBA
  */
 @Stateless
-public class FormationFacade extends AbstractFacade<Formation> implements FormationFacadeLocal {
+public class EcoCiviliteFacade extends AbstractFacade<EcoCivilite> implements EcoCiviliteFacadeLocal {
     @PersistenceContext(unitName = "com.mycompany_ecolexpertEjb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -25,8 +25,8 @@ public class FormationFacade extends AbstractFacade<Formation> implements Format
         return em;
     }
 
-    public FormationFacade() {
-        super(Formation.class);
+    public EcoCiviliteFacade() {
+        super(EcoCivilite.class);
     }
     
 }

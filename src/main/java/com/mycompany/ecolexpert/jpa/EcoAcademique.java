@@ -29,18 +29,18 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author TOSHIBA
  */
 @Entity
-@Table(name = "academique")
+@Table(name = "eco_academique")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Academique.findAll", query = "SELECT a FROM Academique a"),
-    @NamedQuery(name = "Academique.findByIdacademique", query = "SELECT a FROM Academique a WHERE a.idacademique = :idacademique"),
-    @NamedQuery(name = "Academique.findByNannee", query = "SELECT a FROM Academique a WHERE a.nannee = :nannee"),
-    @NamedQuery(name = "Academique.findByAnneeaca", query = "SELECT a FROM Academique a WHERE a.anneeaca = :anneeaca"),
-    @NamedQuery(name = "Academique.findByAnneePre", query = "SELECT a FROM Academique a WHERE a.anneePre = :anneePre"),
-    @NamedQuery(name = "Academique.findByDateDebut", query = "SELECT a FROM Academique a WHERE a.dateDebut = :dateDebut"),
-    @NamedQuery(name = "Academique.findByDateFin", query = "SELECT a FROM Academique a WHERE a.dateFin = :dateFin"),
-    @NamedQuery(name = "Academique.findByActif", query = "SELECT a FROM Academique a WHERE a.actif = :actif")})
-public class Academique implements Serializable {
+    @NamedQuery(name = "EcoAcademique.findAll", query = "SELECT a FROM EcoAcademique a"),
+    @NamedQuery(name = "EcoAcademique.findByIdacademique", query = "SELECT a FROM EcoAcademique a WHERE a.idacademique = :idacademique"),
+    @NamedQuery(name = "EcoAcademique.findByNannee", query = "SELECT a FROM EcoAcademique a WHERE a.nannee = :nannee"),
+    @NamedQuery(name = "EcoAcademique.findByAnneeaca", query = "SELECT a FROM EcoAcademique a WHERE a.anneeaca = :anneeaca"),
+    @NamedQuery(name = "EcoAcademique.findByAnneePre", query = "SELECT a FROM EcoAcademique a WHERE a.anneePre = :anneePre"),
+    @NamedQuery(name = "EcoAcademique.findByDateDebut", query = "SELECT a FROM EcoAcademique a WHERE a.dateDebut = :dateDebut"),
+    @NamedQuery(name = "EcoAcademique.findByDateFin", query = "SELECT a FROM EcoAcademique a WHERE a.dateFin = :dateFin"),
+    @NamedQuery(name = "EcoAcademique.findByActif", query = "SELECT a FROM EcoAcademique a WHERE a.actif = :actif")})
+public class EcoAcademique implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,14 +72,14 @@ public class Academique implements Serializable {
     @Column(name = "ACTIF")
     private String actif;
 
-    public Academique() {
+    public EcoAcademique() {
     }
 
-    public Academique(Integer idacademique) {
+    public EcoAcademique(Integer idacademique) {
         this.idacademique = idacademique;
     }
 
-    public Academique(Integer idacademique, String nannee) {
+    public EcoAcademique(Integer idacademique, String nannee) {
         this.idacademique = idacademique;
         this.nannee = nannee;
     }
@@ -158,10 +158,10 @@ public class Academique implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Academique)) {
+        if (!(object instanceof EcoAcademique)) {
             return false;
         }
-        Academique other = (Academique) object;
+        EcoAcademique other = (EcoAcademique) object;
         if ((this.idacademique == null && other.idacademique != null) || (this.idacademique != null && !this.idacademique.equals(other.idacademique))) {
             return false;
         }

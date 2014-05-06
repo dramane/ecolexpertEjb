@@ -25,22 +25,22 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author TOSHIBA
  */
 @Entity
-@Table(name = "nation")
+@Table(name = "eco_nation")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Nation.findAll", query = "SELECT n FROM Nation n"),
-    @NamedQuery(name = "Nation.findByIdnation", query = "SELECT n FROM Nation n WHERE n.idnation = :idnation"),
-    @NamedQuery(name = "Nation.findByNomFr", query = "SELECT n FROM Nation n WHERE n.nomFr = :nomFr"),
-    @NamedQuery(name = "Nation.findByNomUs", query = "SELECT n FROM Nation n WHERE n.nomUs = :nomUs"),
-    @NamedQuery(name = "Nation.findByCode", query = "SELECT n FROM Nation n WHERE n.code = :code"),
-    @NamedQuery(name = "Nation.findByCode2", query = "SELECT n FROM Nation n WHERE n.code2 = :code2"),
-    @NamedQuery(name = "Nation.findByCapitale", query = "SELECT n FROM Nation n WHERE n.capitale = :capitale"),
-    @NamedQuery(name = "Nation.findByIndicatif", query = "SELECT n FROM Nation n WHERE n.indicatif = :indicatif"),
-    @NamedQuery(name = "Nation.findByNationalite", query = "SELECT n FROM Nation n WHERE n.nationalite = :nationalite"),
-    @NamedQuery(name = "Nation.findByContinent", query = "SELECT n FROM Nation n WHERE n.continent = :continent"),
-    @NamedQuery(name = "Nation.findByZone", query = "SELECT n FROM Nation n WHERE n.zone = :zone"),
-    @NamedQuery(name = "Nation.findByActif", query = "SELECT n FROM Nation n WHERE n.actif = :actif")})
-public class Nation implements Serializable {
+    @NamedQuery(name = "EcoNation.findAll", query = "SELECT n FROM EcoNation n"),
+    @NamedQuery(name = "EcoNation.findByIdnation", query = "SELECT n FROM EcoNation n WHERE n.idnation = :idnation"),
+    @NamedQuery(name = "EcoNation.findByNomFr", query = "SELECT n FROM EcoNation n WHERE n.nomFr = :nomFr"),
+    @NamedQuery(name = "EcoNation.findByNomUs", query = "SELECT n FROM EcoNation n WHERE n.nomUs = :nomUs"),
+    @NamedQuery(name = "EcoNation.findByCode", query = "SELECT n FROM EcoNation n WHERE n.code = :code"),
+    @NamedQuery(name = "EcoNation.findByCode2", query = "SELECT n FROM EcoNation n WHERE n.code2 = :code2"),
+    @NamedQuery(name = "EcoNation.findByCapitale", query = "SELECT n FROM EcoNation n WHERE n.capitale = :capitale"),
+    @NamedQuery(name = "EcoNation.findByIndicatif", query = "SELECT n FROM EcoNation n WHERE n.indicatif = :indicatif"),
+    @NamedQuery(name = "EcoNation.findByNationalite", query = "SELECT n FROM EcoNation n WHERE n.nationalite = :nationalite"),
+    @NamedQuery(name = "EcoNation.findByContinent", query = "SELECT n FROM EcoNation n WHERE n.continent = :continent"),
+    @NamedQuery(name = "EcoNation.findByZone", query = "SELECT n FROM EcoNation n WHERE n.zone = :zone"),
+    @NamedQuery(name = "EcoNation.findByActif", query = "SELECT n FROM EcoNation n WHERE n.actif = :actif")})
+public class EcoNation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -83,14 +83,14 @@ public class Nation implements Serializable {
     @Column(name = "ACTIF")
     private String actif;
 
-    public Nation() {
+    public EcoNation() {
     }
 
-    public Nation(Integer idnation) {
+    public EcoNation(Integer idnation) {
         this.idnation = idnation;
     }
 
-    public Nation(Integer idnation, String continent, int zone, String actif) {
+    public EcoNation(Integer idnation, String continent, int zone, String actif) {
         this.idnation = idnation;
         this.continent = continent;
         this.zone = zone;
@@ -195,10 +195,10 @@ public class Nation implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Nation)) {
+        if (!(object instanceof EcoNation)) {
             return false;
         }
-        Nation other = (Nation) object;
+        EcoNation other = (EcoNation) object;
         if ((this.idnation == null && other.idnation != null) || (this.idnation != null && !this.idnation.equals(other.idnation))) {
             return false;
         }

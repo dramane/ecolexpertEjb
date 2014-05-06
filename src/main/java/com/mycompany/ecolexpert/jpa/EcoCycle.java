@@ -25,16 +25,16 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author TOSHIBA
  */
 @Entity
-@Table(name = "cycle")
+@Table(name = "eco_cycle")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Cycle.findAll", query = "SELECT c FROM Cycle c"),
-    @NamedQuery(name = "Cycle.findByIdcycle", query = "SELECT c FROM Cycle c WHERE c.idcycle = :idcycle"),
-    @NamedQuery(name = "Cycle.findByDesignation", query = "SELECT c FROM Cycle c WHERE c.designation = :designation"),
-    @NamedQuery(name = "Cycle.findByCodecycle", query = "SELECT c FROM Cycle c WHERE c.codecycle = :codecycle"),
-    @NamedQuery(name = "Cycle.findByCode3", query = "SELECT c FROM Cycle c WHERE c.code3 = :code3"),
-    @NamedQuery(name = "Cycle.findByCodefiliere", query = "SELECT c FROM Cycle c WHERE c.codefiliere = :codefiliere")})
-public class Cycle implements Serializable {
+    @NamedQuery(name = "EcoCycle.findAll", query = "SELECT c FROM EcoCycle c"),
+    @NamedQuery(name = "EcoCycle.findByIdcycle", query = "SELECT c FROM EcoCycle c WHERE c.idcycle = :idcycle"),
+    @NamedQuery(name = "EcoCycle.findByDesignation", query = "SELECT c FROM EcoCycle c WHERE c.designation = :designation"),
+    @NamedQuery(name = "EcoCycle.findByCodecycle", query = "SELECT c FROM EcoCycle c WHERE c.codecycle = :codecycle"),
+    @NamedQuery(name = "EcoCycle.findByCode3", query = "SELECT c FROM EcoCycle c WHERE c.code3 = :code3"),
+    @NamedQuery(name = "EcoCycle.findByCodefiliere", query = "SELECT c FROM EcoCycle c WHERE c.codefiliere = :codefiliere")})
+public class EcoCycle implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,14 +58,14 @@ public class Cycle implements Serializable {
     @Column(name = "CODEFILIERE")
     private String codefiliere;
 
-    public Cycle() {
+    public EcoCycle() {
     }
 
-    public Cycle(Integer idcycle) {
+    public EcoCycle(Integer idcycle) {
         this.idcycle = idcycle;
     }
 
-    public Cycle(Integer idcycle, String designation, String codefiliere) {
+    public EcoCycle(Integer idcycle, String designation, String codefiliere) {
         this.idcycle = idcycle;
         this.designation = designation;
         this.codefiliere = codefiliere;
@@ -121,10 +121,10 @@ public class Cycle implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cycle)) {
+        if (!(object instanceof EcoCycle)) {
             return false;
         }
-        Cycle other = (Cycle) object;
+        EcoCycle other = (EcoCycle) object;
         if ((this.idcycle == null && other.idcycle != null) || (this.idcycle != null && !this.idcycle.equals(other.idcycle))) {
             return false;
         }

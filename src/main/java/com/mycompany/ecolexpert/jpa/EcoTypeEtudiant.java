@@ -25,13 +25,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author TOSHIBA
  */
 @Entity
-@Table(name = "type_etudiant")
+@Table(name = "eco_type_etudiant")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TypeEtudiant.findAll", query = "SELECT t FROM TypeEtudiant t"),
-    @NamedQuery(name = "TypeEtudiant.findByIdtypeEtudiant", query = "SELECT t FROM TypeEtudiant t WHERE t.idtypeEtudiant = :idtypeEtudiant"),
-    @NamedQuery(name = "TypeEtudiant.findByTypeEtudiant", query = "SELECT t FROM TypeEtudiant t WHERE t.typeEtudiant = :typeEtudiant")})
-public class TypeEtudiant implements Serializable {
+    @NamedQuery(name = "EcoTypeEtudiant.findAll", query = "SELECT t FROM EcoTypeEtudiant t"),
+    @NamedQuery(name = "EcoTypeEtudiant.findByIdtypeEtudiant", query = "SELECT t FROM EcoTypeEtudiant t WHERE t.idtypeEtudiant = :idtypeEtudiant"),
+    @NamedQuery(name = "EcoTypeEtudiant.findByTypeEtudiant", query = "SELECT t FROM EcoTypeEtudiant t WHERE t.typeEtudiant = :typeEtudiant")})
+public class EcoTypeEtudiant implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,14 +44,14 @@ public class TypeEtudiant implements Serializable {
     @Column(name = "TYPE_ETUDIANT")
     private String typeEtudiant;
 
-    public TypeEtudiant() {
+    public EcoTypeEtudiant() {
     }
 
-    public TypeEtudiant(Integer idtypeEtudiant) {
+    public EcoTypeEtudiant(Integer idtypeEtudiant) {
         this.idtypeEtudiant = idtypeEtudiant;
     }
 
-    public TypeEtudiant(Integer idtypeEtudiant, String typeEtudiant) {
+    public EcoTypeEtudiant(Integer idtypeEtudiant, String typeEtudiant) {
         this.idtypeEtudiant = idtypeEtudiant;
         this.typeEtudiant = typeEtudiant;
     }
@@ -82,10 +82,10 @@ public class TypeEtudiant implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TypeEtudiant)) {
+        if (!(object instanceof EcoTypeEtudiant)) {
             return false;
         }
-        TypeEtudiant other = (TypeEtudiant) object;
+        EcoTypeEtudiant other = (EcoTypeEtudiant) object;
         if ((this.idtypeEtudiant == null && other.idtypeEtudiant != null) || (this.idtypeEtudiant != null && !this.idtypeEtudiant.equals(other.idtypeEtudiant))) {
             return false;
         }
