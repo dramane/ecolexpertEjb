@@ -7,6 +7,7 @@
 package com.mycompany.ecolexpert.ejb;
 
 import com.mycompany.ecolexpert.jpa.EcoCycle;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -31,9 +32,9 @@ public class EcoCycleFacade extends AbstractFacade<EcoCycle> implements EcoCycle
     }
     
     @Override
-    public EcoCycle findAllDistinct(){                   
+    public List<EcoCycle> findAllDistinct(){                   
         Query nQuery = em.createNamedQuery("EcoUtilisateur.findByLoginAndPassword");
-        return (EcoCycle) nQuery.getResultList(); 
+        return nQuery.getResultList(); 
     }
     
 }
