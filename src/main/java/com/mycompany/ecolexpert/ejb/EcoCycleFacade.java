@@ -32,11 +32,17 @@ public class EcoCycleFacade extends AbstractFacade<EcoCycle> implements EcoCycle
     }
 
 
+//    @Override
+//    public List<EcoCycle> findAllDistinct() {
+//        String texteRequete = "SELECT c FROM EcoCycle c GROUP BY c.code3";
+//        Query nQuery = em.createQuery(texteRequete);
+//        return nQuery.getResultList(); 
+//    }
+    
     @Override
     public List<EcoCycle> findAllDistinct() {
-        String texteRequete = "SELECT c FROM EcoCycle c GROUP BY c.code3";
+        String texteRequete = "SELECT DISTINCT codecycle, code3 FROM EcoCycle";
         Query nQuery = em.createQuery(texteRequete);
         return nQuery.getResultList(); 
     }
-    
 }
