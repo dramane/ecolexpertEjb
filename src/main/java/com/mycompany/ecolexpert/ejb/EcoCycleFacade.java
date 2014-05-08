@@ -41,7 +41,7 @@ public class EcoCycleFacade extends AbstractFacade<EcoCycle> implements EcoCycle
     
     @Override
     public List<EcoCycle> findAllDistinct() {
-        String texteRequete = "SELECT DISTINCT c FROM EcoCycle c";
+        String texteRequete = "SELECT DISTINCT c.idcycle, c.codecycle, c.code3 FROM EcoCycle c";
         Query nQuery = em.createQuery(texteRequete);
         return nQuery.getResultList(); 
     }
