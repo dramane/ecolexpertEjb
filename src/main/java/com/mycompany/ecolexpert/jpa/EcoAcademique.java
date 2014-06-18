@@ -20,7 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -32,14 +31,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "eco_academique")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "EcoAcademique.findAll", query = "SELECT a FROM EcoAcademique a"),
-    @NamedQuery(name = "EcoAcademique.findByIdacademique", query = "SELECT a FROM EcoAcademique a WHERE a.idacademique = :idacademique"),
-    @NamedQuery(name = "EcoAcademique.findByNannee", query = "SELECT a FROM EcoAcademique a WHERE a.nannee = :nannee"),
-    @NamedQuery(name = "EcoAcademique.findByAnneeaca", query = "SELECT a FROM EcoAcademique a WHERE a.anneeaca = :anneeaca"),
-    @NamedQuery(name = "EcoAcademique.findByAnneePre", query = "SELECT a FROM EcoAcademique a WHERE a.anneePre = :anneePre"),
-    @NamedQuery(name = "EcoAcademique.findByDateDebut", query = "SELECT a FROM EcoAcademique a WHERE a.dateDebut = :dateDebut"),
-    @NamedQuery(name = "EcoAcademique.findByDateFin", query = "SELECT a FROM EcoAcademique a WHERE a.dateFin = :dateFin"),
-    @NamedQuery(name = "EcoAcademique.findByActif", query = "SELECT a FROM EcoAcademique a WHERE a.actif = :actif")})
+    @NamedQuery(name = "EcoAcademique.findAll", query = "SELECT e FROM EcoAcademique e"),
+    @NamedQuery(name = "EcoAcademique.findByIdacademique", query = "SELECT e FROM EcoAcademique e WHERE e.idacademique = :idacademique"),
+    @NamedQuery(name = "EcoAcademique.findByActif", query = "SELECT e FROM EcoAcademique e WHERE e.actif = :actif"),
+    @NamedQuery(name = "EcoAcademique.findByAnneePre", query = "SELECT e FROM EcoAcademique e WHERE e.anneePre = :anneePre"),
+    @NamedQuery(name = "EcoAcademique.findByAnneeaca", query = "SELECT e FROM EcoAcademique e WHERE e.anneeaca = :anneeaca"),
+    @NamedQuery(name = "EcoAcademique.findByDateDebut", query = "SELECT e FROM EcoAcademique e WHERE e.dateDebut = :dateDebut"),
+    @NamedQuery(name = "EcoAcademique.findByDateFin", query = "SELECT e FROM EcoAcademique e WHERE e.dateFin = :dateFin"),
+    @NamedQuery(name = "EcoAcademique.findByNannee", query = "SELECT e FROM EcoAcademique e WHERE e.nannee = :nannee")})
 public class EcoAcademique implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,41 +46,34 @@ public class EcoAcademique implements Serializable {
     @Basic(optional = false)
     @Column(name = "IDACADEMIQUE")
     private Integer idacademique;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2)
-    @Column(name = "NANNEE")
-    private String nannee;
-    @Size(max = 9)
-    @Column(name = "ANNEEACA")
-    private String anneeaca;
+    @Size(max = 3)
+    @Column(name = "ACTIF")
+    private String actif;
     @Size(max = 9)
     @Column(name = "ANNEE_PRE")
     private String anneePre;
+    @Size(max = 9)
+    @Column(name = "ANNEEACA")
+    private String anneeaca;
     @Column(name = "DATE_DEBUT")
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
     @Column(name = "DATE_FIN")
     @Temporal(TemporalType.DATE)
     private Date dateFin;
+    @Size(max = 2)
+    @Column(name = "NANNEE")
+    private String nannee;
     @Lob
-    @Size(max = 16777215)
+    @Size(max = 2147483647)
     @Column(name = "OBJECTIF")
     private String objectif;
-    @Size(max = 3)
-    @Column(name = "ACTIF")
-    private String actif;
 
     public EcoAcademique() {
     }
 
     public EcoAcademique(Integer idacademique) {
         this.idacademique = idacademique;
-    }
-
-    public EcoAcademique(Integer idacademique, String nannee) {
-        this.idacademique = idacademique;
-        this.nannee = nannee;
     }
 
     public Integer getIdacademique() {
@@ -92,20 +84,12 @@ public class EcoAcademique implements Serializable {
         this.idacademique = idacademique;
     }
 
-    public String getNannee() {
-        return nannee;
+    public String getActif() {
+        return actif;
     }
 
-    public void setNannee(String nannee) {
-        this.nannee = nannee;
-    }
-
-    public String getAnneeaca() {
-        return anneeaca;
-    }
-
-    public void setAnneeaca(String anneeaca) {
-        this.anneeaca = anneeaca;
+    public void setActif(String actif) {
+        this.actif = actif;
     }
 
     public String getAnneePre() {
@@ -114,6 +98,14 @@ public class EcoAcademique implements Serializable {
 
     public void setAnneePre(String anneePre) {
         this.anneePre = anneePre;
+    }
+
+    public String getAnneeaca() {
+        return anneeaca;
+    }
+
+    public void setAnneeaca(String anneeaca) {
+        this.anneeaca = anneeaca;
     }
 
     public Date getDateDebut() {
@@ -132,20 +124,20 @@ public class EcoAcademique implements Serializable {
         this.dateFin = dateFin;
     }
 
+    public String getNannee() {
+        return nannee;
+    }
+
+    public void setNannee(String nannee) {
+        this.nannee = nannee;
+    }
+
     public String getObjectif() {
         return objectif;
     }
 
     public void setObjectif(String objectif) {
         this.objectif = objectif;
-    }
-
-    public String getActif() {
-        return actif;
-    }
-
-    public void setActif(String actif) {
-        this.actif = actif;
     }
 
     @Override
@@ -170,7 +162,7 @@ public class EcoAcademique implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.ecolexperte.jpa.Academique[ idacademique=" + idacademique + " ]";
+        return "com.mycompany.ecolexpert.jpa.EcoAcademique[ idacademique=" + idacademique + " ]";
     }
     
 }
