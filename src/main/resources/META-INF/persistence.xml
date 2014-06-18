@@ -3,7 +3,6 @@
   <persistence-unit name="com.mycompany_ecolexpertEjb_ejb_1.0-SNAPSHOTPU" transaction-type="JTA">
     <jta-data-source>jdbc/ecole_expert</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties>
-    </properties>
+    <properties/>
   </persistence-unit>
 </persistence>
