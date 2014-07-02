@@ -16,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -41,24 +40,16 @@ public class EcoTypePaiement implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_TYPE_PAIEMENT")
     private Short idTypePaiement;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 3)
+    @Size(max = 3)
     @Column(name = "CODE_TYPE_PAIEMENT")
     private String codeTypePaiement;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
+    @Size(max = 10)
     @Column(name = "TYPE_PAIEMENT")
     private String typePaiement;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "DESCRIPTION")
     private String description;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 3)
+    @Size(max = 3)
     @Column(name = "ACTIF")
     private String actif;
 
@@ -67,14 +58,6 @@ public class EcoTypePaiement implements Serializable {
 
     public EcoTypePaiement(Short idTypePaiement) {
         this.idTypePaiement = idTypePaiement;
-    }
-
-    public EcoTypePaiement(Short idTypePaiement, String codeTypePaiement, String typePaiement, String description, String actif) {
-        this.idTypePaiement = idTypePaiement;
-        this.codeTypePaiement = codeTypePaiement;
-        this.typePaiement = typePaiement;
-        this.description = description;
-        this.actif = actif;
     }
 
     public Short getIdTypePaiement() {
