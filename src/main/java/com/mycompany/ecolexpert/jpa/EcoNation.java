@@ -16,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -28,18 +27,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "eco_nation")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "EcoNation.findAll", query = "SELECT n FROM EcoNation n"),
-    @NamedQuery(name = "EcoNation.findByIdnation", query = "SELECT n FROM EcoNation n WHERE n.idnation = :idnation"),
-    @NamedQuery(name = "EcoNation.findByNomFr", query = "SELECT n FROM EcoNation n WHERE n.nomFr = :nomFr"),
-    @NamedQuery(name = "EcoNation.findByNomUs", query = "SELECT n FROM EcoNation n WHERE n.nomUs = :nomUs"),
-    @NamedQuery(name = "EcoNation.findByCode", query = "SELECT n FROM EcoNation n WHERE n.code = :code"),
-    @NamedQuery(name = "EcoNation.findByCode2", query = "SELECT n FROM EcoNation n WHERE n.code2 = :code2"),
-    @NamedQuery(name = "EcoNation.findByCapitale", query = "SELECT n FROM EcoNation n WHERE n.capitale = :capitale"),
-    @NamedQuery(name = "EcoNation.findByIndicatif", query = "SELECT n FROM EcoNation n WHERE n.indicatif = :indicatif"),
-    @NamedQuery(name = "EcoNation.findByNationalite", query = "SELECT n FROM EcoNation n WHERE n.nationalite = :nationalite"),
-    @NamedQuery(name = "EcoNation.findByContinent", query = "SELECT n FROM EcoNation n WHERE n.continent = :continent"),
-    @NamedQuery(name = "EcoNation.findByZone", query = "SELECT n FROM EcoNation n WHERE n.zone = :zone"),
-    @NamedQuery(name = "EcoNation.findByActif", query = "SELECT n FROM EcoNation n WHERE n.actif = :actif")})
+    @NamedQuery(name = "EcoNation.findAll", query = "SELECT e FROM EcoNation e"),
+    @NamedQuery(name = "EcoNation.findByIdnation", query = "SELECT e FROM EcoNation e WHERE e.idnation = :idnation"),
+    @NamedQuery(name = "EcoNation.findByActif", query = "SELECT e FROM EcoNation e WHERE e.actif = :actif"),
+    @NamedQuery(name = "EcoNation.findByCapitale", query = "SELECT e FROM EcoNation e WHERE e.capitale = :capitale"),
+    @NamedQuery(name = "EcoNation.findByCode", query = "SELECT e FROM EcoNation e WHERE e.code = :code"),
+    @NamedQuery(name = "EcoNation.findByCode2", query = "SELECT e FROM EcoNation e WHERE e.code2 = :code2"),
+    @NamedQuery(name = "EcoNation.findByContinent", query = "SELECT e FROM EcoNation e WHERE e.continent = :continent"),
+    @NamedQuery(name = "EcoNation.findByIndicatif", query = "SELECT e FROM EcoNation e WHERE e.indicatif = :indicatif"),
+    @NamedQuery(name = "EcoNation.findByNationalite", query = "SELECT e FROM EcoNation e WHERE e.nationalite = :nationalite"),
+    @NamedQuery(name = "EcoNation.findByNomFr", query = "SELECT e FROM EcoNation e WHERE e.nomFr = :nomFr"),
+    @NamedQuery(name = "EcoNation.findByNomUs", query = "SELECT e FROM EcoNation e WHERE e.nomUs = :nomUs"),
+    @NamedQuery(name = "EcoNation.findByZones", query = "SELECT e FROM EcoNation e WHERE e.zones = :zones")})
 public class EcoNation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,54 +46,41 @@ public class EcoNation implements Serializable {
     @Basic(optional = false)
     @Column(name = "IDNATION")
     private Integer idnation;
-    @Size(max = 50)
-    @Column(name = "NOM_FR")
-    private String nomFr;
-    @Size(max = 50)
-    @Column(name = "NOM_US")
-    private String nomUs;
-    @Size(max = 3)
-    @Column(name = "CODE")
-    private String code;
-    @Size(max = 2)
-    @Column(name = "CODE2")
-    private String code2;
-    @Size(max = 50)
-    @Column(name = "CAPITALE")
-    private String capitale;
-    @Size(max = 6)
-    @Column(name = "INDICATIF")
-    private String indicatif;
-    @Size(max = 50)
-    @Column(name = "NATIONALITE")
-    private String nationalite;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 25)
-    @Column(name = "CONTINENT")
-    private String continent;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ZONE")
-    private int zone;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 3)
+    @Size(max = 255)
     @Column(name = "ACTIF")
     private String actif;
+    @Size(max = 255)
+    @Column(name = "CAPITALE")
+    private String capitale;
+    @Size(max = 255)
+    @Column(name = "CODE")
+    private String code;
+    @Size(max = 255)
+    @Column(name = "CODE2")
+    private String code2;
+    @Size(max = 255)
+    @Column(name = "CONTINENT")
+    private String continent;
+    @Size(max = 255)
+    @Column(name = "INDICATIF")
+    private String indicatif;
+    @Size(max = 255)
+    @Column(name = "NATIONALITE")
+    private String nationalite;
+    @Size(max = 255)
+    @Column(name = "NOM_FR")
+    private String nomFr;
+    @Size(max = 255)
+    @Column(name = "NOM_US")
+    private String nomUs;
+    @Column(name = "ZONES")
+    private Integer zones;
 
     public EcoNation() {
     }
 
     public EcoNation(Integer idnation) {
         this.idnation = idnation;
-    }
-
-    public EcoNation(Integer idnation, String continent, int zone, String actif) {
-        this.idnation = idnation;
-        this.continent = continent;
-        this.zone = zone;
-        this.actif = actif;
     }
 
     public Integer getIdnation() {
@@ -105,20 +91,20 @@ public class EcoNation implements Serializable {
         this.idnation = idnation;
     }
 
-    public String getNomFr() {
-        return nomFr;
+    public String getActif() {
+        return actif;
     }
 
-    public void setNomFr(String nomFr) {
-        this.nomFr = nomFr;
+    public void setActif(String actif) {
+        this.actif = actif;
     }
 
-    public String getNomUs() {
-        return nomUs;
+    public String getCapitale() {
+        return capitale;
     }
 
-    public void setNomUs(String nomUs) {
-        this.nomUs = nomUs;
+    public void setCapitale(String capitale) {
+        this.capitale = capitale;
     }
 
     public String getCode() {
@@ -137,12 +123,12 @@ public class EcoNation implements Serializable {
         this.code2 = code2;
     }
 
-    public String getCapitale() {
-        return capitale;
+    public String getContinent() {
+        return continent;
     }
 
-    public void setCapitale(String capitale) {
-        this.capitale = capitale;
+    public void setContinent(String continent) {
+        this.continent = continent;
     }
 
     public String getIndicatif() {
@@ -161,28 +147,28 @@ public class EcoNation implements Serializable {
         this.nationalite = nationalite;
     }
 
-    public String getContinent() {
-        return continent;
+    public String getNomFr() {
+        return nomFr;
     }
 
-    public void setContinent(String continent) {
-        this.continent = continent;
+    public void setNomFr(String nomFr) {
+        this.nomFr = nomFr;
     }
 
-    public int getZone() {
-        return zone;
+    public String getNomUs() {
+        return nomUs;
     }
 
-    public void setZone(int zone) {
-        this.zone = zone;
+    public void setNomUs(String nomUs) {
+        this.nomUs = nomUs;
     }
 
-    public String getActif() {
-        return actif;
+    public Integer getZones() {
+        return zones;
     }
 
-    public void setActif(String actif) {
-        this.actif = actif;
+    public void setZones(Integer zones) {
+        this.zones = zones;
     }
 
     @Override
@@ -207,7 +193,7 @@ public class EcoNation implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.ecolexperte.jpa.Nation[ idnation=" + idnation + " ]";
+        return "com.mycompany.ecolexpert.jpa.EcoNation[ idnation=" + idnation + " ]";
     }
     
 }
