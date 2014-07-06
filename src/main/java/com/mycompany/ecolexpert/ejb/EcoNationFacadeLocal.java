@@ -17,11 +17,11 @@ import javax.ejb.Local;
 @Local
 public interface EcoNationFacadeLocal {
 
-    void create(EcoNation nation);
+    void create(EcoNation ecoNation);
 
-    void edit(EcoNation nation);
+    void edit(EcoNation ecoNation);
 
-    void remove(EcoNation nation);
+    void remove(EcoNation ecoNation);
 
     EcoNation find(Object id);
 
