@@ -16,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -68,18 +67,12 @@ public class EcoNation implements Serializable {
     @Size(max = 50)
     @Column(name = "NATIONALITE")
     private String nationalite;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 25)
+    @Size(max = 25)
     @Column(name = "CONTINENT")
     private String continent;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "ZONES")
-    private int zones;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 3)
+    private Integer zones;
+    @Size(max = 3)
     @Column(name = "ACTIF")
     private String actif;
 
@@ -88,13 +81,6 @@ public class EcoNation implements Serializable {
 
     public EcoNation(Integer idnation) {
         this.idnation = idnation;
-    }
-
-    public EcoNation(Integer idnation, String continent, int zones, String actif) {
-        this.idnation = idnation;
-        this.continent = continent;
-        this.zones = zones;
-        this.actif = actif;
     }
 
     public Integer getIdnation() {
@@ -169,11 +155,11 @@ public class EcoNation implements Serializable {
         this.continent = continent;
     }
 
-    public int getZones() {
+    public Integer getZones() {
         return zones;
     }
 
-    public void setZones(int zones) {
+    public void setZones(Integer zones) {
         this.zones = zones;
     }
 
