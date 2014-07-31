@@ -34,12 +34,10 @@ public class EcoProfil implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 255)
     @Column(name = "idProfil")
     private String idProfil;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 255)
     @Column(name = "libelleProfil")
     private String libelleProfil;
 
@@ -48,11 +46,6 @@ public class EcoProfil implements Serializable {
 
     public EcoProfil(String idProfil) {
         this.idProfil = idProfil;
-    }
-
-    public EcoProfil(String idProfil, String libelleProfil) {
-        this.idProfil = idProfil;
-        this.libelleProfil = libelleProfil;
     }
 
     public String getIdProfil() {
@@ -93,7 +86,7 @@ public class EcoProfil implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.ecolexperte.jpa.EcoProfil[ idProfil=" + idProfil + " ]";
+        return "com.mycompany.ecolexpert.jpa.EcoProfil[ idProfil=" + idProfil + " ]";
     }
     
 }

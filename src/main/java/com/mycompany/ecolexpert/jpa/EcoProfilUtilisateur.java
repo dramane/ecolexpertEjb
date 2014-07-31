@@ -16,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -30,11 +29,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "EcoProfilUtilisateur.findAll", query = "SELECT e FROM EcoProfilUtilisateur e"),
     @NamedQuery(name = "EcoProfilUtilisateur.findByIdProfilUtilisateur", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.idProfilUtilisateur = :idProfilUtilisateur"),
-    @NamedQuery(name = "EcoProfilUtilisateur.findByIdUtilisateur", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.idUtilisateur = :idUtilisateur"),
-    @NamedQuery(name = "EcoProfilUtilisateur.findByIdProfil", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.idProfil = :idProfil"),
     @NamedQuery(name = "EcoProfilUtilisateur.findByActive", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.active = :active"),
+    @NamedQuery(name = "EcoProfilUtilisateur.findByIdProfil", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.idProfil = :idProfil"),
+    @NamedQuery(name = "EcoProfilUtilisateur.findByIdUtilisateur", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.idUtilisateur = :idUtilisateur"),
     @NamedQuery(name = "EcoProfilUtilisateur.findByIdUtilisateurAndActive", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.idUtilisateur = :idUtilisateur AND e.active = :active")})
-    
 public class EcoProfilUtilisateur implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,32 +40,19 @@ public class EcoProfilUtilisateur implements Serializable {
     @Basic(optional = false)
     @Column(name = "idProfilUtilisateur")
     private Integer idProfilUtilisateur;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "idUtilisateur")
-    private int idUtilisateur;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Column(name = "active")
+    private Integer active;
+    @Size(max = 255)
     @Column(name = "idProfil")
     private String idProfil;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "active")
-    private int active;
+    @Column(name = "idUtilisateur")
+    private Integer idUtilisateur;
 
     public EcoProfilUtilisateur() {
     }
 
     public EcoProfilUtilisateur(Integer idProfilUtilisateur) {
         this.idProfilUtilisateur = idProfilUtilisateur;
-    }
-
-    public EcoProfilUtilisateur(Integer idProfilUtilisateur, int idUtilisateur, String idProfil, int active) {
-        this.idProfilUtilisateur = idProfilUtilisateur;
-        this.idUtilisateur = idUtilisateur;
-        this.idProfil = idProfil;
-        this.active = active;
     }
 
     public Integer getIdProfilUtilisateur() {
@@ -78,12 +63,12 @@ public class EcoProfilUtilisateur implements Serializable {
         this.idProfilUtilisateur = idProfilUtilisateur;
     }
 
-    public int getIdUtilisateur() {
-        return idUtilisateur;
+    public Integer getActive() {
+        return active;
     }
 
-    public void setIdUtilisateur(int idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
+    public void setActive(Integer active) {
+        this.active = active;
     }
 
     public String getIdProfil() {
@@ -94,12 +79,12 @@ public class EcoProfilUtilisateur implements Serializable {
         this.idProfil = idProfil;
     }
 
-    public int getActive() {
-        return active;
+    public Integer getIdUtilisateur() {
+        return idUtilisateur;
     }
 
-    public void setActive(int active) {
-        this.active = active;
+    public void setIdUtilisateur(Integer idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
     }
 
     @Override
@@ -124,7 +109,7 @@ public class EcoProfilUtilisateur implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.ecolexperte.jpa.EcoProfilUtilisateur[ idProfilUtilisateur=" + idProfilUtilisateur + " ]";
+        return "com.mycompany.ecolexpert.jpa.EcoProfilUtilisateur[ idProfilUtilisateur=" + idProfilUtilisateur + " ]";
     }
     
 }
