@@ -30,7 +30,7 @@ public class EcoProfilUtilisateurFacade extends AbstractFacade<EcoProfilUtilisat
     public EcoProfilUtilisateurFacade() {
         super(EcoProfilUtilisateur.class);
     }
-    
+   
     @Override
     public List<EcoProfilUtilisateur> findByIdUtilisateurAndActive (Object vIdUtilisateur, int vActive){                   
         Query nQuery = em.createNamedQuery("EcoProfilUtilisateur.findByIdUtilisateurAndActive");

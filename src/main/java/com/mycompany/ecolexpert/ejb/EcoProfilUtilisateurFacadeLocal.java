@@ -29,7 +29,7 @@ public interface EcoProfilUtilisateurFacadeLocal {
 
     List<EcoProfilUtilisateur> findRange(int[] range);
 
-    int count();     
+    int count();
     
     List<EcoProfilUtilisateur> findByIdUtilisateurAndActive (Object vIdUtilisateur, int vActive);
 }
