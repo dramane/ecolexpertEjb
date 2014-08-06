@@ -32,4 +32,8 @@ public interface EcoProfilUtilisateurFacadeLocal {
     int count();
     
     List<EcoProfilUtilisateur> findByIdUtilisateurAndActive (Object vIdUtilisateur, int vActive);
+    
+    List<EcoProfilUtilisateur> findByIdUtilisateur (Object vIdUtilisateur);
+    
+    List<EcoProfilUtilisateur> findByIdProfil (String idProfil);
 }

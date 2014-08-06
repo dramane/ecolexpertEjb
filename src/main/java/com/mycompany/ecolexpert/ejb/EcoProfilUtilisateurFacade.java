@@ -39,4 +39,18 @@ public class EcoProfilUtilisateurFacade extends AbstractFacade<EcoProfilUtilisat
 
         return nQuery.getResultList(); 
     }
+
+    @Override
+    public List<EcoProfilUtilisateur> findByIdUtilisateur(Object vIdUtilisateur) {
+        Query nQuery = em.createNamedQuery("EcoProfilUtilisateur.findByIdUtilisateur");
+        nQuery.setParameter("idUtilisateur", vIdUtilisateur); 
+        return nQuery.getResultList(); 
+    }
+
+    @Override
+    public List<EcoProfilUtilisateur> findByIdProfil(String vIdProfil) {
+        Query nQuery = em.createNamedQuery("EcoProfilUtilisateur.findByIdProfil");
+        nQuery.setParameter("idProfil", vIdProfil); 
+        return nQuery.getResultList(); 
+    }
 }
