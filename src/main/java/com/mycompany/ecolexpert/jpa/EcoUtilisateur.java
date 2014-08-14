@@ -52,6 +52,9 @@ public class EcoUtilisateur implements Serializable {
     @Column(name = "motDePasse")
     private String motDePasse;
     @Size(max = 255)
+    @Column(name = "motDePasse2")
+    private String motDePasse2;
+    @Size(max = 255)
     @Column(name = "nomUtilisateur")
     private String nomUtilisateur;
     @Size(max = 255)
@@ -96,6 +99,14 @@ public class EcoUtilisateur implements Serializable {
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
     }
+
+    public String getMotDePasse2() {
+        return motDePasse2;
+    }
+
+    public void setMotDePasse2(String motDePasse2) {
+        this.motDePasse2 = motDePasse2;
+    }        
 
     public String getNomUtilisateur() {
         return nomUtilisateur;
