@@ -50,9 +50,7 @@ public class EcoSystemeEducatif implements Serializable {
     @Size(max = 3)
     @Column(name = "ACTIF")
     private String actif;
-    @OneToMany(mappedBy = "codeEducatif")
-    private List<EcoSystemeAcademique> ecoSystemeAcademiqueList;
-
+    
     public EcoSystemeEducatif() {
     }
 
@@ -90,15 +88,6 @@ public class EcoSystemeEducatif implements Serializable {
 
     public void setActif(String actif) {
         this.actif = actif;
-    }
-
-    @XmlTransient
-    public List<EcoSystemeAcademique> getEcoSystemeAcademiqueList() {
-        return ecoSystemeAcademiqueList;
-    }
-
-    public void setEcoSystemeAcademiqueList(List<EcoSystemeAcademique> ecoSystemeAcademiqueList) {
-        this.ecoSystemeAcademiqueList = ecoSystemeAcademiqueList;
     }
 
     @Override

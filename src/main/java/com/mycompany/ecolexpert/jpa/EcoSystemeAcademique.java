@@ -16,7 +16,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -41,9 +40,9 @@ public class EcoSystemeAcademique implements Serializable {
     @Size(max = 255)
     @Column(name = "DESIGNATION")
     private String designation;
-    @JoinColumn(name = "CODE_EDUCATIF", referencedColumnName = "CODE_EDUCATIF")
-    @ManyToOne
-    private EcoSystemeEducatif codeEducatif;
+    @Size(max = 3)
+    @Column(name = "CODE_EDUCATIF")  
+    private String codeEducatif;
 
     public EcoSystemeAcademique() {
     }
@@ -68,13 +67,13 @@ public class EcoSystemeAcademique implements Serializable {
         this.designation = designation;
     }
 
-    public EcoSystemeEducatif getCodeEducatif() {
+    public String getCodeEducatif() {
         return codeEducatif;
     }
 
-    public void setCodeEducatif(EcoSystemeEducatif codeEducatif) {
+    public void setCodeEducatif(String codeEducatif) {
         this.codeEducatif = codeEducatif;
-    }
+    }    
 
     @Override
     public int hashCode() {
