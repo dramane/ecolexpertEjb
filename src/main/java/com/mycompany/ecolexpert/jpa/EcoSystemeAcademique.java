@@ -11,8 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -29,7 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "EcoSystemeAcademique.findAll", query = "SELECT e FROM EcoSystemeAcademique e"),
     @NamedQuery(name = "EcoSystemeAcademique.findByCodeAcademique", query = "SELECT e FROM EcoSystemeAcademique e WHERE e.codeAcademique = :codeAcademique"),
-    @NamedQuery(name = "EcoSystemeAcademique.findByDesignation", query = "SELECT e FROM EcoSystemeAcademique e WHERE e.designation = :designation")})
+    @NamedQuery(name = "EcoSystemeAcademique.findByDesignation", query = "SELECT e FROM EcoSystemeAcademique e WHERE e.designation = :designation"),
+    @NamedQuery(name = "EcoSystemeAcademique.findByDescription", query = "SELECT e FROM EcoSystemeAcademique e WHERE e.description = :description")})
 public class EcoSystemeAcademique implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,7 +39,10 @@ public class EcoSystemeAcademique implements Serializable {
     @Size(max = 255)
     @Column(name = "DESIGNATION")
     private String designation;
-    @Size(max = 3)
+    @Size(max = 255)
+    @Column(name = "DESCRIPTION")
+    private String description;
+    @Size(max = 3)    
     @Column(name = "CODE_EDUCATIF")  
     private String codeEducatif;
 
@@ -66,6 +68,14 @@ public class EcoSystemeAcademique implements Serializable {
     public void setDesignation(String designation) {
         this.designation = designation;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }        
 
     public String getCodeEducatif() {
         return codeEducatif;
