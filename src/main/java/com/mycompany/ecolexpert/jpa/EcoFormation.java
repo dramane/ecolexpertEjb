@@ -16,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -28,12 +27,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "eco_formation")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "EcoFormation.findAll", query = "SELECT f FROM EcoFormation f"),
-    @NamedQuery(name = "EcoFormation.findByIdformation", query = "SELECT f FROM EcoFormation f WHERE f.idformation = :idformation"),
-    @NamedQuery(name = "EcoFormation.findByFormation", query = "SELECT f FROM EcoFormation f WHERE f.formation = :formation"),
-    @NamedQuery(name = "EcoFormation.findByDescription", query = "SELECT f FROM EcoFormation f WHERE f.description = :description"),
-    @NamedQuery(name = "EcoFormation.findByCodeformation", query = "SELECT f FROM EcoFormation f WHERE f.codeformation = :codeformation"),
-    @NamedQuery(name = "EcoFormation.findByActif", query = "SELECT f FROM EcoFormation f WHERE f.actif = :actif")})
+    @NamedQuery(name = "EcoFormation.findAll", query = "SELECT e FROM EcoFormation e"),
+    @NamedQuery(name = "EcoFormation.findByIdformation", query = "SELECT e FROM EcoFormation e WHERE e.idformation = :idformation"),
+    @NamedQuery(name = "EcoFormation.findByActif", query = "SELECT e FROM EcoFormation e WHERE e.actif = :actif"),
+    @NamedQuery(name = "EcoFormation.findByCodeformation", query = "SELECT e FROM EcoFormation e WHERE e.codeformation = :codeformation"),
+    @NamedQuery(name = "EcoFormation.findByDescription", query = "SELECT e FROM EcoFormation e WHERE e.description = :description"),
+    @NamedQuery(name = "EcoFormation.findByFormation", query = "SELECT e FROM EcoFormation e WHERE e.formation = :formation")})
 public class EcoFormation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,36 +40,23 @@ public class EcoFormation implements Serializable {
     @Basic(optional = false)
     @Column(name = "IDFORMATION")
     private Integer idformation;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "FORMATION")
-    private String formation;
-    @Size(max = 50)
-    @Column(name = "DESCRIPTION")
-    private String description;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "CODEFORMATION")
-    private char codeformation;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 3)
+    @Size(max = 255)
     @Column(name = "ACTIF")
     private String actif;
+    @Column(name = "CODEFORMATION")
+    private Character codeformation;
+    @Size(max = 255)
+    @Column(name = "DESCRIPTION")
+    private String description;
+    @Size(max = 255)
+    @Column(name = "FORMATION")
+    private String formation;
 
     public EcoFormation() {
     }
 
     public EcoFormation(Integer idformation) {
         this.idformation = idformation;
-    }
-
-    public EcoFormation(Integer idformation, String formation, char codeformation, String actif) {
-        this.idformation = idformation;
-        this.formation = formation;
-        this.codeformation = codeformation;
-        this.actif = actif;
     }
 
     public Integer getIdformation() {
@@ -81,12 +67,20 @@ public class EcoFormation implements Serializable {
         this.idformation = idformation;
     }
 
-    public String getFormation() {
-        return formation;
+    public String getActif() {
+        return actif;
     }
 
-    public void setFormation(String formation) {
-        this.formation = formation;
+    public void setActif(String actif) {
+        this.actif = actif;
+    }
+
+    public Character getCodeformation() {
+        return codeformation;
+    }
+
+    public void setCodeformation(Character codeformation) {
+        this.codeformation = codeformation;
     }
 
     public String getDescription() {
@@ -97,20 +91,12 @@ public class EcoFormation implements Serializable {
         this.description = description;
     }
 
-    public char getCodeformation() {
-        return codeformation;
+    public String getFormation() {
+        return formation;
     }
 
-    public void setCodeformation(char codeformation) {
-        this.codeformation = codeformation;
-    }
-
-    public String getActif() {
-        return actif;
-    }
-
-    public void setActif(String actif) {
-        this.actif = actif;
+    public void setFormation(String formation) {
+        this.formation = formation;
     }
 
     @Override
@@ -135,7 +121,7 @@ public class EcoFormation implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.ecolexperte.jpa.Formation[ idformation=" + idformation + " ]";
+        return "com.mycompany.ecolexpert.jpa.EcoFormation[ idformation=" + idformation + " ]";
     }
     
 }
