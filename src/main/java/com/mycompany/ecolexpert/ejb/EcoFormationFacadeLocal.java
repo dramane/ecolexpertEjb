@@ -17,11 +17,11 @@ import javax.ejb.Local;
 @Local
 public interface EcoFormationFacadeLocal {
 
-    void create(EcoFormation formation);
+    void create(EcoFormation ecoFormation);
 
-    void edit(EcoFormation formation);
+    void edit(EcoFormation ecoFormation);
 
-    void remove(EcoFormation formation);
+    void remove(EcoFormation ecoFormation);
 
     EcoFormation find(Object id);
 

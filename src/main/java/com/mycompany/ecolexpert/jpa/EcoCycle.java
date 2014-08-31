@@ -10,8 +10,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -28,55 +26,63 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "eco_cycle")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "EcoCycle.findAll", query = "SELECT c FROM EcoCycle c"),
-    @NamedQuery(name = "EcoCycle.findByIdcycle", query = "SELECT c FROM EcoCycle c WHERE c.idcycle = :idcycle"),
-    @NamedQuery(name = "EcoCycle.findByDesignation", query = "SELECT c FROM EcoCycle c WHERE c.designation = :designation"),
-    @NamedQuery(name = "EcoCycle.findByCodecycle", query = "SELECT c FROM EcoCycle c WHERE c.codecycle = :codecycle"),
-    @NamedQuery(name = "EcoCycle.findByCode3", query = "SELECT c FROM EcoCycle c WHERE c.code3 = :code3"),
-    @NamedQuery(name = "EcoCycle.findByCodefiliere", query = "SELECT c FROM EcoCycle c WHERE c.codefiliere = :codefiliere")})
+    @NamedQuery(name = "EcoCycle.findAll", query = "SELECT e FROM EcoCycle e"),
+    @NamedQuery(name = "EcoCycle.findByIdEcoCycle", query = "SELECT e FROM EcoCycle e WHERE e.idEcoCycle = :idEcoCycle"),
+    @NamedQuery(name = "EcoCycle.findByCodeCycle", query = "SELECT e FROM EcoCycle e WHERE e.codeCycle = :codeCycle"),
+    @NamedQuery(name = "EcoCycle.findByDesignation", query = "SELECT e FROM EcoCycle e WHERE e.designation = :designation"),
+    @NamedQuery(name = "EcoCycle.findByDescription", query = "SELECT e FROM EcoCycle e WHERE e.description = :description"),
+    @NamedQuery(name = "EcoCycle.findByActif", query = "SELECT e FROM EcoCycle e WHERE e.actif = :actif"),
+    @NamedQuery(name = "EcoCycle.findByCodeAcademique", query = "SELECT e FROM EcoCycle e WHERE e.codeAcademique = :codeAcademique")})
 public class EcoCycle implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDCYCLE")
-    private Integer idcycle;
+    @Column(name = "ID_ECO_CYCLE")
+    private int idEcoCycle;
+    @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 70)
+    @Size(min = 1, max = 3)
+    @Column(name = "CODE_CYCLE")
+    private String codeCycle;
+    @Size(max = 50)
     @Column(name = "DESIGNATION")
     private String designation;
-    @Size(max = 2)
-    @Column(name = "CODECYCLE")
-    private String codecycle;
+    @Size(max = 255)
+    @Column(name = "DESCRIPTION")
+    private String description;
     @Size(max = 3)
-    @Column(name = "CODE3")
-    private String code3;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2)
-    @Column(name = "CODEFILIERE")
-    private String codefiliere;
+    @Column(name = "ACTIF")
+    private String actif;
+    @Size(max = 10)
+    @Column(name = "CODE_ACADEMIQUE")
+    private String codeAcademique;
 
     public EcoCycle() {
     }
 
-    public EcoCycle(Integer idcycle) {
-        this.idcycle = idcycle;
+    public EcoCycle(String codeCycle) {
+        this.codeCycle = codeCycle;
     }
 
-    public EcoCycle(Integer idcycle, String designation, String codefiliere) {
-        this.idcycle = idcycle;
-        this.designation = designation;
-        this.codefiliere = codefiliere;
+    public EcoCycle(String codeCycle, int idEcoCycle) {
+        this.codeCycle = codeCycle;
+        this.idEcoCycle = idEcoCycle;
     }
 
-    public Integer getIdcycle() {
-        return idcycle;
+    public int getIdEcoCycle() {
+        return idEcoCycle;
     }
 
-    public void setIdcycle(Integer idcycle) {
-        this.idcycle = idcycle;
+    public void setIdEcoCycle(int idEcoCycle) {
+        this.idEcoCycle = idEcoCycle;
+    }
+
+    public String getCodeCycle() {
+        return codeCycle;
+    }
+
+    public void setCodeCycle(String codeCycle) {
+        this.codeCycle = codeCycle;
     }
 
     public String getDesignation() {
@@ -87,34 +93,34 @@ public class EcoCycle implements Serializable {
         this.designation = designation;
     }
 
-    public String getCodecycle() {
-        return codecycle;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCodecycle(String codecycle) {
-        this.codecycle = codecycle;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getCode3() {
-        return code3;
+    public String getActif() {
+        return actif;
     }
 
-    public void setCode3(String code3) {
-        this.code3 = code3;
+    public void setActif(String actif) {
+        this.actif = actif;
     }
 
-    public String getCodefiliere() {
-        return codefiliere;
+    public String getCodeAcademique() {
+        return codeAcademique;
     }
 
-    public void setCodefiliere(String codefiliere) {
-        this.codefiliere = codefiliere;
+    public void setCodeAcademique(String codeAcademique) {
+        this.codeAcademique = codeAcademique;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idcycle != null ? idcycle.hashCode() : 0);
+        hash += (codeCycle != null ? codeCycle.hashCode() : 0);
         return hash;
     }
 
@@ -125,7 +131,7 @@ public class EcoCycle implements Serializable {
             return false;
         }
         EcoCycle other = (EcoCycle) object;
-        if ((this.idcycle == null && other.idcycle != null) || (this.idcycle != null && !this.idcycle.equals(other.idcycle))) {
+        if ((this.codeCycle == null && other.codeCycle != null) || (this.codeCycle != null && !this.codeCycle.equals(other.codeCycle))) {
             return false;
         }
         return true;
@@ -133,7 +139,7 @@ public class EcoCycle implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.ecolexperte.jpa.Cycle[ idcycle=" + idcycle + " ]";
+        return "com.mycompany.ecolexpert.jpa.EcoCycle[ codeCycle=" + codeCycle + " ]";
     }
     
 }

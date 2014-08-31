@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -28,12 +29,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoSystemeAcademique.findAll", query = "SELECT e FROM EcoSystemeAcademique e"),
     @NamedQuery(name = "EcoSystemeAcademique.findByCodeAcademique", query = "SELECT e FROM EcoSystemeAcademique e WHERE e.codeAcademique = :codeAcademique"),
     @NamedQuery(name = "EcoSystemeAcademique.findByDesignation", query = "SELECT e FROM EcoSystemeAcademique e WHERE e.designation = :designation"),
-    @NamedQuery(name = "EcoSystemeAcademique.findByDescription", query = "SELECT e FROM EcoSystemeAcademique e WHERE e.description = :description")})
+    @NamedQuery(name = "EcoSystemeAcademique.findByDescription", query = "SELECT e FROM EcoSystemeAcademique e WHERE e.description = :description"),
+    @NamedQuery(name = "EcoSystemeAcademique.findByCodeEducatif", query = "SELECT e FROM EcoSystemeAcademique e WHERE e.codeEducatif = :codeEducatif")})
 public class EcoSystemeAcademique implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Size(max = 3)
+    @NotNull
+    @Size(max = 10)
     @Column(name = "CODE_ACADEMIQUE")
     private String codeAcademique;
     @Size(max = 255)
@@ -42,8 +45,8 @@ public class EcoSystemeAcademique implements Serializable {
     @Size(max = 255)
     @Column(name = "DESCRIPTION")
     private String description;
-    @Size(max = 3)    
-    @Column(name = "CODE_EDUCATIF")  
+    @Size(max = 3)
+    @Column(name = "CODE_EDUCATIF")
     private String codeEducatif;
 
     public EcoSystemeAcademique() {
@@ -75,7 +78,7 @@ public class EcoSystemeAcademique implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }        
+    }
 
     public String getCodeEducatif() {
         return codeEducatif;
@@ -83,7 +86,7 @@ public class EcoSystemeAcademique implements Serializable {
 
     public void setCodeEducatif(String codeEducatif) {
         this.codeEducatif = codeEducatif;
-    }    
+    }
 
     @Override
     public int hashCode() {

@@ -10,12 +10,11 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -28,67 +27,58 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "EcoFormation.findAll", query = "SELECT e FROM EcoFormation e"),
-    @NamedQuery(name = "EcoFormation.findByIdformation", query = "SELECT e FROM EcoFormation e WHERE e.idformation = :idformation"),
-    @NamedQuery(name = "EcoFormation.findByActif", query = "SELECT e FROM EcoFormation e WHERE e.actif = :actif"),
-    @NamedQuery(name = "EcoFormation.findByCodeformation", query = "SELECT e FROM EcoFormation e WHERE e.codeformation = :codeformation"),
+    @NamedQuery(name = "EcoFormation.findByIdFormation", query = "SELECT e FROM EcoFormation e WHERE e.idFormation = :idFormation"),
+    @NamedQuery(name = "EcoFormation.findByCodeFormation", query = "SELECT e FROM EcoFormation e WHERE e.codeFormation = :codeFormation"),
+    @NamedQuery(name = "EcoFormation.findByFormation", query = "SELECT e FROM EcoFormation e WHERE e.formation = :formation"),
     @NamedQuery(name = "EcoFormation.findByDescription", query = "SELECT e FROM EcoFormation e WHERE e.description = :description"),
-    @NamedQuery(name = "EcoFormation.findByFormation", query = "SELECT e FROM EcoFormation e WHERE e.formation = :formation")})
+    @NamedQuery(name = "EcoFormation.findByActif", query = "SELECT e FROM EcoFormation e WHERE e.actif = :actif")})
 public class EcoFormation implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDFORMATION")
-    private Integer idformation;
-    @Size(max = 255)
-    @Column(name = "ACTIF")
-    private String actif;
-    @Column(name = "CODEFORMATION")
-    private Character codeformation;
+    @Column(name = "ID_FORMATION")
+    private int idFormation;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(max = 1)
+    @Column(name = "CODE_FORMATION")
+    private String codeFormation;
+    @Size(max = 50)
+    @Column(name = "FORMATION")
+    private String formation;
     @Size(max = 255)
     @Column(name = "DESCRIPTION")
     private String description;
-    @Size(max = 255)
-    @Column(name = "FORMATION")
-    private String formation;
+    @Size(max = 3)
+    @Column(name = "ACTIF")
+    private String actif;
 
     public EcoFormation() {
     }
 
-    public EcoFormation(Integer idformation) {
-        this.idformation = idformation;
+    public EcoFormation(String codeFormation) {
+        this.codeFormation = codeFormation;
     }
 
-    public Integer getIdformation() {
-        return idformation;
+    public EcoFormation(String codeFormation, int idFormation) {
+        this.codeFormation = codeFormation;
+        this.idFormation = idFormation;
     }
 
-    public void setIdformation(Integer idformation) {
-        this.idformation = idformation;
+    public int getIdFormation() {
+        return idFormation;
     }
 
-    public String getActif() {
-        return actif;
+    public void setIdFormation(int idFormation) {
+        this.idFormation = idFormation;
     }
 
-    public void setActif(String actif) {
-        this.actif = actif;
+    public String getCodeFormation() {
+        return codeFormation;
     }
 
-    public Character getCodeformation() {
-        return codeformation;
-    }
-
-    public void setCodeformation(Character codeformation) {
-        this.codeformation = codeformation;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCodeFormation(String codeFormation) {
+        this.codeFormation = codeFormation;
     }
 
     public String getFormation() {
@@ -99,10 +89,26 @@ public class EcoFormation implements Serializable {
         this.formation = formation;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getActif() {
+        return actif;
+    }
+
+    public void setActif(String actif) {
+        this.actif = actif;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idformation != null ? idformation.hashCode() : 0);
+        hash += (codeFormation != null ? codeFormation.hashCode() : 0);
         return hash;
     }
 
@@ -113,7 +119,7 @@ public class EcoFormation implements Serializable {
             return false;
         }
         EcoFormation other = (EcoFormation) object;
-        if ((this.idformation == null && other.idformation != null) || (this.idformation != null && !this.idformation.equals(other.idformation))) {
+        if ((this.codeFormation == null && other.codeFormation != null) || (this.codeFormation != null && !this.codeFormation.equals(other.codeFormation))) {
             return false;
         }
         return true;
@@ -121,7 +127,7 @@ public class EcoFormation implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.ecolexpert.jpa.EcoFormation[ idformation=" + idformation + " ]";
+        return "com.mycompany.ecolexpert.jpa.EcoFormation[ codeFormation=" + codeFormation + " ]";
     }
     
 }

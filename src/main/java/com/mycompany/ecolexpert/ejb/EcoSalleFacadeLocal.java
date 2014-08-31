@@ -6,7 +6,7 @@
 
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexpert.jpa.EcoCycle;
+import com.mycompany.ecolexpert.jpa.EcoSalle;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,22 +15,20 @@ import javax.ejb.Local;
  * @author TOSHIBA
  */
 @Local
-public interface EcoCycleFacadeLocal {
+public interface EcoSalleFacadeLocal {
 
-    void create(EcoCycle ecoCycle);
+    void create(EcoSalle ecoSalle);
 
-    void edit(EcoCycle ecoCycle);
+    void edit(EcoSalle ecoSalle);
 
-    void remove(EcoCycle ecoCycle);
+    void remove(EcoSalle ecoSalle);
 
-    EcoCycle find(Object id);
+    EcoSalle find(Object id);
 
-    List<EcoCycle> findAll();
+    List<EcoSalle> findAll();
 
-    List<EcoCycle> findRange(int[] range);
+    List<EcoSalle> findRange(int[] range);
 
     int count();
-    
-    List<EcoCycle> findAllDistinct();
     
 }
