@@ -41,7 +41,7 @@ public class EcoCycle implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 3)
+    @Size(max = 3)
     @Column(name = "CODE_CYCLE")
     private String codeCycle;
     @Size(max = 50)

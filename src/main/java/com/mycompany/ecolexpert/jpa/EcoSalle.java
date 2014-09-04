@@ -32,10 +32,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoSalle.findAll", query = "SELECT e FROM EcoSalle e"),
     @NamedQuery(name = "EcoSalle.findByIdSalle", query = "SELECT e FROM EcoSalle e WHERE e.idSalle = :idSalle"),
     @NamedQuery(name = "EcoSalle.findByNomSalle", query = "SELECT e FROM EcoSalle e WHERE e.nomSalle = :nomSalle"),
-    @NamedQuery(name = "EcoSalle.findByCodeBatiment", query = "SELECT e FROM EcoSalle e WHERE e.codeBatiment = :codeBatiment"),
     @NamedQuery(name = "EcoSalle.findByCapacite", query = "SELECT e FROM EcoSalle e WHERE e.capacite = :capacite"),
     @NamedQuery(name = "EcoSalle.findByActif", query = "SELECT e FROM EcoSalle e WHERE e.actif = :actif"),
-    @NamedQuery(name = "EcoSalle.findByDateEnregistrement", query = "SELECT e FROM EcoSalle e WHERE e.dateEnregistrement = :dateEnregistrement")})
+    @NamedQuery(name = "EcoSalle.findByDateEnregistrement", query = "SELECT e FROM EcoSalle e WHERE e.dateEnregistrement = :dateEnregistrement"),
+    @NamedQuery(name = "EcoSalle.findByCodeBatiment", query = "SELECT e FROM EcoSalle e WHERE e.codeBatiment = :codeBatiment")})
 public class EcoSalle implements Serializable {
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -47,9 +47,6 @@ public class EcoSalle implements Serializable {
     @Size(max = 50)
     @Column(name = "NOM_SALLE")
     private String nomSalle;
-    @Size(max = 8)
-    @Column(name = "CODE_BATIMENT")
-    private String codeBatiment;
     @Column(name = "CAPACITE")
     private Integer capacite;
     @Size(max = 3)
@@ -58,6 +55,9 @@ public class EcoSalle implements Serializable {
     @Column(name = "DATE_ENREGISTREMENT")
     @Temporal(TemporalType.DATE)
     private Date dateEnregistrement;
+    @Size(max = 8)
+    @Column(name = "CODE_BATIMENT")
+    private String codeBatiment;
 
     public EcoSalle() {
     }
@@ -87,14 +87,6 @@ public class EcoSalle implements Serializable {
         this.nomSalle = nomSalle;
     }
 
-    public String getCodeBatiment() {
-        return codeBatiment;
-    }
-
-    public void setCodeBatiment(String codeBatiment) {
-        this.codeBatiment = codeBatiment;
-    }
-
     public Integer getCapacite() {
         return capacite;
     }
@@ -117,6 +109,14 @@ public class EcoSalle implements Serializable {
 
     public void setDateEnregistrement(Date dateEnregistrement) {
         this.dateEnregistrement = dateEnregistrement;
+    }
+
+    public String getCodeBatiment() {
+        return codeBatiment;
+    }
+
+    public void setCodeBatiment(String codeBatiment) {
+        this.codeBatiment = codeBatiment;
     }
 
     @Override
