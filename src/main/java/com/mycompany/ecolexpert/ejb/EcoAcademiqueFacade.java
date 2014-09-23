@@ -7,9 +7,11 @@
 package com.mycompany.ecolexpert.ejb;
 
 import com.mycompany.ecolexpert.jpa.EcoAcademique;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,14 @@ public class EcoAcademiqueFacade extends AbstractFacade<EcoAcademique> implement
 
     public EcoAcademiqueFacade() {
         super(EcoAcademique.class);
+    }
+
+    @Override
+    public EcoAcademique  findAnneeEnCours() {
+        String texteRequete = "SELECT e.idacademique, e.anneePre, e.anneeaca, e.dateDebut, e.dateFin FROM EcoAcademique e "+
+            "WHERE e.idacademique = (SELECT MAX(a.idacademique) FROM EcoAcademique a)";
+        Query nQuery = em.createQuery(texteRequete);
+        return  (EcoAcademique) nQuery.getSingleResult(); 
     }
     
 }

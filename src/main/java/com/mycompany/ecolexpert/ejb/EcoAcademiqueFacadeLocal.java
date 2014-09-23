@@ -31,4 +31,6 @@ public interface EcoAcademiqueFacadeLocal {
 
     int count();
     
+    EcoAcademique findAnneeEnCours();
+    
 }
