@@ -31,4 +31,5 @@ public interface EcoMyinfoFacadeLocal {
 
     int count();
     
+    EcoMyinfo findMyInfo_etablissementEnCours();
 }

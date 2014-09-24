@@ -10,8 +10,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
@@ -31,6 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "EcoMyinfo.findAll", query = "SELECT e FROM EcoMyinfo e"),
     @NamedQuery(name = "EcoMyinfo.findByIdmyinfo", query = "SELECT e FROM EcoMyinfo e WHERE e.idmyinfo = :idmyinfo"),
+    @NamedQuery(name = "EcoMyinfo.findByCodeMyinfo", query = "SELECT e FROM EcoMyinfo e WHERE e.codeMyinfo = :codeMyinfo"),
     @NamedQuery(name = "EcoMyinfo.findByMyname", query = "SELECT e FROM EcoMyinfo e WHERE e.myname = :myname"),
     @NamedQuery(name = "EcoMyinfo.findByMymanager", query = "SELECT e FROM EcoMyinfo e WHERE e.mymanager = :mymanager"),
     @NamedQuery(name = "EcoMyinfo.findByMysigle", query = "SELECT e FROM EcoMyinfo e WHERE e.mysigle = :mysigle"),
@@ -48,11 +47,15 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoMyinfo.findByMystudytitle", query = "SELECT e FROM EcoMyinfo e WHERE e.mystudytitle = :mystudytitle")})
 public class EcoMyinfo implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "IDMYINFO")
-    private Integer idmyinfo;
+    private int idmyinfo;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(max = 50)
+    @Column(name = "CODE_MYINFO")
+    private String codeMyinfo;
     @Size(max = 45)
     @Column(name = "MYNAME")
     private String myname;
@@ -98,7 +101,7 @@ public class EcoMyinfo implements Serializable {
     private byte[] mysignin;
     @Basic(optional = false)
     @NotNull
-    @Size(max = 22)
+    @Size(min = 1, max = 22)
     @Column(name = "MYSTATUT")
     private String mystatut;
     @Size(max = 25)
@@ -114,21 +117,30 @@ public class EcoMyinfo implements Serializable {
     public EcoMyinfo() {
     }
 
-    public EcoMyinfo(Integer idmyinfo) {
-        this.idmyinfo = idmyinfo;
+    public EcoMyinfo(String codeMyinfo) {
+        this.codeMyinfo = codeMyinfo;
     }
 
-    public EcoMyinfo(Integer idmyinfo, String mystatut) {
+    public EcoMyinfo(String codeMyinfo, int idmyinfo, String mystatut) {
+        this.codeMyinfo = codeMyinfo;
         this.idmyinfo = idmyinfo;
         this.mystatut = mystatut;
     }
 
-    public Integer getIdmyinfo() {
+    public int getIdmyinfo() {
         return idmyinfo;
     }
 
-    public void setIdmyinfo(Integer idmyinfo) {
+    public void setIdmyinfo(int idmyinfo) {
         this.idmyinfo = idmyinfo;
+    }
+
+    public String getCodeMyinfo() {
+        return codeMyinfo;
+    }
+
+    public void setCodeMyinfo(String codeMyinfo) {
+        this.codeMyinfo = codeMyinfo;
     }
 
     public String getMyname() {
@@ -278,7 +290,7 @@ public class EcoMyinfo implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idmyinfo != null ? idmyinfo.hashCode() : 0);
+        hash += (codeMyinfo != null ? codeMyinfo.hashCode() : 0);
         return hash;
     }
 
@@ -289,7 +301,7 @@ public class EcoMyinfo implements Serializable {
             return false;
         }
         EcoMyinfo other = (EcoMyinfo) object;
-        if ((this.idmyinfo == null && other.idmyinfo != null) || (this.idmyinfo != null && !this.idmyinfo.equals(other.idmyinfo))) {
+        if ((this.codeMyinfo == null && other.codeMyinfo != null) || (this.codeMyinfo != null && !this.codeMyinfo.equals(other.codeMyinfo))) {
             return false;
         }
         return true;
@@ -297,7 +309,7 @@ public class EcoMyinfo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.ecolexpert.jpa.EcoMyinfo[ idmyinfo=" + idmyinfo + " ]";
+        return "com.mycompany.ecolexpert.jpa.EcoMyinfo[ codeMyinfo=" + codeMyinfo + " ]";
     }
     
 }

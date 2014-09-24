@@ -10,6 +10,7 @@ import com.mycompany.ecolexpert.jpa.EcoMyinfo;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +28,14 @@ public class EcoMyinfoFacade extends AbstractFacade<EcoMyinfo> implements EcoMyi
 
     public EcoMyinfoFacade() {
         super(EcoMyinfo.class);
+    }
+
+    @Override
+    public EcoMyinfo findMyInfo_etablissementEnCours() {
+       String texteRequete = "SELECT e.idmyinfo, e.codeMyinfo, e.myname, e.mysigle FROM EcoMyinfo e "+
+               "WHERE e.idmyinfo = (SELECT MAX(a.idmyinfo) FROM EcoMyinfo a)";
+        Query nQuery = em.createQuery(texteRequete);
+        return  (EcoMyinfo) nQuery.getSingleResult(); 
     }
     
 }
