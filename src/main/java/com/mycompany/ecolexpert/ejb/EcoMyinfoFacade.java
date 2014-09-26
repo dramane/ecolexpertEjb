@@ -32,8 +32,9 @@ public class EcoMyinfoFacade extends AbstractFacade<EcoMyinfo> implements EcoMyi
 
     @Override
     public EcoMyinfo findMyInfo_etablissementEnCours() {
-       String texteRequete = "SELECT e.idmyinfo, e.codeMyinfo, e.myname, e.mysigle FROM EcoMyinfo e "+
-               "WHERE e.idmyinfo = (SELECT MAX(a.idmyinfo) FROM EcoMyinfo a)";
+//       String texteRequete = "SELECT e.idmyinfo, e.codeMyinfo, e.myname, e.mysigle FROM EcoMyinfo e "+
+//               "WHERE e.idmyinfo = (SELECT MAX(a.idmyinfo) FROM EcoMyinfo a)";
+        String texteRequete = "SELECT e.idmyinfo, e.codeMyinfo, e.myname, e.mysigle FROM EcoMyinfo e WHERE e.idmyinfo = (SELECT MAX(a.idmyinfo) FROM EcoMyinfo a)";
         Query nQuery = em.createQuery(texteRequete);
         return  (EcoMyinfo) nQuery.getSingleResult(); 
     }

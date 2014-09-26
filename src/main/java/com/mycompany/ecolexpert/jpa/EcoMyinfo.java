@@ -100,8 +100,7 @@ public class EcoMyinfo implements Serializable {
     @Column(name = "MYSIGNIN")
     private byte[] mysignin;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 22)
+    @Size(max = 22)
     @Column(name = "MYSTATUT")
     private String mystatut;
     @Size(max = 25)
