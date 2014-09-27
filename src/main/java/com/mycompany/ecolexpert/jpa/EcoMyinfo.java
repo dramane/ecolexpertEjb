@@ -99,7 +99,6 @@ public class EcoMyinfo implements Serializable {
     @Lob
     @Column(name = "MYSIGNIN")
     private byte[] mysignin;
-    @Basic(optional = false)
     @Size(max = 22)
     @Column(name = "MYSTATUT")
     private String mystatut;
@@ -120,10 +119,9 @@ public class EcoMyinfo implements Serializable {
         this.codeMyinfo = codeMyinfo;
     }
 
-    public EcoMyinfo(String codeMyinfo, int idmyinfo, String mystatut) {
+    public EcoMyinfo(String codeMyinfo, int idmyinfo) {
         this.codeMyinfo = codeMyinfo;
         this.idmyinfo = idmyinfo;
-        this.mystatut = mystatut;
     }
 
     public int getIdmyinfo() {
