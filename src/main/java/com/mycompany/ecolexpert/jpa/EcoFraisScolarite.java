@@ -29,21 +29,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoFraisScolarite.findAll", query = "SELECT e FROM EcoFraisScolarite e"),
     @NamedQuery(name = "EcoFraisScolarite.findByIdEcoFraisScol", query = "SELECT e FROM EcoFraisScolarite e WHERE e.idEcoFraisScol = :idEcoFraisScol"),
     @NamedQuery(name = "EcoFraisScolarite.findByCodeFraisScolarite", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeFraisScolarite = :codeFraisScolarite"),
+    @NamedQuery(name = "EcoFraisScolarite.findByCodeMyinfo", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeMyinfo = :codeMyinfo"),
     @NamedQuery(name = "EcoFraisScolarite.findByCodeClasse", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeClasse = :codeClasse"),
-    @NamedQuery(name = "EcoFraisScolarite.findByInscription", query = "SELECT e FROM EcoFraisScolarite e WHERE e.inscription = :inscription"),
-    @NamedQuery(name = "EcoFraisScolarite.findByFormation", query = "SELECT e FROM EcoFraisScolarite e WHERE e.formation = :formation"),
-    @NamedQuery(name = "EcoFraisScolarite.findBySoutenance", query = "SELECT e FROM EcoFraisScolarite e WHERE e.soutenance = :soutenance"),
-    @NamedQuery(name = "EcoFraisScolarite.findByExamen", query = "SELECT e FROM EcoFraisScolarite e WHERE e.examen = :examen"),
-    @NamedQuery(name = "EcoFraisScolarite.findByAssurance", query = "SELECT e FROM EcoFraisScolarite e WHERE e.assurance = :assurance"),
-    @NamedQuery(name = "EcoFraisScolarite.findByTimbre", query = "SELECT e FROM EcoFraisScolarite e WHERE e.timbre = :timbre"),
-    @NamedQuery(name = "EcoFraisScolarite.findByInformatique", query = "SELECT e FROM EcoFraisScolarite e WHERE e.informatique = :informatique"),
-    @NamedQuery(name = "EcoFraisScolarite.findBySport", query = "SELECT e FROM EcoFraisScolarite e WHERE e.sport = :sport"),
-    @NamedQuery(name = "EcoFraisScolarite.findByTransport", query = "SELECT e FROM EcoFraisScolarite e WHERE e.transport = :transport"),
-    @NamedQuery(name = "EcoFraisScolarite.findByCantine", query = "SELECT e FROM EcoFraisScolarite e WHERE e.cantine = :cantine"),
-    @NamedQuery(name = "EcoFraisScolarite.findByFourniture", query = "SELECT e FROM EcoFraisScolarite e WHERE e.fourniture = :fourniture"),
-    @NamedQuery(name = "EcoFraisScolarite.findByCodeCycle", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeCycle = :codeCycle"),
+    @NamedQuery(name = "EcoFraisScolarite.findByMontantFrais", query = "SELECT e FROM EcoFraisScolarite e WHERE e.montantFrais = :montantFrais"),
     @NamedQuery(name = "EcoFraisScolarite.findByIdacademique", query = "SELECT e FROM EcoFraisScolarite e WHERE e.idacademique = :idacademique"),
-    @NamedQuery(name = "EcoFraisScolarite.findByCodeRegime", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeRegime = :codeRegime")})
+    @NamedQuery(name = "EcoFraisScolarite.findByCodeCycle", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeCycle = :codeCycle"),
+    @NamedQuery(name = "EcoFraisScolarite.findByCodeRegime", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeRegime = :codeRegime"),
+    @NamedQuery(name = "EcoFraisScolarite.findByCodeElementFrais", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeElementFrais = :codeElementFrais")})
 public class EcoFraisScolarite implements Serializable {
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -55,39 +47,25 @@ public class EcoFraisScolarite implements Serializable {
     @Size(max = 50)
     @Column(name = "CODE_FRAIS_SCOLARITE")
     private String codeFraisScolarite;
+    @Size(max = 50)
+    @Column(name = "CODE_MYINFO")
+    private String codeMyinfo;
     @Size(max = 9)
     @Column(name = "CODE_CLASSE")
     private String codeClasse;
-    @Column(name = "INSCRIPTION")
-    private Integer inscription;
-    @Column(name = "FORMATION")
-    private Integer formation;
-    @Column(name = "SOUTENANCE")
-    private Integer soutenance;
-    @Column(name = "EXAMEN")
-    private Integer examen;
-    @Column(name = "ASSURANCE")
-    private Integer assurance;
-    @Column(name = "TIMBRE")
-    private Integer timbre;
-    @Column(name = "INFORMATIQUE")
-    private Integer informatique;
-    @Column(name = "SPORT")
-    private Integer sport;
-    @Column(name = "TRANSPORT")
-    private Integer transport;
-    @Column(name = "CANTINE")
-    private Integer cantine;
-    @Column(name = "FOURNITURE")
-    private Integer fourniture;
+    @Column(name = "MONTANT_FRAIS")
+    private Integer montantFrais;
+    @Column(name = "IDACADEMIQUE")
+    private Integer idacademique;
     @Size(max = 3)
     @Column(name = "CODE_CYCLE")
     private String codeCycle;
-    @Column(name = "IDACADEMIQUE")
-    private Integer idacademique;
     @Size(max = 50)
     @Column(name = "CODE_REGIME")
     private String codeRegime;
+    @Size(max = 50)
+    @Column(name = "CODE_ELEMENT_FRAIS")
+    private String codeElementFrais;
 
     public EcoFraisScolarite() {
     }
@@ -117,6 +95,14 @@ public class EcoFraisScolarite implements Serializable {
         this.codeFraisScolarite = codeFraisScolarite;
     }
 
+    public String getCodeMyinfo() {
+        return codeMyinfo;
+    }
+
+    public void setCodeMyinfo(String codeMyinfo) {
+        this.codeMyinfo = codeMyinfo;
+    }
+
     public String getCodeClasse() {
         return codeClasse;
     }
@@ -125,100 +111,12 @@ public class EcoFraisScolarite implements Serializable {
         this.codeClasse = codeClasse;
     }
 
-    public Integer getInscription() {
-        return inscription;
+    public Integer getMontantFrais() {
+        return montantFrais;
     }
 
-    public void setInscription(Integer inscription) {
-        this.inscription = inscription;
-    }
-
-    public Integer getFormation() {
-        return formation;
-    }
-
-    public void setFormation(Integer formation) {
-        this.formation = formation;
-    }
-
-    public Integer getSoutenance() {
-        return soutenance;
-    }
-
-    public void setSoutenance(Integer soutenance) {
-        this.soutenance = soutenance;
-    }
-
-    public Integer getExamen() {
-        return examen;
-    }
-
-    public void setExamen(Integer examen) {
-        this.examen = examen;
-    }
-
-    public Integer getAssurance() {
-        return assurance;
-    }
-
-    public void setAssurance(Integer assurance) {
-        this.assurance = assurance;
-    }
-
-    public Integer getTimbre() {
-        return timbre;
-    }
-
-    public void setTimbre(Integer timbre) {
-        this.timbre = timbre;
-    }
-
-    public Integer getInformatique() {
-        return informatique;
-    }
-
-    public void setInformatique(Integer informatique) {
-        this.informatique = informatique;
-    }
-
-    public Integer getSport() {
-        return sport;
-    }
-
-    public void setSport(Integer sport) {
-        this.sport = sport;
-    }
-
-    public Integer getTransport() {
-        return transport;
-    }
-
-    public void setTransport(Integer transport) {
-        this.transport = transport;
-    }
-
-    public Integer getCantine() {
-        return cantine;
-    }
-
-    public void setCantine(Integer cantine) {
-        this.cantine = cantine;
-    }
-
-    public Integer getFourniture() {
-        return fourniture;
-    }
-
-    public void setFourniture(Integer fourniture) {
-        this.fourniture = fourniture;
-    }
-
-    public String getCodeCycle() {
-        return codeCycle;
-    }
-
-    public void setCodeCycle(String codeCycle) {
-        this.codeCycle = codeCycle;
+    public void setMontantFrais(Integer montantFrais) {
+        this.montantFrais = montantFrais;
     }
 
     public Integer getIdacademique() {
@@ -229,12 +127,28 @@ public class EcoFraisScolarite implements Serializable {
         this.idacademique = idacademique;
     }
 
+    public String getCodeCycle() {
+        return codeCycle;
+    }
+
+    public void setCodeCycle(String codeCycle) {
+        this.codeCycle = codeCycle;
+    }
+
     public String getCodeRegime() {
         return codeRegime;
     }
 
     public void setCodeRegime(String codeRegime) {
         this.codeRegime = codeRegime;
+    }
+
+    public String getCodeElementFrais() {
+        return codeElementFrais;
+    }
+
+    public void setCodeElementFrais(String codeElementFrais) {
+        this.codeElementFrais = codeElementFrais;
     }
 
     @Override

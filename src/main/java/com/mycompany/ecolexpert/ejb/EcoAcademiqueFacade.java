@@ -33,8 +33,7 @@ public class EcoAcademiqueFacade extends AbstractFacade<EcoAcademique> implement
 
     @Override
     public EcoAcademique  findAnneeEnCours() {
-        String texteRequete = "SELECT e.idacademique, e.anneePre, e.anneeaca, e.dateDebut, e.dateFin FROM EcoAcademique e "+
-            "WHERE e.idacademique = (SELECT MAX(a.idacademique) FROM EcoAcademique a)";
+        String texteRequete = "SELECT e FROM EcoAcademique e WHERE e.idacademique = (SELECT MAX(a.idacademique) FROM EcoAcademique a)";
         Query nQuery = em.createQuery(texteRequete);
         return  (EcoAcademique) nQuery.getSingleResult(); 
     }
