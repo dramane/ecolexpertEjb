@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoClasse.findByNomclasse", query = "SELECT e FROM EcoClasse e WHERE e.nomclasse = :nomclasse"),
     @NamedQuery(name = "EcoClasse.findByCodeFiliere", query = "SELECT e FROM EcoClasse e WHERE e.codeFiliere = :codeFiliere"),
     @NamedQuery(name = "EcoClasse.findByCodeCycle", query = "SELECT e FROM EcoClasse e WHERE e.codeCycle = :codeCycle"),
-    @NamedQuery(name = "EcoNiveau.findfindByCodeNiveau", query = "SELECT e FROM EcoNiveau e WHERE e.codeNiveau = :codeNiveau"),
+    @NamedQuery(name = "EcoNiveau.findByCodeNiveau", query = "SELECT e FROM EcoNiveau e WHERE e.codeNiveau = :codeNiveau"),
     @NamedQuery(name = "EcoClasse.findByFormation", query = "SELECT e FROM EcoClasse e WHERE e.formation = :formation"),
     @NamedQuery(name = "EcoClasse.findByDescription", query = "SELECT e FROM EcoClasse e WHERE e.description = :description"),
     @NamedQuery(name = "EcoClasse.findByNomSalle", query = "SELECT e FROM EcoClasse e WHERE e.nomSalle = :nomSalle"),
