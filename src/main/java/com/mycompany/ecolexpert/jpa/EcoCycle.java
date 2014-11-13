@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoCycle.findByDesignation", query = "SELECT e FROM EcoCycle e WHERE e.designation = :designation"),
     @NamedQuery(name = "EcoCycle.findByDescription", query = "SELECT e FROM EcoCycle e WHERE e.description = :description"),
     @NamedQuery(name = "EcoCycle.findByActif", query = "SELECT e FROM EcoCycle e WHERE e.actif = :actif"),
+    @NamedQuery(name = "EcoCycle.findByNombreNiveau", query = "SELECT e FROM EcoCycle e WHERE e.nombreNiveau = :nombreNiveau"),
     @NamedQuery(name = "EcoCycle.findByCodeAcademique", query = "SELECT e FROM EcoCycle e WHERE e.codeAcademique = :codeAcademique")})
 public class EcoCycle implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -50,6 +51,9 @@ public class EcoCycle implements Serializable {
     @Size(max = 255)
     @Column(name = "DESCRIPTION")
     private String description;
+    @Size(max = 1)
+    @Column(name = "NOMBRE_NIVEAU")
+    private Integer nombreNiveau;
     @Size(max = 3)
     @Column(name = "ACTIF")
     private String actif;
@@ -101,6 +105,14 @@ public class EcoCycle implements Serializable {
         this.description = description;
     }
 
+    public Integer getNombreNiveau() {
+        return nombreNiveau;
+    }
+
+    public void setNombreNiveau(Integer nombreNiveau) {
+        this.nombreNiveau = nombreNiveau;
+    }
+        
     public String getActif() {
         return actif;
     }
