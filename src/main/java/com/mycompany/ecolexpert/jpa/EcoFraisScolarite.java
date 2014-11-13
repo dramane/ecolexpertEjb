@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoFraisScolarite.findByMontantFrais", query = "SELECT e FROM EcoFraisScolarite e WHERE e.montantFrais = :montantFrais"),
     @NamedQuery(name = "EcoFraisScolarite.findByIdacademique", query = "SELECT e FROM EcoFraisScolarite e WHERE e.idacademique = :idacademique"),
     @NamedQuery(name = "EcoFraisScolarite.findByCodeCycle", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeCycle = :codeCycle"),
+        @NamedQuery(name = "EcoNiveau.findfindByCodeNiveau", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeNiveau = :codeNiveau"),
     @NamedQuery(name = "EcoFraisScolarite.findByCodeRegime", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeRegime = :codeRegime"),
     @NamedQuery(name = "EcoFraisScolarite.findByCodeElementFrais", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeElementFrais = :codeElementFrais")})
 public class EcoFraisScolarite implements Serializable {
@@ -60,6 +61,9 @@ public class EcoFraisScolarite implements Serializable {
     @Size(max = 3)
     @Column(name = "CODE_CYCLE")
     private String codeCycle;
+    @Size(max = 10)
+    @Column(name = "CODE_NIVEAU")
+    private String codeNiveau;
     @Size(max = 50)
     @Column(name = "CODE_REGIME")
     private String codeRegime;
@@ -135,6 +139,14 @@ public class EcoFraisScolarite implements Serializable {
         this.codeCycle = codeCycle;
     }
 
+    public String getCodeNiveau() {
+        return codeNiveau;
+    }
+
+    public void setCodeNiveau(String codeNiveau) {
+        this.codeNiveau = codeNiveau;
+    }
+    
     public String getCodeRegime() {
         return codeRegime;
     }

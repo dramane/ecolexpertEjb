@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoClasse.findByNomclasse", query = "SELECT e FROM EcoClasse e WHERE e.nomclasse = :nomclasse"),
     @NamedQuery(name = "EcoClasse.findByCodeFiliere", query = "SELECT e FROM EcoClasse e WHERE e.codeFiliere = :codeFiliere"),
     @NamedQuery(name = "EcoClasse.findByCodeCycle", query = "SELECT e FROM EcoClasse e WHERE e.codeCycle = :codeCycle"),
+    @NamedQuery(name = "EcoNiveau.findfindByCodeNiveau", query = "SELECT e FROM EcoNiveau e WHERE e.codeNiveau = :codeNiveau"),
     @NamedQuery(name = "EcoClasse.findByFormation", query = "SELECT e FROM EcoClasse e WHERE e.formation = :formation"),
     @NamedQuery(name = "EcoClasse.findByDescription", query = "SELECT e FROM EcoClasse e WHERE e.description = :description"),
     @NamedQuery(name = "EcoClasse.findByNomSalle", query = "SELECT e FROM EcoClasse e WHERE e.nomSalle = :nomSalle"),
@@ -59,6 +60,9 @@ public class EcoClasse implements Serializable {
     @Size(max = 3)
     @Column(name = "CODE_CYCLE")
     private String codeCycle;
+    @Size(max = 10)
+    @Column(name = "CODE_NIVEAU")
+    private String codeNiveau;
     @Column(name = "FORMATION")
     private Character formation;
     @Size(max = 255)
@@ -132,6 +136,14 @@ public class EcoClasse implements Serializable {
         return formation;
     }
 
+    public String getCodeNiveau() {
+        return codeNiveau;
+    }
+
+    public void setCodeNiveau(String codeNiveau) {
+        this.codeNiveau = codeNiveau;
+    }
+    
     public void setFormation(Character formation) {
         this.formation = formation;
     }
