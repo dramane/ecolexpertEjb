@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.ecolexpert.jpa;
 
 import java.io.Serializable;
@@ -20,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author TOSHIBA
+ * @author HP
  */
 @Entity
 @Table(name = "eco_cycle")
@@ -31,8 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoCycle.findByCodeCycle", query = "SELECT e FROM EcoCycle e WHERE e.codeCycle = :codeCycle"),
     @NamedQuery(name = "EcoCycle.findByDesignation", query = "SELECT e FROM EcoCycle e WHERE e.designation = :designation"),
     @NamedQuery(name = "EcoCycle.findByDescription", query = "SELECT e FROM EcoCycle e WHERE e.description = :description"),
-    @NamedQuery(name = "EcoCycle.findByActif", query = "SELECT e FROM EcoCycle e WHERE e.actif = :actif"),
     @NamedQuery(name = "EcoCycle.findByNombreNiveau", query = "SELECT e FROM EcoCycle e WHERE e.nombreNiveau = :nombreNiveau"),
+    @NamedQuery(name = "EcoCycle.findByActif", query = "SELECT e FROM EcoCycle e WHERE e.actif = :actif"),
     @NamedQuery(name = "EcoCycle.findByCodeAcademique", query = "SELECT e FROM EcoCycle e WHERE e.codeAcademique = :codeAcademique")})
 public class EcoCycle implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -42,7 +41,7 @@ public class EcoCycle implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(max = 3)
+    @Size(min = 1, max = 3)
     @Column(name = "CODE_CYCLE")
     private String codeCycle;
     @Size(max = 50)
@@ -51,7 +50,6 @@ public class EcoCycle implements Serializable {
     @Size(max = 255)
     @Column(name = "DESCRIPTION")
     private String description;
-    @Size(max = 1)
     @Column(name = "NOMBRE_NIVEAU")
     private Integer nombreNiveau;
     @Size(max = 3)
@@ -112,7 +110,7 @@ public class EcoCycle implements Serializable {
     public void setNombreNiveau(Integer nombreNiveau) {
         this.nombreNiveau = nombreNiveau;
     }
-        
+
     public String getActif() {
         return actif;
     }
