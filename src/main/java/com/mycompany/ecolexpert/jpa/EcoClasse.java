@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.ecolexpert.jpa;
 
 import java.io.Serializable;
@@ -15,13 +14,12 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author TOSHIBA
+ * @author HP
  */
 @Entity
 @Table(name = "eco_classe")
@@ -48,7 +46,7 @@ public class EcoClasse implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(max = 9)
+    @Size(min = 1, max = 9)
     @Column(name = "CODE_CLASSE")
     private String codeClasse;
     @Size(max = 10)
@@ -132,10 +130,6 @@ public class EcoClasse implements Serializable {
         this.codeCycle = codeCycle;
     }
 
-    public Character getFormation() {
-        return formation;
-    }
-
     public String getCodeNiveau() {
         return codeNiveau;
     }
@@ -143,7 +137,11 @@ public class EcoClasse implements Serializable {
     public void setCodeNiveau(String codeNiveau) {
         this.codeNiveau = codeNiveau;
     }
-    
+
+    public Character getFormation() {
+        return formation;
+    }
+
     public void setFormation(Character formation) {
         this.formation = formation;
     }
