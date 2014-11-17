@@ -46,7 +46,7 @@ public class EcoClasse implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 9)
+    @Size(max = 9)
     @Column(name = "CODE_CLASSE")
     private String codeClasse;
     @Size(max = 10)
