@@ -33,7 +33,7 @@ public class EcoClasseFacade extends AbstractFacade<EcoClasse> implements EcoCla
 
     @Override
     public List<EcoClasse> findByCodeNiveau(Object vCodeNiveau) {
-        Query nQuery = em.createNamedQuery("EcoNiveau.findByCodeNiveau");
+        Query nQuery = em.createNamedQuery("EcoClasse.findByCodeNiveau");
         nQuery.setParameter("codeNiveau", vCodeNiveau);        
         return nQuery.getResultList(); 
     }
