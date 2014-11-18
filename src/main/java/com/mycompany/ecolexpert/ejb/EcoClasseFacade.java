@@ -7,9 +7,11 @@
 package com.mycompany.ecolexpert.ejb;
 
 import com.mycompany.ecolexpert.jpa.EcoClasse;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,13 @@ public class EcoClasseFacade extends AbstractFacade<EcoClasse> implements EcoCla
 
     public EcoClasseFacade() {
         super(EcoClasse.class);
+    }
+
+    @Override
+    public List<EcoClasse> findByCodeNiveau(Object vCodeNiveau) {
+        Query nQuery = em.createNamedQuery("EcoNiveau.findByCodeNiveau");
+        nQuery.setParameter("codeNiveau", vCodeNiveau);        
+        return nQuery.getResultList(); 
     }
     
 }
