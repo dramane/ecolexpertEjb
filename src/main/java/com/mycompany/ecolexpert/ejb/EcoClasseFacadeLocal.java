@@ -31,4 +31,5 @@ public interface EcoClasseFacadeLocal {
 
     int count();
     
+    List<EcoClasse> findByCodeNiveau(Object vCodeNiveau);
 }
