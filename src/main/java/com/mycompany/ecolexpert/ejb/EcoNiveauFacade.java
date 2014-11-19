@@ -31,7 +31,7 @@ public class EcoNiveauFacade extends AbstractFacade<EcoNiveau> implements EcoNiv
     }
 
     @Override
-    public List<EcoNiveau> findByCodeCycle(Object vCodeCycle) {
+    public List<EcoNiveau> findByCodeCycle(String vCodeCycle) {
         Query nQuery = em.createNamedQuery("EcoNiveau.findByCodeCycle");
         nQuery.setParameter("codeCycle", vCodeCycle);        
         return nQuery.getResultList(); 
