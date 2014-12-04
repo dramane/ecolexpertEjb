@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.ecolexpert.jpa;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -22,75 +19,54 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author TOSHIBA
+ * @author HP
  */
 @Entity
 @Table(name = "eco_domaine_formation")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "EcoDomaineFormation.findAll", query = "SELECT d FROM EcoDomaineFormation d"),
-    @NamedQuery(name = "EcoDomaineFormation.findByIddomaine", query = "SELECT d FROM EcoDomaineFormation d WHERE d.iddomaine = :iddomaine"),
-    @NamedQuery(name = "EcoDomaineFormation.findByCodedomaine", query = "SELECT d FROM EcoDomaineFormation d WHERE d.codedomaine = :codedomaine"),
-    @NamedQuery(name = "EcoDomaineFormation.findByLibelledomaine", query = "SELECT d FROM EcoDomaineFormation d WHERE d.libelledomaine = :libelledomaine")})
+    @NamedQuery(name = "EcoDomaineFormation.findAll", query = "SELECT e FROM EcoDomaineFormation e"),
+    @NamedQuery(name = "EcoDomaineFormation.findByCodeDomaine", query = "SELECT e FROM EcoDomaineFormation e WHERE e.codeDomaine = :codeDomaine"),
+    @NamedQuery(name = "EcoDomaineFormation.findByLibelleDomaine", query = "SELECT e FROM EcoDomaineFormation e WHERE e.libelleDomaine = :libelleDomaine")})
 public class EcoDomaineFormation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "iddomaine")
-    private Integer iddomaine;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 5)
-    @Column(name = "codedomaine")
-    private String codedomaine;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "libelledomaine")
-    private String libelledomaine;
+    @Size(max = 50)
+    @Column(name = "CODE_DOMAINE")
+    private String codeDomaine;
+    @Size(max = 100)
+    @Column(name = "LIBELLE_DOMAINE")
+    private String libelleDomaine;
 
     public EcoDomaineFormation() {
     }
 
-    public EcoDomaineFormation(Integer iddomaine) {
-        this.iddomaine = iddomaine;
+    public EcoDomaineFormation(String codeDomaine) {
+        this.codeDomaine = codeDomaine;
     }
 
-    public EcoDomaineFormation(Integer iddomaine, String codedomaine, String libelledomaine) {
-        this.iddomaine = iddomaine;
-        this.codedomaine = codedomaine;
-        this.libelledomaine = libelledomaine;
+    public String getCodeDomaine() {
+        return codeDomaine;
     }
 
-    public Integer getIddomaine() {
-        return iddomaine;
+    public void setCodeDomaine(String codeDomaine) {
+        this.codeDomaine = codeDomaine;
     }
 
-    public void setIddomaine(Integer iddomaine) {
-        this.iddomaine = iddomaine;
+    public String getLibelleDomaine() {
+        return libelleDomaine;
     }
 
-    public String getCodedomaine() {
-        return codedomaine;
-    }
-
-    public void setCodedomaine(String codedomaine) {
-        this.codedomaine = codedomaine;
-    }
-
-    public String getLibelledomaine() {
-        return libelledomaine;
-    }
-
-    public void setLibelledomaine(String libelledomaine) {
-        this.libelledomaine = libelledomaine;
+    public void setLibelleDomaine(String libelleDomaine) {
+        this.libelleDomaine = libelleDomaine;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (iddomaine != null ? iddomaine.hashCode() : 0);
+        hash += (codeDomaine != null ? codeDomaine.hashCode() : 0);
         return hash;
     }
 
@@ -101,7 +77,7 @@ public class EcoDomaineFormation implements Serializable {
             return false;
         }
         EcoDomaineFormation other = (EcoDomaineFormation) object;
-        if ((this.iddomaine == null && other.iddomaine != null) || (this.iddomaine != null && !this.iddomaine.equals(other.iddomaine))) {
+        if ((this.codeDomaine == null && other.codeDomaine != null) || (this.codeDomaine != null && !this.codeDomaine.equals(other.codeDomaine))) {
             return false;
         }
         return true;
@@ -109,7 +85,7 @@ public class EcoDomaineFormation implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.ecolexperte.jpa.DomaineFormation[ iddomaine=" + iddomaine + " ]";
+        return "com.mycompany.ecolexpert.jpa.EcoDomaineFormation[ codeDomaine=" + codeDomaine + " ]";
     }
     
 }

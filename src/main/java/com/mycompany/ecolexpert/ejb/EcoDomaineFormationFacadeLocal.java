@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.ecolexpert.ejb;
 
 import com.mycompany.ecolexpert.jpa.EcoDomaineFormation;
@@ -12,16 +11,16 @@ import javax.ejb.Local;
 
 /**
  *
- * @author TOSHIBA
+ * @author HP
  */
 @Local
 public interface EcoDomaineFormationFacadeLocal {
 
-    void create(EcoDomaineFormation domaineFormation);
+    void create(EcoDomaineFormation ecoDomaineFormation);
 
-    void edit(EcoDomaineFormation domaineFormation);
+    void edit(EcoDomaineFormation ecoDomaineFormation);
 
-    void remove(EcoDomaineFormation domaineFormation);
+    void remove(EcoDomaineFormation ecoDomaineFormation);
 
     EcoDomaineFormation find(Object id);
 
