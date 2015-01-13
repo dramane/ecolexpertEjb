@@ -36,7 +36,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoFraisScolarite.findByCodeCycle", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeCycle = :codeCycle"),
     @NamedQuery(name = "EcoFraisScolarite.findByCodeNiveau", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeNiveau = :codeNiveau"),
     @NamedQuery(name = "EcoFraisScolarite.findByCodeRegime", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeRegime = :codeRegime"),
-    @NamedQuery(name = "EcoFraisScolarite.findByCodeElementFrais", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeElementFrais = :codeElementFrais")})
+    @NamedQuery(name = "EcoFraisScolarite.findByCodeElementFrais", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeElementFrais = :codeElementFrais"),
+    @NamedQuery(name = "EcoFraisScolarite.findByCodeCycleCodeRegime", query = "SELECT e FROM EcoFraisScolarite e WHERE e.codeMyinfo = :codeMyinfo "+
+            "AND e.idacademique = :idacademique AND e.codeCycle = :codeCycle AND e.codeNiveau = :codeNiveau AND e.codeRegime = :codeRegime")})
 public class EcoFraisScolarite implements Serializable {
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)

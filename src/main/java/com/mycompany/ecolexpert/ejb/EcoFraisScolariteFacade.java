@@ -7,9 +7,11 @@
 package com.mycompany.ecolexpert.ejb;
 
 import com.mycompany.ecolexpert.jpa.EcoFraisScolarite;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,18 @@ public class EcoFraisScolariteFacade extends AbstractFacade<EcoFraisScolarite> i
 
     public EcoFraisScolariteFacade() {
         super(EcoFraisScolarite.class);
+    }
+
+    @Override
+    public List<EcoFraisScolarite> findByCodeCycleCodeRegime(Object vCodeMyinfo, Object vIdacademique, Object vCodeCycle, Object vCodeNiveau, Object vCodeRegime) {
+        Query nQuery = em.createNamedQuery("EcoFraisScolarite.findByCodeCycleCodeRegime");
+        nQuery.setParameter("codeMyinfo", vCodeMyinfo); 
+        nQuery.setParameter("idacademique", vIdacademique);
+        nQuery.setParameter("codeCycle", vCodeCycle); 
+        nQuery.setParameter("codeNiveau", vCodeNiveau);
+        nQuery.setParameter("codeRegime", vCodeRegime); 
+
+        return  nQuery.getResultList(); 
     }
     
 }

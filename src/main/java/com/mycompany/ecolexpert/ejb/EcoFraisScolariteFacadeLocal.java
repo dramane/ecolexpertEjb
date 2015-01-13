@@ -31,4 +31,5 @@ public interface EcoFraisScolariteFacadeLocal {
 
     int count();
     
+    List<EcoFraisScolarite> findByCodeCycleCodeRegime(Object vCodeMyinfo, Object vIdacademique, Object vCodeCycle, Object vCodeNiveau, Object vCodeRegime);
 }
