@@ -57,7 +57,7 @@ public class EcoEtudiant implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 4)
+    @Size(min = 1, max = 6)
     @Column(name = "NUMETU")
     private String numetu;
     @Column(name = "IDNUMETU")

@@ -23,14 +23,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author HP
  */
 @Entity
-@Table(name = "eco_numetu")
+@Table(name = "eco_numetud")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "EcoNumetu.findAll", query = "SELECT e FROM EcoNumetu e"),
-    @NamedQuery(name = "EcoNumetu.findByIdnumetu", query = "SELECT e FROM EcoNumetu e WHERE e.idnumetu = :idnumetu"),
-    @NamedQuery(name = "EcoNumetu.findByCompte", query = "SELECT e FROM EcoNumetu e WHERE e.compte = :compte"),
-    @NamedQuery(name = "EcoNumetu.findByLibelle", query = "SELECT e FROM EcoNumetu e WHERE e.libelle = :libelle")})
-public class EcoNumetu implements Serializable {
+    @NamedQuery(name = "EcoNumetud.findAll", query = "SELECT e FROM EcoNumetud e"),
+    @NamedQuery(name = "EcoNumetud.findByIdnumetu", query = "SELECT e FROM EcoNumetud e WHERE e.idnumetu = :idnumetu"),
+    @NamedQuery(name = "EcoNumetud.findByCompte", query = "SELECT e FROM EcoNumetud e WHERE e.compte = :compte"),
+    @NamedQuery(name = "EcoNumetud.findByLibelle", query = "SELECT e FROM EcoNumetud e WHERE e.libelle = :libelle")})
+public class EcoNumetud implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,10 +44,10 @@ public class EcoNumetu implements Serializable {
     @Column(name = "LIBELLE")
     private String libelle;
 
-    public EcoNumetu() {
+    public EcoNumetud() {
     }
 
-    public EcoNumetu(Integer idnumetu) {
+    public EcoNumetud(Integer idnumetu) {
         this.idnumetu = idnumetu;
     }
 
@@ -85,10 +85,10 @@ public class EcoNumetu implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof EcoNumetu)) {
+        if (!(object instanceof EcoNumetud)) {
             return false;
         }
-        EcoNumetu other = (EcoNumetu) object;
+        EcoNumetud other = (EcoNumetud) object;
         if ((this.idnumetu == null && other.idnumetu != null) || (this.idnumetu != null && !this.idnumetu.equals(other.idnumetu))) {
             return false;
         }
@@ -97,7 +97,7 @@ public class EcoNumetu implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.ecolexpert.jpa.EcoNumetu[ idnumetu=" + idnumetu + " ]";
+        return "com.mycompany.ecolexpert.jpa.EcoNumetud[ idnumetu=" + idnumetu + " ]";
     }
     
 }

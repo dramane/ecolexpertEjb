@@ -92,10 +92,10 @@ public class EcoInscription implements Serializable {
     @Size(max = 9)
     @Column(name = "ANNEEACA")
     private String anneeaca;
-    @Size(max = 10)
+    @Size(max = 12)
     @Column(name = "MATRICULE")
     private String matricule;
-    @Size(max = 4)
+    @Size(max = 6)
     @Column(name = "NUMETU")
     private String numetu;
     @Column(name = "DTINSCRI")

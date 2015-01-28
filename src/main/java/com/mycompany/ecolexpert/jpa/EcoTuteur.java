@@ -46,7 +46,7 @@ public class EcoTuteur implements Serializable {
     @Basic(optional = false)
     @Column(name = "IDTUTEUR")
     private Integer idtuteur;
-    @Size(max = 4)
+    @Size(max = 6)
     @Column(name = "NUMETU")
     private String numetu;
     @Size(max = 20)
