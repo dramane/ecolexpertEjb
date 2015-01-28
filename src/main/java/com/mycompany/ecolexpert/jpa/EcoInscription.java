@@ -155,6 +155,9 @@ public class EcoInscription implements Serializable {
     @NotNull
     @Column(name = "DOS_PHOTO")
     private Character dosPhoto;
+    @Size(max = 10)
+    @Column(name = "CODE_ACADEMIQUE")
+    private String codeAcademique;
     @Size(max = 50)
     @Column(name = "CODE_DOMAINE")
     private String codeDomaine;
@@ -411,6 +414,14 @@ public class EcoInscription implements Serializable {
         this.dosPhoto = dosPhoto;
     }
 
+    public String getCodeAcademique() {
+        return codeAcademique;
+    }
+
+    public void setCodeAcademique(String codeAcademique) {
+        this.codeAcademique = codeAcademique;
+    }    
+    
     public String getCodeDomaine() {
         return codeDomaine;
     }
