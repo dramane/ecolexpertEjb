@@ -56,8 +56,7 @@ public class EcoTuteur implements Serializable {
     @Column(name = "PRENTUTEUR")
     private String prentuteur;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 20)
     @Column(name = "STATUT")
     private String statut;
     @Size(max = 11)
