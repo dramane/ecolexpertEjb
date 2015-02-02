@@ -31,8 +31,7 @@ public class EcoNumetudFacade extends AbstractFacade<EcoNumetud> implements EcoN
 
     @Override
     public EcoNumetud findMaxNumEtudiant() {
-//        String texte = "SELECT MAX(e.idnumetu) AS MaxNumEtudiant FROM EcoNumetud e";
-        String texte = "SELECT e.idnumetu FROM EcoNumetud e WHERE e.idnumetu >= ALL ( SELECT c.idnumetu FROM EcoNumetud c ORDER BY c.idnumetu DESC)";
+        String texte = "SELECT m FROM EcoNumetud m WHERE m.idnumetu = (SELECT MAX(x.idnumetu) FROM EcoNumetud x)";
         Query query =  em.createQuery(texte);
         return (EcoNumetud) query.getSingleResult();
     }
