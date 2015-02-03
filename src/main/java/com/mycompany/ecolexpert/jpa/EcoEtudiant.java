@@ -89,16 +89,16 @@ public class EcoEtudiant implements Serializable {
     @Column(name = "NATIONALITE")
     private String nationalite;
     // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
-    @Size(max = 11)
+    @Size(max = 18)
     @Column(name = "PHONE")
     private String phone;
-    @Size(max = 11)
+    @Size(max = 18)
     @Column(name = "CELL")
     private String cell;
-    @Size(max = 11)
+    @Size(max = 18)
     @Column(name = "CELL_2")
     private String cell2;
-    @Size(max = 11)
+    @Size(max = 18)
     @Column(name = "TELBUR")
     private String telbur;
     @Lob

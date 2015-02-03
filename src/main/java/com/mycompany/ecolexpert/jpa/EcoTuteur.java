@@ -59,16 +59,16 @@ public class EcoTuteur implements Serializable {
     @Size(max = 20)
     @Column(name = "STATUT")
     private String statut;
-    @Size(max = 11)
+    @Size(max = 18)
     @Column(name = "TELBURT")
     private String telburt;
-    @Size(max = 11)
+    @Size(max = 18)
     @Column(name = "TELDOMT")
     private String teldomt;
-    @Size(max = 11)
+    @Size(max = 18)
     @Column(name = "CELLT_1")
     private String cellt1;
-    @Size(max = 11)
+    @Size(max = 18)
     @Column(name = "CELLT_2")
     private String cellt2;
     @Size(max = 50)
