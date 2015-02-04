@@ -53,6 +53,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoInscription.findByCv", query = "SELECT e FROM EcoInscription e WHERE e.cv = :cv"),
     @NamedQuery(name = "EcoInscription.findByDiplome", query = "SELECT e FROM EcoInscription e WHERE e.diplome = :diplome"),
     @NamedQuery(name = "EcoInscription.findByDosPhoto", query = "SELECT e FROM EcoInscription e WHERE e.dosPhoto = :dosPhoto"),
+    @NamedQuery(name = "EcoInscription.findByCodeAcademique", query = "SELECT e FROM EcoInscription e WHERE e.codeAcademique = :codeAcademique"),
     @NamedQuery(name = "EcoInscription.findByCodeDomaine", query = "SELECT e FROM EcoInscription e WHERE e.codeDomaine = :codeDomaine"),
     @NamedQuery(name = "EcoInscription.findByIdacademique", query = "SELECT e FROM EcoInscription e WHERE e.idacademique = :idacademique"),
     @NamedQuery(name = "EcoInscription.findByCodeCycle", query = "SELECT e FROM EcoInscription e WHERE e.codeCycle = :codeCycle"),
@@ -63,7 +64,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoInscription.findByInscriptionPaye", query = "SELECT e FROM EcoInscription e WHERE e.inscriptionPaye = :inscriptionPaye"),
     @NamedQuery(name = "EcoInscription.findByFormationAPaye", query = "SELECT e FROM EcoInscription e WHERE e.formationAPaye = :formationAPaye"),
     @NamedQuery(name = "EcoInscription.findByFormationPaye", query = "SELECT e FROM EcoInscription e WHERE e.formationPaye = :formationPaye"),
-    @NamedQuery(name = "EcoInscription.findBySomAutresFrais", query = "SELECT e FROM EcoInscription e WHERE e.somAutresFrais = :somAutresFrais"),
+    @NamedQuery(name = "EcoInscription.findBySomAutresFraisAPaye", query = "SELECT e FROM EcoInscription e WHERE e.somAutresFraisAPaye = :somAutresFraisAPaye"),
     @NamedQuery(name = "EcoInscription.findByScolariteAPaye", query = "SELECT e FROM EcoInscription e WHERE e.scolariteAPaye = :scolariteAPaye"),
     @NamedQuery(name = "EcoInscription.findByScolaritePaye", query = "SELECT e FROM EcoInscription e WHERE e.scolaritePaye = :scolaritePaye"),
     @NamedQuery(name = "EcoInscription.findByExamenAPaye", query = "SELECT e FROM EcoInscription e WHERE e.examenAPaye = :examenAPaye"),
@@ -80,6 +81,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoInscription.findByInformatiquePaye", query = "SELECT e FROM EcoInscription e WHERE e.informatiquePaye = :informatiquePaye"),
     @NamedQuery(name = "EcoInscription.findByMedicalAPaye", query = "SELECT e FROM EcoInscription e WHERE e.medicalAPaye = :medicalAPaye"),
     @NamedQuery(name = "EcoInscription.findByMedicalPaye", query = "SELECT e FROM EcoInscription e WHERE e.medicalPaye = :medicalPaye"),
+    @NamedQuery(name = "EcoInscription.findByTimbreAPaye", query = "SELECT e FROM EcoInscription e WHERE e.timbreAPaye = :timbreAPaye"),
+    @NamedQuery(name = "EcoInscription.findByTimbrePaye", query = "SELECT e FROM EcoInscription e WHERE e.timbrePaye = :timbrePaye"),
     @NamedQuery(name = "EcoInscription.findByTransportAPaye", query = "SELECT e FROM EcoInscription e WHERE e.transportAPaye = :transportAPaye"),
     @NamedQuery(name = "EcoInscription.findByTransportPaye", query = "SELECT e FROM EcoInscription e WHERE e.transportPaye = :transportPaye")})
 public class EcoInscription implements Serializable {
@@ -92,7 +95,7 @@ public class EcoInscription implements Serializable {
     @Size(max = 9)
     @Column(name = "ANNEEACA")
     private String anneeaca;
-    @Size(max = 12)
+    @Size(max = 14)
     @Column(name = "MATRICULE")
     private String matricule;
     @Size(max = 6)
@@ -112,10 +115,14 @@ public class EcoInscription implements Serializable {
     @Size(max = 4)
     @Column(name = "COURS")
     private String cours;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "DRTFORMA_NORMAL")
-    private Integer drtformaNormal;
+    private int drtformaNormal;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "SCOLARITE_NORMAL")
-    private Integer scolariteNormal;
+    private int scolariteNormal;
     @Size(max = 10)
     @Column(name = "NOMCLASSE")
     private String nomclasse;
@@ -131,28 +138,18 @@ public class EcoInscription implements Serializable {
     @Size(max = 9)
     @Column(name = "ANNEE_DECISION")
     private String anneeDecision;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 25)
+    @Size(max = 25)
     @Column(name = "TYPE_ETUDIANT")
     private String typeEtudiant;
     @Size(max = 14)
     @Column(name = "NUM_DECISION")
     private String numDecision;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "EXTRAIT")
     private Character extrait;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "CV")
     private Character cv;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "DIPLOME")
     private Character diplome;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "DOS_PHOTO")
     private Character dosPhoto;
     @Size(max = 10)
@@ -175,52 +172,106 @@ public class EcoInscription implements Serializable {
     @Size(max = 50)
     @Column(name = "CODE_REGIME")
     private String codeRegime;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "INSCRIPTION_A_PAYE")
-    private Integer inscriptionAPaye;
+    private int inscriptionAPaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "INSCRIPTION_PAYE")
-    private Integer inscriptionPaye;
+    private int inscriptionPaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "FORMATION_A_PAYE")
-    private Integer formationAPaye;
+    private int formationAPaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "FORMATION_PAYE")
-    private Integer formationPaye;
-    @Column(name = "SOM_AUTRES_FRAIS")
-    private Integer somAutresFrais;
+    private int formationPaye;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "SOM_AUTRES_FRAIS_A_PAYE")
+    private int somAutresFraisAPaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "SCOLARITE_A_PAYE")
-    private Integer scolariteAPaye;
+    private int scolariteAPaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "SCOLARITE_PAYE")
-    private Integer scolaritePaye;
+    private int scolaritePaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "EXAMEN_A_PAYE")
-    private Integer examenAPaye;
+    private int examenAPaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "EXAMEN_PAYE")
-    private Integer examenPaye;
+    private int examenPaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "SOUTENANCE_A_PAYE")
-    private Integer soutenanceAPaye;
+    private int soutenanceAPaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "SOUTENANCE_PAYE")
-    private Integer soutenancePaye;
+    private int soutenancePaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "ASSURANCE_A_PAYE")
-    private Integer assuranceAPaye;
+    private int assuranceAPaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "ASSURANCE_PAYE")
-    private Integer assurancePaye;
+    private int assurancePaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "CANTINE_A_PAYE")
-    private Integer cantineAPaye;
+    private int cantineAPaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "CANTINE_PAYE")
-    private Integer cantinePaye;
+    private int cantinePaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "FOURNITURE_A_PAYE")
-    private Integer fournitureAPaye;
+    private int fournitureAPaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "FOURNITURE_PAYE")
-    private Integer fourniturePaye;
+    private int fourniturePaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "INFORMATIQUE_A_PAYE")
-    private Integer informatiqueAPaye;
+    private int informatiqueAPaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "INFORMATIQUE_PAYE")
-    private Integer informatiquePaye;
+    private int informatiquePaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "MEDICAL_A_PAYE")
-    private Integer medicalAPaye;
+    private int medicalAPaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "MEDICAL_PAYE")
-    private Integer medicalPaye;
+    private int medicalPaye;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "TIMBRE_A_PAYE")
+    private int timbreAPaye;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "TIMBRE_PAYE")
+    private int timbrePaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "TRANSPORT_A_PAYE")
-    private Integer transportAPaye;
+    private int transportAPaye;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "TRANSPORT_PAYE")
-    private Integer transportPaye;
+    private int transportPaye;
 
     public EcoInscription() {
     }
@@ -229,13 +280,35 @@ public class EcoInscription implements Serializable {
         this.idinscription = idinscription;
     }
 
-    public EcoInscription(Integer idinscription, String typeEtudiant, Character extrait, Character cv, Character diplome, Character dosPhoto) {
+    public EcoInscription(Integer idinscription, int drtformaNormal, int scolariteNormal, int inscriptionAPaye, int inscriptionPaye, int formationAPaye, int formationPaye, int somAutresFraisAPaye, int scolariteAPaye, int scolaritePaye, int examenAPaye, int examenPaye, int soutenanceAPaye, int soutenancePaye, int assuranceAPaye, int assurancePaye, int cantineAPaye, int cantinePaye, int fournitureAPaye, int fourniturePaye, int informatiqueAPaye, int informatiquePaye, int medicalAPaye, int medicalPaye, int timbreAPaye, int timbrePaye, int transportAPaye, int transportPaye) {
         this.idinscription = idinscription;
-        this.typeEtudiant = typeEtudiant;
-        this.extrait = extrait;
-        this.cv = cv;
-        this.diplome = diplome;
-        this.dosPhoto = dosPhoto;
+        this.drtformaNormal = drtformaNormal;
+        this.scolariteNormal = scolariteNormal;
+        this.inscriptionAPaye = inscriptionAPaye;
+        this.inscriptionPaye = inscriptionPaye;
+        this.formationAPaye = formationAPaye;
+        this.formationPaye = formationPaye;
+        this.somAutresFraisAPaye = somAutresFraisAPaye;
+        this.scolariteAPaye = scolariteAPaye;
+        this.scolaritePaye = scolaritePaye;
+        this.examenAPaye = examenAPaye;
+        this.examenPaye = examenPaye;
+        this.soutenanceAPaye = soutenanceAPaye;
+        this.soutenancePaye = soutenancePaye;
+        this.assuranceAPaye = assuranceAPaye;
+        this.assurancePaye = assurancePaye;
+        this.cantineAPaye = cantineAPaye;
+        this.cantinePaye = cantinePaye;
+        this.fournitureAPaye = fournitureAPaye;
+        this.fourniturePaye = fourniturePaye;
+        this.informatiqueAPaye = informatiqueAPaye;
+        this.informatiquePaye = informatiquePaye;
+        this.medicalAPaye = medicalAPaye;
+        this.medicalPaye = medicalPaye;
+        this.timbreAPaye = timbreAPaye;
+        this.timbrePaye = timbrePaye;
+        this.transportAPaye = transportAPaye;
+        this.transportPaye = transportPaye;
     }
 
     public Integer getIdinscription() {
@@ -310,19 +383,19 @@ public class EcoInscription implements Serializable {
         this.cours = cours;
     }
 
-    public Integer getDrtformaNormal() {
+    public int getDrtformaNormal() {
         return drtformaNormal;
     }
 
-    public void setDrtformaNormal(Integer drtformaNormal) {
+    public void setDrtformaNormal(int drtformaNormal) {
         this.drtformaNormal = drtformaNormal;
     }
 
-    public Integer getScolariteNormal() {
+    public int getScolariteNormal() {
         return scolariteNormal;
     }
 
-    public void setScolariteNormal(Integer scolariteNormal) {
+    public void setScolariteNormal(int scolariteNormal) {
         this.scolariteNormal = scolariteNormal;
     }
 
@@ -420,8 +493,8 @@ public class EcoInscription implements Serializable {
 
     public void setCodeAcademique(String codeAcademique) {
         this.codeAcademique = codeAcademique;
-    }    
-    
+    }
+
     public String getCodeDomaine() {
         return codeDomaine;
     }
@@ -470,187 +543,203 @@ public class EcoInscription implements Serializable {
         this.codeRegime = codeRegime;
     }
 
-    public Integer getInscriptionAPaye() {
+    public int getInscriptionAPaye() {
         return inscriptionAPaye;
     }
 
-    public void setInscriptionAPaye(Integer inscriptionAPaye) {
+    public void setInscriptionAPaye(int inscriptionAPaye) {
         this.inscriptionAPaye = inscriptionAPaye;
     }
 
-    public Integer getInscriptionPaye() {
+    public int getInscriptionPaye() {
         return inscriptionPaye;
     }
 
-    public void setInscriptionPaye(Integer inscriptionPaye) {
+    public void setInscriptionPaye(int inscriptionPaye) {
         this.inscriptionPaye = inscriptionPaye;
     }
 
-    public Integer getFormationAPaye() {
+    public int getFormationAPaye() {
         return formationAPaye;
     }
 
-    public void setFormationAPaye(Integer formationAPaye) {
+    public void setFormationAPaye(int formationAPaye) {
         this.formationAPaye = formationAPaye;
     }
 
-    public Integer getFormationPaye() {
+    public int getFormationPaye() {
         return formationPaye;
     }
 
-    public void setFormationPaye(Integer formationPaye) {
+    public void setFormationPaye(int formationPaye) {
         this.formationPaye = formationPaye;
     }
 
-    public Integer getSomAutresFrais() {
-        return somAutresFrais;
+    public int getSomAutresFraisAPaye() {
+        return somAutresFraisAPaye;
     }
 
-    public void setSomAutresFrais(Integer somAutresFrais) {
-        this.somAutresFrais = somAutresFrais;
+    public void setSomAutresFraisAPaye(int somAutresFraisAPaye) {
+        this.somAutresFraisAPaye = somAutresFraisAPaye;
     }
 
-    public Integer getScolariteAPaye() {
+    public int getScolariteAPaye() {
         return scolariteAPaye;
     }
 
-    public void setScolariteAPaye(Integer scolariteAPaye) {
+    public void setScolariteAPaye(int scolariteAPaye) {
         this.scolariteAPaye = scolariteAPaye;
     }
 
-    public Integer getScolaritePaye() {
+    public int getScolaritePaye() {
         return scolaritePaye;
     }
 
-    public void setScolaritePaye(Integer scolaritePaye) {
+    public void setScolaritePaye(int scolaritePaye) {
         this.scolaritePaye = scolaritePaye;
     }
 
-    public Integer getExamenAPaye() {
+    public int getExamenAPaye() {
         return examenAPaye;
     }
 
-    public void setExamenAPaye(Integer examenAPaye) {
+    public void setExamenAPaye(int examenAPaye) {
         this.examenAPaye = examenAPaye;
     }
 
-    public Integer getExamenPaye() {
+    public int getExamenPaye() {
         return examenPaye;
     }
 
-    public void setExamenPaye(Integer examenPaye) {
+    public void setExamenPaye(int examenPaye) {
         this.examenPaye = examenPaye;
     }
 
-    public Integer getSoutenanceAPaye() {
+    public int getSoutenanceAPaye() {
         return soutenanceAPaye;
     }
 
-    public void setSoutenanceAPaye(Integer soutenanceAPaye) {
+    public void setSoutenanceAPaye(int soutenanceAPaye) {
         this.soutenanceAPaye = soutenanceAPaye;
     }
 
-    public Integer getSoutenancePaye() {
+    public int getSoutenancePaye() {
         return soutenancePaye;
     }
 
-    public void setSoutenancePaye(Integer soutenancePaye) {
+    public void setSoutenancePaye(int soutenancePaye) {
         this.soutenancePaye = soutenancePaye;
     }
 
-    public Integer getAssuranceAPaye() {
+    public int getAssuranceAPaye() {
         return assuranceAPaye;
     }
 
-    public void setAssuranceAPaye(Integer assuranceAPaye) {
+    public void setAssuranceAPaye(int assuranceAPaye) {
         this.assuranceAPaye = assuranceAPaye;
     }
 
-    public Integer getAssurancePaye() {
+    public int getAssurancePaye() {
         return assurancePaye;
     }
 
-    public void setAssurancePaye(Integer assurancePaye) {
+    public void setAssurancePaye(int assurancePaye) {
         this.assurancePaye = assurancePaye;
     }
 
-    public Integer getCantineAPaye() {
+    public int getCantineAPaye() {
         return cantineAPaye;
     }
 
-    public void setCantineAPaye(Integer cantineAPaye) {
+    public void setCantineAPaye(int cantineAPaye) {
         this.cantineAPaye = cantineAPaye;
     }
 
-    public Integer getCantinePaye() {
+    public int getCantinePaye() {
         return cantinePaye;
     }
 
-    public void setCantinePaye(Integer cantinePaye) {
+    public void setCantinePaye(int cantinePaye) {
         this.cantinePaye = cantinePaye;
     }
 
-    public Integer getFournitureAPaye() {
+    public int getFournitureAPaye() {
         return fournitureAPaye;
     }
 
-    public void setFournitureAPaye(Integer fournitureAPaye) {
+    public void setFournitureAPaye(int fournitureAPaye) {
         this.fournitureAPaye = fournitureAPaye;
     }
 
-    public Integer getFourniturePaye() {
+    public int getFourniturePaye() {
         return fourniturePaye;
     }
 
-    public void setFourniturePaye(Integer fourniturePaye) {
+    public void setFourniturePaye(int fourniturePaye) {
         this.fourniturePaye = fourniturePaye;
     }
 
-    public Integer getInformatiqueAPaye() {
+    public int getInformatiqueAPaye() {
         return informatiqueAPaye;
     }
 
-    public void setInformatiqueAPaye(Integer informatiqueAPaye) {
+    public void setInformatiqueAPaye(int informatiqueAPaye) {
         this.informatiqueAPaye = informatiqueAPaye;
     }
 
-    public Integer getInformatiquePaye() {
+    public int getInformatiquePaye() {
         return informatiquePaye;
     }
 
-    public void setInformatiquePaye(Integer informatiquePaye) {
+    public void setInformatiquePaye(int informatiquePaye) {
         this.informatiquePaye = informatiquePaye;
     }
 
-    public Integer getMedicalAPaye() {
+    public int getMedicalAPaye() {
         return medicalAPaye;
     }
 
-    public void setMedicalAPaye(Integer medicalAPaye) {
+    public void setMedicalAPaye(int medicalAPaye) {
         this.medicalAPaye = medicalAPaye;
     }
 
-    public Integer getMedicalPaye() {
+    public int getMedicalPaye() {
         return medicalPaye;
     }
 
-    public void setMedicalPaye(Integer medicalPaye) {
+    public void setMedicalPaye(int medicalPaye) {
         this.medicalPaye = medicalPaye;
     }
 
-    public Integer getTransportAPaye() {
+    public int getTimbreAPaye() {
+        return timbreAPaye;
+    }
+
+    public void setTimbreAPaye(int timbreAPaye) {
+        this.timbreAPaye = timbreAPaye;
+    }
+
+    public int getTimbrePaye() {
+        return timbrePaye;
+    }
+
+    public void setTimbrePaye(int timbrePaye) {
+        this.timbrePaye = timbrePaye;
+    }
+
+    public int getTransportAPaye() {
         return transportAPaye;
     }
 
-    public void setTransportAPaye(Integer transportAPaye) {
+    public void setTransportAPaye(int transportAPaye) {
         this.transportAPaye = transportAPaye;
     }
 
-    public Integer getTransportPaye() {
+    public int getTransportPaye() {
         return transportPaye;
     }
 
-    public void setTransportPaye(Integer transportPaye) {
+    public void setTransportPaye(int transportPaye) {
         this.transportPaye = transportPaye;
     }
 
