@@ -5,18 +5,17 @@
  */
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexpert.jpa.EcoInscription;
+import com.mycompany.ecolexpert.jpa.EcoVersement;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 /**
  *
  * @author HP
  */
 @Stateless
-public class EcoInscriptionFacade extends AbstractFacade<EcoInscription> implements EcoInscriptionFacadeLocal {
+public class EcoVersementFacade extends AbstractFacade<EcoVersement> implements EcoVersementFacadeLocal {
     @PersistenceContext(unitName = "com.mycompany_ecolexpertEjb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -25,15 +24,8 @@ public class EcoInscriptionFacade extends AbstractFacade<EcoInscription> impleme
         return em;
     }
 
-    public EcoInscriptionFacade() {
-        super(EcoInscription.class);
-    }
-
-    @Override
-    public EcoInscription findByMatricule(Object vMatricule) {
-        Query nQuery = em.createNamedQuery("EcoInscription.findByMatricule");
-        nQuery.setParameter("matricule", vMatricule); 
-        return (EcoInscription) nQuery.getSingleResult();   
+    public EcoVersementFacade() {
+        super(EcoVersement.class);
     }
     
 }

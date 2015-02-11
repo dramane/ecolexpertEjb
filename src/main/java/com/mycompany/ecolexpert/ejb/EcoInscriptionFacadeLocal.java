@@ -29,5 +29,6 @@ public interface EcoInscriptionFacadeLocal {
     List<EcoInscription> findRange(int[] range);
 
     int count();
-    
+       
+    EcoInscription findByMatricule(Object vMatricule);
 }
