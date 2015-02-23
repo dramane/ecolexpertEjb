@@ -97,9 +97,9 @@ public class EcoVersement implements Serializable {
     @Column(name = "DATE_REGLEMENT")
     @Temporal(TemporalType.DATE)
     private Date dateReglement;
+    @Size(max = 5)
     @Column(name = "HEURE_REGLEMENT")
-    @Temporal(TemporalType.TIME)
-    private Date heureReglement;
+    private String heureReglement;
     @Size(max = 32)
     @Column(name = "SIGLE_BQ")
     private String sigleBq;
@@ -240,11 +240,11 @@ public class EcoVersement implements Serializable {
         this.dateReglement = dateReglement;
     }
 
-    public Date getHeureReglement() {
+    public String getHeureReglement() {
         return heureReglement;
     }
 
-    public void setHeureReglement(Date heureReglement) {
+    public void setHeureReglement(String heureReglement) {
         this.heureReglement = heureReglement;
     }
 
