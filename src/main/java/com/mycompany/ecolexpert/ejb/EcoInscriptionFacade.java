@@ -6,6 +6,7 @@
 package com.mycompany.ecolexpert.ejb;
 
 import com.mycompany.ecolexpert.jpa.EcoInscription;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,6 +35,13 @@ public class EcoInscriptionFacade extends AbstractFacade<EcoInscription> impleme
         Query nQuery = em.createNamedQuery("EcoInscription.findByMatricule");
         nQuery.setParameter("matricule", vMatricule); 
         return (EcoInscription) nQuery.getSingleResult();   
+    }
+
+    @Override
+    public EcoInscription findByNumetu(Object vNumetu) {
+        Query nQuery = em.createNamedQuery("EcoInscription.findByNumetu");
+        nQuery.setParameter("numetu", vNumetu); 
+        return (EcoInscription) nQuery.getSingleResult(); 
     }
     
 }

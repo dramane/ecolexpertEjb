@@ -5,6 +5,7 @@
  */
 package com.mycompany.ecolexpert.ejb;
 
+import com.mycompany.ecolexpert.jpa.EcoEtudiant;
 import com.mycompany.ecolexpert.jpa.EcoInscription;
 import java.util.List;
 import javax.ejb.Local;
@@ -31,4 +32,6 @@ public interface EcoInscriptionFacadeLocal {
     int count();
        
     EcoInscription findByMatricule(Object vMatricule);
+    
+    EcoInscription findByNumetu(Object vNumetu);
 }

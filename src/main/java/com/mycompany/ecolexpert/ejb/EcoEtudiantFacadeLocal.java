@@ -30,4 +30,5 @@ public interface EcoEtudiantFacadeLocal {
 
     int count();
     
+    List<EcoEtudiant> findByNometuWithJocker(Object vNom);      
 }
