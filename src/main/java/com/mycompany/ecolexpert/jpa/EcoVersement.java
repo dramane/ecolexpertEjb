@@ -122,7 +122,7 @@ public class EcoVersement implements Serializable {
     @Column(name = "BQ_DEPART_VIREM")
     private String bqDepartVirem;
     @Column(name = "BQ_ARRIVE_VIREM")
-    private Integer bqArriveVirem;
+    private String bqArriveVirem;
     @Size(max = 70)
     @Column(name = "OBJET")
     private String objet;
@@ -307,11 +307,11 @@ public class EcoVersement implements Serializable {
         this.bqDepartVirem = bqDepartVirem;
     }
 
-    public Integer getBqArriveVirem() {
+    public String getBqArriveVirem() {
         return bqArriveVirem;
     }
 
-    public void setBqArriveVirem(Integer bqArriveVirem) {
+    public void setBqArriveVirem(String bqArriveVirem) {
         this.bqArriveVirem = bqArriveVirem;
     }
 
