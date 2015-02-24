@@ -45,10 +45,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoVersement.findByMontant", query = "SELECT e FROM EcoVersement e WHERE e.montant = :montant"),
     @NamedQuery(name = "EcoVersement.findByDateReglement", query = "SELECT e FROM EcoVersement e WHERE e.dateReglement = :dateReglement"),
     @NamedQuery(name = "EcoVersement.findByHeureReglement", query = "SELECT e FROM EcoVersement e WHERE e.heureReglement = :heureReglement"),
-    @NamedQuery(name = "EcoVersement.findBySigleBq", query = "SELECT e FROM EcoVersement e WHERE e.sigleBq = :sigleBq"),
+    @NamedQuery(name = "EcoVersement.findByBanque", query = "SELECT e FROM EcoVersement e WHERE e.banque = :banque"),
     @NamedQuery(name = "EcoVersement.findByDateChq", query = "SELECT e FROM EcoVersement e WHERE e.dateChq = :dateChq"),
     @NamedQuery(name = "EcoVersement.findByNumChq", query = "SELECT e FROM EcoVersement e WHERE e.numChq = :numChq"),
+    @NamedQuery(name = "EcoVersement.findByNumVersViremBq", query = "SELECT e FROM EcoVersement e WHERE e.numVersViremBq = :numVersViremBq"),
     @NamedQuery(name = "EcoVersement.findByEmetteur", query = "SELECT e FROM EcoVersement e WHERE e.emetteur = :emetteur"),
+    @NamedQuery(name = "EcoVersement.findByBqDepartVirem", query = "SELECT e FROM EcoVersement e WHERE e.bqDepartVirem = :bqDepartVirem"),
+    @NamedQuery(name = "EcoVersement.findByBqArriveVirem", query = "SELECT e FROM EcoVersement e WHERE e.bqArriveVirem = :bqArriveVirem"),
     @NamedQuery(name = "EcoVersement.findByObjet", query = "SELECT e FROM EcoVersement e WHERE e.objet = :objet"),
     @NamedQuery(name = "EcoVersement.findByNumPiece", query = "SELECT e FROM EcoVersement e WHERE e.numPiece = :numPiece"),
     @NamedQuery(name = "EcoVersement.findByAnnule", query = "SELECT e FROM EcoVersement e WHERE e.annule = :annule")})
@@ -101,17 +104,25 @@ public class EcoVersement implements Serializable {
     @Column(name = "HEURE_REGLEMENT")
     private String heureReglement;
     @Size(max = 32)
-    @Column(name = "SIGLE_BQ")
-    private String sigleBq;
+    @Column(name = "BANQUE")
+    private String banque;
     @Column(name = "DATE_CHQ")
     @Temporal(TemporalType.DATE)
     private Date dateChq;
     @Size(max = 10)
     @Column(name = "NUM_CHQ")
     private String numChq;
+    @Size(max = 16)
+    @Column(name = "NUM_VERS_VIREM_BQ")
+    private String numVersViremBq;
     @Size(max = 70)
     @Column(name = "EMETTEUR")
     private String emetteur;
+    @Size(max = 32)
+    @Column(name = "BQ_DEPART_VIREM")
+    private String bqDepartVirem;
+    @Column(name = "BQ_ARRIVE_VIREM")
+    private Integer bqArriveVirem;
     @Size(max = 70)
     @Column(name = "OBJET")
     private String objet;
@@ -248,12 +259,12 @@ public class EcoVersement implements Serializable {
         this.heureReglement = heureReglement;
     }
 
-    public String getSigleBq() {
-        return sigleBq;
+    public String getBanque() {
+        return banque;
     }
 
-    public void setSigleBq(String sigleBq) {
-        this.sigleBq = sigleBq;
+    public void setBanque(String banque) {
+        this.banque = banque;
     }
 
     public Date getDateChq() {
@@ -272,12 +283,36 @@ public class EcoVersement implements Serializable {
         this.numChq = numChq;
     }
 
+    public String getNumVersViremBq() {
+        return numVersViremBq;
+    }
+
+    public void setNumVersViremBq(String numVersViremBq) {
+        this.numVersViremBq = numVersViremBq;
+    }
+
     public String getEmetteur() {
         return emetteur;
     }
 
     public void setEmetteur(String emetteur) {
         this.emetteur = emetteur;
+    }
+
+    public String getBqDepartVirem() {
+        return bqDepartVirem;
+    }
+
+    public void setBqDepartVirem(String bqDepartVirem) {
+        this.bqDepartVirem = bqDepartVirem;
+    }
+
+    public Integer getBqArriveVirem() {
+        return bqArriveVirem;
+    }
+
+    public void setBqArriveVirem(Integer bqArriveVirem) {
+        this.bqArriveVirem = bqArriveVirem;
     }
 
     public String getObjet() {
