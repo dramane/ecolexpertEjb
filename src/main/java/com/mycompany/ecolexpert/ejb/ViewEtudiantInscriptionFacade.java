@@ -37,5 +37,12 @@ public class ViewEtudiantInscriptionFacade extends AbstractFacade<ViewEtudiantIn
         query.setParameter("nometu", vNom+"%"); 
         return query.getResultList();
     }
+
+    @Override
+    public ViewEtudiantInscription findByMatricule(Object vMatricule) {
+        Query nQuery = em.createNamedQuery("ViewEtudiantInscription.findByMatricule");
+        nQuery.setParameter("matricule", vMatricule); 
+        return (ViewEtudiantInscription) nQuery.getSingleResult();    
+    }
     
 }

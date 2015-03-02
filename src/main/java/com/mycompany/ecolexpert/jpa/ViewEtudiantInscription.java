@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -29,22 +30,29 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ViewEtudiantInscription.findAll", query = "SELECT v FROM ViewEtudiantInscription v"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByIdinscription", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.idinscription = :idinscription"),
     @NamedQuery(name = "ViewEtudiantInscription.findByNumetu", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.numetu = :numetu"),
     @NamedQuery(name = "ViewEtudiantInscription.findByNometu", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.nometu = :nometu"),
     @NamedQuery(name = "ViewEtudiantInscription.findByPrenetu", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.prenetu = :prenetu"),
     @NamedQuery(name = "ViewEtudiantInscription.findByNationalite", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.nationalite = :nationalite"),
     @NamedQuery(name = "ViewEtudiantInscription.findByMatricule", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.matricule = :matricule"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByAnneeaca", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.anneeaca = :anneeaca"),
     @NamedQuery(name = "ViewEtudiantInscription.findByDtinscri", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.dtinscri = :dtinscri"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByCours", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.cours = :cours"),
     @NamedQuery(name = "ViewEtudiantInscription.findByCodeCycle", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.codeCycle = :codeCycle"),
     @NamedQuery(name = "ViewEtudiantInscription.findByCodeNiveau", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.codeNiveau = :codeNiveau"),
-    @NamedQuery(name = "ViewEtudiantInscription.findByCodeClasse", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.codeClasse = :codeClasse")})
+    @NamedQuery(name = "ViewEtudiantInscription.findByCodeClasse", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.codeClasse = :codeClasse"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByScolariteAPaye", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.scolariteAPaye = :scolariteAPaye"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByScolaritePaye", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.scolaritePaye = :scolaritePaye")})
 public class ViewEtudiantInscription implements Serializable {
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 6)
-    @Column(name = "NUMETU")
+    @Column(name = "IDINSCRIPTION")
     @Id
+    private int idinscription;
+    @Size(max = 6)
+    @Column(name = "NUMETU")
     private String numetu;
     @Size(max = 30)
     @Column(name = "NOMETU")
@@ -55,12 +63,21 @@ public class ViewEtudiantInscription implements Serializable {
     @Size(max = 50)
     @Column(name = "NATIONALITE")
     private String nationalite;
+    @Lob
+    @Column(name = "PHOTO")
+    private byte[] photo;
     @Size(max = 14)
     @Column(name = "MATRICULE")
     private String matricule;
+    @Size(max = 9)
+    @Column(name = "ANNEEACA")
+    private String anneeaca;
     @Column(name = "DTINSCRI")
     @Temporal(TemporalType.DATE)
     private Date dtinscri;
+    @Size(max = 4)
+    @Column(name = "COURS")
+    private String cours;
     @Size(max = 3)
     @Column(name = "CODE_CYCLE")
     private String codeCycle;
@@ -70,8 +87,24 @@ public class ViewEtudiantInscription implements Serializable {
     @Size(max = 9)
     @Column(name = "CODE_CLASSE")
     private String codeClasse;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "SCOLARITE_A_PAYE")
+    private int scolariteAPaye;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "SCOLARITE_PAYE")
+    private int scolaritePaye;
 
     public ViewEtudiantInscription() {
+    }
+
+    public int getIdinscription() {
+        return idinscription;
+    }
+
+    public void setIdinscription(int idinscription) {
+        this.idinscription = idinscription;
     }
 
     public String getNumetu() {
@@ -106,6 +139,14 @@ public class ViewEtudiantInscription implements Serializable {
         this.nationalite = nationalite;
     }
 
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
     public String getMatricule() {
         return matricule;
     }
@@ -114,12 +155,28 @@ public class ViewEtudiantInscription implements Serializable {
         this.matricule = matricule;
     }
 
+    public String getAnneeaca() {
+        return anneeaca;
+    }
+
+    public void setAnneeaca(String anneeaca) {
+        this.anneeaca = anneeaca;
+    }
+
     public Date getDtinscri() {
         return dtinscri;
     }
 
     public void setDtinscri(Date dtinscri) {
         this.dtinscri = dtinscri;
+    }
+
+    public String getCours() {
+        return cours;
+    }
+
+    public void setCours(String cours) {
+        this.cours = cours;
     }
 
     public String getCodeCycle() {
@@ -144,6 +201,22 @@ public class ViewEtudiantInscription implements Serializable {
 
     public void setCodeClasse(String codeClasse) {
         this.codeClasse = codeClasse;
+    }
+
+    public int getScolariteAPaye() {
+        return scolariteAPaye;
+    }
+
+    public void setScolariteAPaye(int scolariteAPaye) {
+        this.scolariteAPaye = scolariteAPaye;
+    }
+
+    public int getScolaritePaye() {
+        return scolaritePaye;
+    }
+
+    public void setScolaritePaye(int scolaritePaye) {
+        this.scolaritePaye = scolaritePaye;
     }
     
 }

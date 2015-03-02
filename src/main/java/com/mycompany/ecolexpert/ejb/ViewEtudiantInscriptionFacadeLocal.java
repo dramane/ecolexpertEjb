@@ -30,5 +30,6 @@ public interface ViewEtudiantInscriptionFacadeLocal {
 
     int count();
     
-    List<ViewEtudiantInscription> findEtudInscripByNomWithJocker(Object vNom);      
+    List<ViewEtudiantInscription> findEtudInscripByNomWithJocker(Object vNom); 
+    ViewEtudiantInscription findByMatricule(Object vMatricule);
 }
