@@ -76,8 +76,8 @@ public class EcoSession implements Serializable {
     @Column(name = "CREDIT")
     private int credit;
     @Column(name = "TYPE_VERSEMENT")
-    private Character typeVersement;
-    @Size(max = 8)
+    private int typeVersement;
+    @Size(max = 1)
     @Column(name = "NUMRESSU")
     private String numressu;
     @Size(max = 14)
@@ -165,7 +165,7 @@ public class EcoSession implements Serializable {
         this.credit = credit;
     }
 
-    public Character getTypeVersement() {
+    public int getTypeVersement() {
         return typeVersement;
     }
 
