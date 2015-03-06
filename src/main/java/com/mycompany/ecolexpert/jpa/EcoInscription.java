@@ -104,9 +104,9 @@ public class EcoInscription implements Serializable {
     @Column(name = "DTINSCRI")
     @Temporal(TemporalType.DATE)
     private Date dtinscri;
+    @Size(max = 5)
     @Column(name = "H_INSCRI")
-    @Temporal(TemporalType.TIME)
-    private Date hInscri;
+    private String hInscri;
     @Size(max = 32)
     @Column(name = "RESPINS")
     private String respins;
@@ -351,11 +351,11 @@ public class EcoInscription implements Serializable {
         this.dtinscri = dtinscri;
     }
 
-    public Date getHInscri() {
+    public String getHInscri() {
         return hInscri;
     }
 
-    public void setHInscri(Date hInscri) {
+    public void setHInscri(String hInscri) {
         this.hInscri = hInscri;
     }
 

@@ -45,6 +45,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoVersement.findByMontant", query = "SELECT e FROM EcoVersement e WHERE e.montant = :montant"),
     @NamedQuery(name = "EcoVersement.findByDateReglement", query = "SELECT e FROM EcoVersement e WHERE e.dateReglement = :dateReglement"),
     @NamedQuery(name = "EcoVersement.findByHeureReglement", query = "SELECT e FROM EcoVersement e WHERE e.heureReglement = :heureReglement"),
+    @NamedQuery(name = "EcoVersement.findByCaissiere", query = "SELECT e FROM EcoVersement e WHERE e.caissiere = :caissiere"),
     @NamedQuery(name = "EcoVersement.findByBanque", query = "SELECT e FROM EcoVersement e WHERE e.banque = :banque"),
     @NamedQuery(name = "EcoVersement.findByDateChq", query = "SELECT e FROM EcoVersement e WHERE e.dateChq = :dateChq"),
     @NamedQuery(name = "EcoVersement.findByNumChq", query = "SELECT e FROM EcoVersement e WHERE e.numChq = :numChq"),
@@ -104,6 +105,9 @@ public class EcoVersement implements Serializable {
     @Column(name = "HEURE_REGLEMENT")
     private String heureReglement;
     @Size(max = 32)
+    @Column(name = "CAISSIERE")
+    private String caissiere;
+    @Size(max = 32)
     @Column(name = "BANQUE")
     private String banque;
     @Column(name = "DATE_CHQ")
@@ -121,6 +125,7 @@ public class EcoVersement implements Serializable {
     @Size(max = 32)
     @Column(name = "BQ_DEPART_VIREM")
     private String bqDepartVirem;
+    @Size(max = 32)
     @Column(name = "BQ_ARRIVE_VIREM")
     private String bqArriveVirem;
     @Size(max = 70)
@@ -257,6 +262,14 @@ public class EcoVersement implements Serializable {
 
     public void setHeureReglement(String heureReglement) {
         this.heureReglement = heureReglement;
+    }
+
+    public String getCaissiere() {
+        return caissiere;
+    }
+
+    public void setCaissiere(String caissiere) {
+        this.caissiere = caissiere;
     }
 
     public String getBanque() {

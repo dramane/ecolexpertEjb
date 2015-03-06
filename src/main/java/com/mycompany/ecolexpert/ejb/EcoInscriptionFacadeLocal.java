@@ -34,4 +34,6 @@ public interface EcoInscriptionFacadeLocal {
     EcoInscription findByMatricule(Object vMatricule);
     
     EcoInscription findByNumetu(Object vNumetu);
+    
+    List<EcoInscription> findAllByAnneeAcademiq(Object vAnneeaca);
 }

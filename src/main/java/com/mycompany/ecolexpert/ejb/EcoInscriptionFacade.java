@@ -9,6 +9,7 @@ import com.mycompany.ecolexpert.jpa.EcoInscription;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -31,7 +32,7 @@ public class EcoInscriptionFacade extends AbstractFacade<EcoInscription> impleme
     }
 
     @Override
-    public EcoInscription findByMatricule(Object vMatricule) {
+    public EcoInscription findByMatricule(Object vMatricule) throws NullPointerException, NoResultException{
         Query nQuery = em.createNamedQuery("EcoInscription.findByMatricule");
         nQuery.setParameter("matricule", vMatricule); 
         return (EcoInscription) nQuery.getSingleResult();   
@@ -42,6 +43,13 @@ public class EcoInscriptionFacade extends AbstractFacade<EcoInscription> impleme
         Query nQuery = em.createNamedQuery("EcoInscription.findByNumetu");
         nQuery.setParameter("numetu", vNumetu); 
         return (EcoInscription) nQuery.getSingleResult(); 
+    }
+
+    @Override
+    public List<EcoInscription> findAllByAnneeAcademiq(Object vAnneeaca) {
+        Query nQuery = em.createNamedQuery("EcoInscription.findByAnneeaca");
+        nQuery.setParameter("anneeaca", vAnneeaca); 
+        return nQuery.getResultList(); 
     }
     
 }
