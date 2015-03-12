@@ -32,7 +32,7 @@ public class ViewEtudiantInscriptionFacade extends AbstractFacade<ViewEtudiantIn
 
     @Override
     public List<ViewEtudiantInscription> findEtudInscripByNomWithJocker(Object vNom) {
-        String texte = "SELECT v FROM ViewEtudiantInscription v WHERE v.nometu LIKE :nometu ORDER BY v.nometu";
+        String texte = "SELECT v FROM ViewEtudiantInscription v WHERE v.nometu LIKE :nometu ORDER BY v.nomEtPrenom";
         Query query = em.createQuery(texte);
         query.setParameter("nometu", vNom+"%"); 
         return query.getResultList();
@@ -43,6 +43,14 @@ public class ViewEtudiantInscriptionFacade extends AbstractFacade<ViewEtudiantIn
         Query nQuery = em.createNamedQuery("ViewEtudiantInscription.findByMatricule");
         nQuery.setParameter("matricule", vMatricule); 
         return (ViewEtudiantInscription) nQuery.getSingleResult();    
+    }
+
+    @Override
+    public List<ViewEtudiantInscription> findEtudInscripByNomEtPrenomWithJocker(Object vNomEtPrenom) {
+        String texte = "SELECT v FROM ViewEtudiantInscription v WHERE v.nomEtPrenom LIKE :nomEtPrenom ORDER BY v.nomEtPrenom";
+        Query query = em.createQuery(texte);
+        query.setParameter("nometu", vNomEtPrenom+"%"); 
+        return query.getResultList();
     }
     
 }

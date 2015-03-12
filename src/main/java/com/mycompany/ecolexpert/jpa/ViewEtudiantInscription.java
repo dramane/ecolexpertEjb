@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ViewEtudiantInscription.findByNumetu", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.numetu = :numetu"),
     @NamedQuery(name = "ViewEtudiantInscription.findByNometu", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.nometu = :nometu"),
     @NamedQuery(name = "ViewEtudiantInscription.findByPrenetu", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.prenetu = :prenetu"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByNomEtPrenom", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.nomEtPrenom = :nomEtPrenom"),
     @NamedQuery(name = "ViewEtudiantInscription.findByNationalite", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.nationalite = :nationalite"),
     @NamedQuery(name = "ViewEtudiantInscription.findByMatricule", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.matricule = :matricule"),
     @NamedQuery(name = "ViewEtudiantInscription.findByAnneeaca", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.anneeaca = :anneeaca"),
@@ -50,7 +51,7 @@ public class ViewEtudiantInscription implements Serializable {
     @NotNull
     @Column(name = "IDINSCRIPTION")
     @Id
-    private int idinscription;
+    private int idinscription;    
     @Size(max = 6)
     @Column(name = "NUMETU")
     private String numetu;
@@ -60,6 +61,9 @@ public class ViewEtudiantInscription implements Serializable {
     @Size(max = 70)
     @Column(name = "PRENETU")
     private String prenetu;
+    @Size(max = 101)
+    @Column(name = "NOM_ET_PRENOM")
+    private String nomEtPrenom;
     @Size(max = 50)
     @Column(name = "NATIONALITE")
     private String nationalite;
@@ -129,6 +133,14 @@ public class ViewEtudiantInscription implements Serializable {
 
     public void setPrenetu(String prenetu) {
         this.prenetu = prenetu;
+    }
+
+    public String getNomEtPrenom() {
+        return nomEtPrenom;
+    }
+
+    public void setNomEtPrenom(String nomEtPrenom) {
+        this.nomEtPrenom = nomEtPrenom;
     }
 
     public String getNationalite() {

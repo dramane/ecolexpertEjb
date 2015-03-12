@@ -30,12 +30,19 @@ public class EcoClasseFacade extends AbstractFacade<EcoClasse> implements EcoCla
     public EcoClasseFacade() {
         super(EcoClasse.class);
     }
+    
+    @Override
+    public List<EcoClasse> findByCodeCycle(Object vCodeCycle) {
+        Query nQuery = em.createNamedQuery("EcoClasse.findByCodeCycle");
+        nQuery.setParameter("codeCycle", vCodeCycle);        
+        return nQuery.getResultList(); 
+    }
 
     @Override
     public List<EcoClasse> findByCodeNiveau(Object vCodeNiveau) {
         Query nQuery = em.createNamedQuery("EcoClasse.findByCodeNiveau");
         nQuery.setParameter("codeNiveau", vCodeNiveau);        
         return nQuery.getResultList(); 
-    }
+    }  
     
 }
