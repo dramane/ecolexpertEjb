@@ -134,8 +134,9 @@ public class EcoVersement implements Serializable {
     @Size(max = 4)
     @Column(name = "NUM_PIECE")
     private String numPiece;
+    @Size(max = 1)
     @Column(name = "ANNULE")
-    private Character annule;
+    private String annule;
 
     public EcoVersement() {
     }
@@ -344,11 +345,11 @@ public class EcoVersement implements Serializable {
         this.numPiece = numPiece;
     }
 
-    public Character getAnnule() {
+    public String getAnnule() {
         return annule;
     }
 
-    public void setAnnule(Character annule) {
+    public void setAnnule(String annule) {
         this.annule = annule;
     }
 

@@ -18,7 +18,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -53,31 +52,25 @@ public class EcoSession implements Serializable {
     @Size(max = 4)
     @Column(name = "EXERCICE")
     private String exercice;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "DATE_SESSION")
     @Temporal(TemporalType.DATE)
     private Date dateSession;
     @Size(max = 4)
     @Column(name = "PIECE")
     private String piece;
-    @Size(max = 8)
+    @Size(max = 9)
     @Column(name = "COMPTE")
     private String compte;
     @Size(max = 70)
     @Column(name = "LIBELLE")
     private String libelle;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "DEBIT")
-    private int debit;
-    @Basic(optional = false)
-    @NotNull
+    private Integer debit;
     @Column(name = "CREDIT")
-    private int credit;
+    private Integer credit;
     @Column(name = "TYPE_VERSEMENT")
-    private int typeVersement;
-    @Size(max = 1)
+    private Integer typeVersement;
+    @Size(max = 8)
     @Column(name = "NUMRESSU")
     private String numressu;
     @Size(max = 14)
@@ -92,13 +85,6 @@ public class EcoSession implements Serializable {
 
     public EcoSession(Integer idsession) {
         this.idsession = idsession;
-    }
-
-    public EcoSession(Integer idsession, Date dateSession, int debit, int credit) {
-        this.idsession = idsession;
-        this.dateSession = dateSession;
-        this.debit = debit;
-        this.credit = credit;
     }
 
     public Integer getIdsession() {
@@ -149,27 +135,27 @@ public class EcoSession implements Serializable {
         this.libelle = libelle;
     }
 
-    public int getDebit() {
+    public Integer getDebit() {
         return debit;
     }
 
-    public void setDebit(int debit) {
+    public void setDebit(Integer debit) {
         this.debit = debit;
     }
 
-    public int getCredit() {
+    public Integer getCredit() {
         return credit;
     }
 
-    public void setCredit(int credit) {
+    public void setCredit(Integer credit) {
         this.credit = credit;
     }
 
-    public int getTypeVersement() {
+    public Integer getTypeVersement() {
         return typeVersement;
     }
 
-    public void setTypeVersement(Character typeVersement) {
+    public void setTypeVersement(Integer typeVersement) {
         this.typeVersement = typeVersement;
     }
 
