@@ -32,25 +32,25 @@ public class EcoProfilUtilisateurFacade extends AbstractFacade<EcoProfilUtilisat
     }
    
     @Override
-    public List<EcoProfilUtilisateur> findByIdUtilisateurAndActive (Object vIdUtilisateur, int vActive){                   
-        Query nQuery = em.createNamedQuery("EcoProfilUtilisateur.findByIdUtilisateurAndActive");
-        nQuery.setParameter("idUtilisateur", vIdUtilisateur); 
+    public List<EcoProfilUtilisateur> findByLoginAndActive (Object vLogin, int vActive){                   
+        Query nQuery = em.createNamedQuery("EcoProfilUtilisateur.findByLoginAndActive");
+        nQuery.setParameter("login", vLogin); 
         nQuery.setParameter("active", vActive);
 
         return nQuery.getResultList(); 
     }
 
     @Override
-    public List<EcoProfilUtilisateur> findByIdUtilisateur(Object vIdUtilisateur) {
-        Query nQuery = em.createNamedQuery("EcoProfilUtilisateur.findByIdUtilisateur");
-        nQuery.setParameter("idUtilisateur", vIdUtilisateur); 
+    public List<EcoProfilUtilisateur> findByLogin(Object vLogin) {
+        Query nQuery = em.createNamedQuery("EcoProfilUtilisateur.findByLogin");
+        nQuery.setParameter("login", vLogin); 
         return nQuery.getResultList(); 
     }
 
     @Override
-    public List<EcoProfilUtilisateur> findByIdProfil(String vIdProfil) {
-        Query nQuery = em.createNamedQuery("EcoProfilUtilisateur.findByIdProfil");
-        nQuery.setParameter("idProfil", vIdProfil); 
+    public List<EcoProfilUtilisateur> findByCodeProfil(String vCodeProfil) {
+        Query nQuery = em.createNamedQuery("EcoProfilUtilisateur.findByCodeProfil");
+        nQuery.setParameter("codeProfil", vCodeProfil); 
         return nQuery.getResultList(); 
     }
 }

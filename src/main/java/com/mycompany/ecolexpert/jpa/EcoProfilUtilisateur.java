@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.ecolexpert.jpa;
 
 import java.io.Serializable;
@@ -21,46 +20,47 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author TOSHIBA
+ * @author HP
  */
 @Entity
 @Table(name = "eco_profil_utilisateur")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "EcoProfilUtilisateur.findAll", query = "SELECT e FROM EcoProfilUtilisateur e"),
-    @NamedQuery(name = "EcoProfilUtilisateur.findByIdProfilUtilisateur", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.idProfilUtilisateur = :idProfilUtilisateur"),
+    @NamedQuery(name = "EcoProfilUtilisateur.findByCodeProfilUtilisateur", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.codeProfilUtilisateur = :codeProfilUtilisateur"),
     @NamedQuery(name = "EcoProfilUtilisateur.findByActive", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.active = :active"),
-    @NamedQuery(name = "EcoProfilUtilisateur.findByIdProfil", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.idProfil = :idProfil"),
-    @NamedQuery(name = "EcoProfilUtilisateur.findByIdUtilisateur", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.idUtilisateur = :idUtilisateur"),
-    @NamedQuery(name = "EcoProfilUtilisateur.findByIdUtilisateurAndActive", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.idUtilisateur = :idUtilisateur AND e.active = :active")})
+    @NamedQuery(name = "EcoProfilUtilisateur.findByLogin", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.login = :login"),
+    @NamedQuery(name = "EcoProfilUtilisateur.findByCodeProfil", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.codeProfil = :codeProfil"),
+    @NamedQuery(name = "EcoProfilUtilisateur.findByLoginAndActive", query = "SELECT e FROM EcoProfilUtilisateur e WHERE e.login = :login AND e.active = :active")})
 public class EcoProfilUtilisateur implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idProfilUtilisateur")
-    private Integer idProfilUtilisateur;
+    @Column(name = "code_profil_utilisateur")
+    private Integer codeProfilUtilisateur;
     @Column(name = "active")
     private Integer active;
     @Size(max = 255)
-    @Column(name = "idProfil")
-    private String idProfil;
-    @Column(name = "idUtilisateur")
-    private Integer idUtilisateur;
+    @Column(name = "login")
+    private String login;
+    @Size(max = 255)
+    @Column(name = "codeProfil")
+    private String codeProfil;
 
     public EcoProfilUtilisateur() {
     }
 
-    public EcoProfilUtilisateur(Integer idProfilUtilisateur) {
-        this.idProfilUtilisateur = idProfilUtilisateur;
+    public EcoProfilUtilisateur(Integer codeProfilUtilisateur) {
+        this.codeProfilUtilisateur = codeProfilUtilisateur;
     }
 
-    public Integer getIdProfilUtilisateur() {
-        return idProfilUtilisateur;
+    public Integer getCodeProfilUtilisateur() {
+        return codeProfilUtilisateur;
     }
 
-    public void setIdProfilUtilisateur(Integer idProfilUtilisateur) {
-        this.idProfilUtilisateur = idProfilUtilisateur;
+    public void setCodeProfilUtilisateur(Integer codeProfilUtilisateur) {
+        this.codeProfilUtilisateur = codeProfilUtilisateur;
     }
 
     public Integer getActive() {
@@ -71,26 +71,26 @@ public class EcoProfilUtilisateur implements Serializable {
         this.active = active;
     }
 
-    public String getIdProfil() {
-        return idProfil;
+    public String getLogin() {
+        return login;
     }
 
-    public void setIdProfil(String idProfil) {
-        this.idProfil = idProfil;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-    public Integer getIdUtilisateur() {
-        return idUtilisateur;
+    public String getCodeProfil() {
+        return codeProfil;
     }
 
-    public void setIdUtilisateur(Integer idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
+    public void setCodeProfil(String codeProfil) {
+        this.codeProfil = codeProfil;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idProfilUtilisateur != null ? idProfilUtilisateur.hashCode() : 0);
+        hash += (codeProfilUtilisateur != null ? codeProfilUtilisateur.hashCode() : 0);
         return hash;
     }
 
@@ -101,7 +101,7 @@ public class EcoProfilUtilisateur implements Serializable {
             return false;
         }
         EcoProfilUtilisateur other = (EcoProfilUtilisateur) object;
-        if ((this.idProfilUtilisateur == null && other.idProfilUtilisateur != null) || (this.idProfilUtilisateur != null && !this.idProfilUtilisateur.equals(other.idProfilUtilisateur))) {
+        if ((this.codeProfilUtilisateur == null && other.codeProfilUtilisateur != null) || (this.codeProfilUtilisateur != null && !this.codeProfilUtilisateur.equals(other.codeProfilUtilisateur))) {
             return false;
         }
         return true;
@@ -109,7 +109,7 @@ public class EcoProfilUtilisateur implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.ecolexpert.jpa.EcoProfilUtilisateur[ idProfilUtilisateur=" + idProfilUtilisateur + " ]";
+        return "com.mycompany.ecolexpert.jpa.EcoProfilUtilisateur[ codeProfilUtilisateur=" + codeProfilUtilisateur + " ]";
     }
     
 }

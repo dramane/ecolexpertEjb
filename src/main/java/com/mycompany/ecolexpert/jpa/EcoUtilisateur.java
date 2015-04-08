@@ -3,25 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.ecolexpert.jpa;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author TOSHIBA
+ * @author HP
  */
 @Entity
 @Table(name = "eco_utilisateur")
@@ -29,22 +27,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "EcoUtilisateur.findAll", query = "SELECT e FROM EcoUtilisateur e"),
     @NamedQuery(name = "EcoUtilisateur.findByIdUtilisateur", query = "SELECT e FROM EcoUtilisateur e WHERE e.idUtilisateur = :idUtilisateur"),
-    @NamedQuery(name = "EcoUtilisateur.findByEmailUtilisateur", query = "SELECT e FROM EcoUtilisateur e WHERE e.emailUtilisateur = :emailUtilisateur"),
     @NamedQuery(name = "EcoUtilisateur.findByLogin", query = "SELECT e FROM EcoUtilisateur e WHERE e.login = :login"),
     @NamedQuery(name = "EcoUtilisateur.findByMotDePasse", query = "SELECT e FROM EcoUtilisateur e WHERE e.motDePasse = :motDePasse"),
-    @NamedQuery(name = "EcoUtilisateur.findByNomUtilisateur", query = "SELECT e FROM EcoUtilisateur e WHERE e.nomUtilisateur = :nomUtilisateur"),
-    @NamedQuery(name = "EcoUtilisateur.findByPrenomUtilisateur", query = "SELECT e FROM EcoUtilisateur e WHERE e.prenomUtilisateur = :prenomUtilisateur"),
+    @NamedQuery(name = "EcoUtilisateur.findByNom", query = "SELECT e FROM EcoUtilisateur e WHERE e.nom = :nom"),
+    @NamedQuery(name = "EcoUtilisateur.findByPrenom", query = "SELECT e FROM EcoUtilisateur e WHERE e.prenom = :prenom"),
+    @NamedQuery(name = "EcoUtilisateur.findByEmail", query = "SELECT e FROM EcoUtilisateur e WHERE e.email = :email"),
     @NamedQuery(name = "EcoUtilisateur.findByLoginAndPassword", query = "SELECT e FROM EcoUtilisateur e WHERE e.login = :login AND e.motDePasse = :motDePasse")})
 public class EcoUtilisateur implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idUtilisateur")
-    private Integer idUtilisateur;
-    @Size(max = 255)
-    @Column(name = "emailUtilisateur")
-    private String emailUtilisateur;
+    @Column(name = "id_utilisateur")
+    private int idUtilisateur;
+    @Id
+    @Basic(optional = false)
+    @NotNull
     @Size(max = 255)
     @Column(name = "login")
     private String login;
@@ -52,36 +48,34 @@ public class EcoUtilisateur implements Serializable {
     @Column(name = "motDePasse")
     private String motDePasse;
     @Size(max = 255)
-    @Column(name = "motDePasse2")
-    private String motDePasse2;
+    @Column(name = "nom")
+    private String nom;
     @Size(max = 255)
-    @Column(name = "nomUtilisateur")
-    private String nomUtilisateur;
+    @Column(name = "prenom")
+    private String prenom;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 255)
-    @Column(name = "prenomUtilisateur")
-    private String prenomUtilisateur;
+    @Column(name = "email")
+    private String email;
 
     public EcoUtilisateur() {
     }
 
-    public EcoUtilisateur(Integer idUtilisateur) {
+    public EcoUtilisateur(String login) {
+        this.login = login;
+    }
+
+    public EcoUtilisateur(String login, int idUtilisateur) {
+        this.login = login;
         this.idUtilisateur = idUtilisateur;
     }
 
-    public Integer getIdUtilisateur() {
+    public int getIdUtilisateur() {
         return idUtilisateur;
     }
 
-    public void setIdUtilisateur(Integer idUtilisateur) {
+    public void setIdUtilisateur(int idUtilisateur) {
         this.idUtilisateur = idUtilisateur;
-    }
-
-    public String getEmailUtilisateur() {
-        return emailUtilisateur;
-    }
-
-    public void setEmailUtilisateur(String emailUtilisateur) {
-        this.emailUtilisateur = emailUtilisateur;
     }
 
     public String getLogin() {
@@ -100,34 +94,34 @@ public class EcoUtilisateur implements Serializable {
         this.motDePasse = motDePasse;
     }
 
-    public String getMotDePasse2() {
-        return motDePasse2;
+    public String getNom() {
+        return nom;
     }
 
-    public void setMotDePasse2(String motDePasse2) {
-        this.motDePasse2 = motDePasse2;
-    }        
-
-    public String getNomUtilisateur() {
-        return nomUtilisateur;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public void setNomUtilisateur(String nomUtilisateur) {
-        this.nomUtilisateur = nomUtilisateur;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public String getPrenomUtilisateur() {
-        return prenomUtilisateur;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
-    public void setPrenomUtilisateur(String prenomUtilisateur) {
-        this.prenomUtilisateur = prenomUtilisateur;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idUtilisateur != null ? idUtilisateur.hashCode() : 0);
+        hash += (login != null ? login.hashCode() : 0);
         return hash;
     }
 
@@ -138,7 +132,7 @@ public class EcoUtilisateur implements Serializable {
             return false;
         }
         EcoUtilisateur other = (EcoUtilisateur) object;
-        if ((this.idUtilisateur == null && other.idUtilisateur != null) || (this.idUtilisateur != null && !this.idUtilisateur.equals(other.idUtilisateur))) {
+        if ((this.login == null && other.login != null) || (this.login != null && !this.login.equals(other.login))) {
             return false;
         }
         return true;
@@ -146,7 +140,7 @@ public class EcoUtilisateur implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.ecolexpert.jpa.EcoUtilisateur[ idUtilisateur=" + idUtilisateur + " ]";
+        return "com.mycompany.ecolexpert.jpa.EcoUtilisateur[ login=" + login + " ]";
     }
     
 }

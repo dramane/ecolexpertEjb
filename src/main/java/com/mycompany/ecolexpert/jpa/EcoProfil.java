@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.ecolexpert.jpa;
 
 import java.io.Serializable;
@@ -20,14 +19,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author TOSHIBA
+ * @author HP
  */
 @Entity
 @Table(name = "eco_profil")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "EcoProfil.findAll", query = "SELECT e FROM EcoProfil e"),
-    @NamedQuery(name = "EcoProfil.findByIdProfil", query = "SELECT e FROM EcoProfil e WHERE e.idProfil = :idProfil"),
+    @NamedQuery(name = "EcoProfil.findByCodeProfil", query = "SELECT e FROM EcoProfil e WHERE e.codeProfil = :codeProfil"),
     @NamedQuery(name = "EcoProfil.findByLibelleProfil", query = "SELECT e FROM EcoProfil e WHERE e.libelleProfil = :libelleProfil")})
 public class EcoProfil implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -35,8 +34,8 @@ public class EcoProfil implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "idProfil")
-    private String idProfil;
+    @Column(name = "codeProfil")
+    private String codeProfil;
     @Size(max = 255)
     @Column(name = "libelleProfil")
     private String libelleProfil;
@@ -44,16 +43,16 @@ public class EcoProfil implements Serializable {
     public EcoProfil() {
     }
 
-    public EcoProfil(String idProfil) {
-        this.idProfil = idProfil;
+    public EcoProfil(String codeProfil) {
+        this.codeProfil = codeProfil;
     }
 
-    public String getIdProfil() {
-        return idProfil;
+    public String getCodeProfil() {
+        return codeProfil;
     }
 
-    public void setIdProfil(String idProfil) {
-        this.idProfil = idProfil;
+    public void setCodeProfil(String codeProfil) {
+        this.codeProfil = codeProfil;
     }
 
     public String getLibelleProfil() {
@@ -67,7 +66,7 @@ public class EcoProfil implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idProfil != null ? idProfil.hashCode() : 0);
+        hash += (codeProfil != null ? codeProfil.hashCode() : 0);
         return hash;
     }
 
@@ -78,7 +77,7 @@ public class EcoProfil implements Serializable {
             return false;
         }
         EcoProfil other = (EcoProfil) object;
-        if ((this.idProfil == null && other.idProfil != null) || (this.idProfil != null && !this.idProfil.equals(other.idProfil))) {
+        if ((this.codeProfil == null && other.codeProfil != null) || (this.codeProfil != null && !this.codeProfil.equals(other.codeProfil))) {
             return false;
         }
         return true;
@@ -86,7 +85,7 @@ public class EcoProfil implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.ecolexpert.jpa.EcoProfil[ idProfil=" + idProfil + " ]";
+        return "com.mycompany.ecolexpert.jpa.EcoProfil[ codeProfil=" + codeProfil + " ]";
     }
     
 }
