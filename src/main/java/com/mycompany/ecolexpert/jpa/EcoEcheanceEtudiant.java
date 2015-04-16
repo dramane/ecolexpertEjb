@@ -73,36 +73,20 @@ public class EcoEcheanceEtudiant implements Serializable {
     @Size(max = 50)
     @Column(name = "CODE_REGIME")
     private String codeRegime;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "DRTINSCRI")
     private int drtinscri;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "DRTFORMA")
     private int drtforma;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "VERS_1")
     private int vers1;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "VERS_2")
     private int vers2;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "VERS_3")
     private int vers3;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "VERS_4")
     private int vers4;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "VERS_5")
     private int vers5;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "VERS_6")
     private int vers6;
 

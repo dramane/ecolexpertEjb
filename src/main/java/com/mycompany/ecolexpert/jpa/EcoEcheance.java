@@ -54,32 +54,18 @@ public class EcoEcheance implements Serializable {
     @Size(max = 10)
     @Column(name = "CODE_NIVEAU")
     private String codeNiveau;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "DRTFORMAT")
     private int drtformat;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "VERS_1")
     private int vers1;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "VERS_2")
     private int vers2;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "VERS_3")
     private int vers3;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "VERS_4")
     private int vers4;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "VERS_5")
     private int vers5;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "VERS_6")
     private int vers6;
     @Size(max = 7)
