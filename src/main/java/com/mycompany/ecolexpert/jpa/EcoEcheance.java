@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "EcoEcheance.findAll", query = "SELECT e FROM EcoEcheance e"),
     @NamedQuery(name = "EcoEcheance.findByIdEcheance", query = "SELECT e FROM EcoEcheance e WHERE e.idEcheance = :idEcheance"),
+    @NamedQuery(name = "EcoEcheance.findByAnneeaca", query = "SELECT e FROM EcoEcheance e WHERE e.anneeaca = :anneeaca"),
     @NamedQuery(name = "EcoEcheance.findByCodeCycle", query = "SELECT e FROM EcoEcheance e WHERE e.codeCycle = :codeCycle"),
     @NamedQuery(name = "EcoEcheance.findByCodeNiveau", query = "SELECT e FROM EcoEcheance e WHERE e.codeNiveau = :codeNiveau"),
     @NamedQuery(name = "EcoEcheance.findByDrtformat", query = "SELECT e FROM EcoEcheance e WHERE e.drtformat = :drtformat"),
@@ -48,6 +49,9 @@ public class EcoEcheance implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID-ECHEANCE")
     private Integer idEcheance;
+    @Size(max = 9)
+    @Column(name = "ANNEEACA")
+    private String anneeaca;
     @Size(max = 3)
     @Column(name = "CODE_CYCLE")
     private String codeCycle;
@@ -56,16 +60,22 @@ public class EcoEcheance implements Serializable {
     private String codeNiveau;
     @Column(name = "DRTFORMAT")
     private int drtformat;
+    @Basic(optional = false)   
     @Column(name = "VERS_1")
     private int vers1;
+    @Basic(optional = false)
     @Column(name = "VERS_2")
     private int vers2;
+    @Basic(optional = false)
     @Column(name = "VERS_3")
     private int vers3;
+    @Basic(optional = false) 
     @Column(name = "VERS_4")
     private int vers4;
+    @Basic(optional = false)
     @Column(name = "VERS_5")
     private int vers5;
+    @Basic(optional = false)
     @Column(name = "VERS_6")
     private int vers6;
     @Size(max = 7)
@@ -102,6 +112,14 @@ public class EcoEcheance implements Serializable {
 
     public void setIdEcheance(Integer idEcheance) {
         this.idEcheance = idEcheance;
+    }
+
+    public String getAnneeaca() {
+        return anneeaca;
+    }
+
+    public void setAnneeaca(String anneeaca) {
+        this.anneeaca = anneeaca;
     }
 
     public String getCodeCycle() {

@@ -51,7 +51,6 @@ public class EcoEcheanceEtudiant implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID-ECHEANCE-ETU")
     private Integer idEcheanceEtu;
-    @Basic(optional = false)
     @Size(max = 9)
     @Column(name = "ANNEEACA")
     private String anneeaca;
@@ -73,20 +72,28 @@ public class EcoEcheanceEtudiant implements Serializable {
     @Size(max = 50)
     @Column(name = "CODE_REGIME")
     private String codeRegime;
+    @Basic(optional = false)  
     @Column(name = "DRTINSCRI")
     private int drtinscri;
+    @Basic(optional = false)  
     @Column(name = "DRTFORMA")
     private int drtforma;
+    @Basic(optional = false) 
     @Column(name = "VERS_1")
     private int vers1;
+    @Basic(optional = false) 
     @Column(name = "VERS_2")
     private int vers2;
+    @Basic(optional = false)
     @Column(name = "VERS_3")
     private int vers3;
+    @Basic(optional = false)
     @Column(name = "VERS_4")
     private int vers4;
+    @Basic(optional = false)
     @Column(name = "VERS_5")
     private int vers5;
+    @Basic(optional = false)    
     @Column(name = "VERS_6")
     private int vers6;
 
@@ -97,9 +104,8 @@ public class EcoEcheanceEtudiant implements Serializable {
         this.idEcheanceEtu = idEcheanceEtu;
     }
 
-    public EcoEcheanceEtudiant(Integer idEcheanceEtu, String anneeaca, int drtinscri, int drtforma, int vers1, int vers2, int vers3, int vers4, int vers5, int vers6) {
+    public EcoEcheanceEtudiant(Integer idEcheanceEtu, int drtinscri, int drtforma, int vers1, int vers2, int vers3, int vers4, int vers5, int vers6) {
         this.idEcheanceEtu = idEcheanceEtu;
-        this.anneeaca = anneeaca;
         this.drtinscri = drtinscri;
         this.drtforma = drtforma;
         this.vers1 = vers1;
