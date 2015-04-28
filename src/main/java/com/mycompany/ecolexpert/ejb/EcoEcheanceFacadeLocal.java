@@ -24,10 +24,11 @@ public interface EcoEcheanceFacadeLocal {
 
     EcoEcheance find(Object id);
 
-    List<EcoEcheance> findAll();
+    List<EcoEcheance> findAll();    
 
     List<EcoEcheance> findRange(int[] range);
 
     int count();
     
+    List<EcoEcheance> findByAnneeacaCycleNiveau(Object vAnneeaca, Object vCodeCycle, Object vCodeNiveau);
 }

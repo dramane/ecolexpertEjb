@@ -41,13 +41,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoEcheance.findByVers6", query = "SELECT e FROM EcoEcheance e WHERE e.vers6 = :vers6"),
     @NamedQuery(name = "EcoEcheance.findByCompteDrtins", query = "SELECT e FROM EcoEcheance e WHERE e.compteDrtins = :compteDrtins"),
     @NamedQuery(name = "EcoEcheance.findByCompteFour", query = "SELECT e FROM EcoEcheance e WHERE e.compteFour = :compteFour"),
-    @NamedQuery(name = "EcoEcheance.findByCompteProduit", query = "SELECT e FROM EcoEcheance e WHERE e.compteProduit = :compteProduit")})
+    @NamedQuery(name = "EcoEcheance.findByCompteProduit", query = "SELECT e FROM EcoEcheance e WHERE e.compteProduit = :compteProduit"),
+    @NamedQuery(name = "EcoEcheance.findByAnneeacaCycleNiveau", query = "SELECT e FROM EcoEcheance e WHERE e.anneeaca = :anneeaca AND e.codeCycle = :codeCycle AND e.codeNiveau = :codeNiveau")})
 public class EcoEcheance implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID-ECHEANCE")
+    @Column(name = "ID_ECHEANCE")
     private Integer idEcheance;
     @Size(max = 9)
     @Column(name = "ANNEEACA")
@@ -58,24 +59,32 @@ public class EcoEcheance implements Serializable {
     @Size(max = 10)
     @Column(name = "CODE_NIVEAU")
     private String codeNiveau;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "DRTFORMAT")
     private int drtformat;
-    @Basic(optional = false)   
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "VERS_1")
     private int vers1;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "VERS_2")
     private int vers2;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "VERS_3")
     private int vers3;
-    @Basic(optional = false) 
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "VERS_4")
     private int vers4;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "VERS_5")
     private int vers5;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "VERS_6")
     private int vers6;
     @Size(max = 7)
