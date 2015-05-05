@@ -49,7 +49,7 @@ public class ViewEtudiantInscriptionFacade extends AbstractFacade<ViewEtudiantIn
     public List<ViewEtudiantInscription> findEtudInscripByNomEtPrenomWithJocker(Object vNomEtPrenom) {
         String texte = "SELECT v FROM ViewEtudiantInscription v WHERE v.nomEtPrenom LIKE :nomEtPrenom ORDER BY v.nomEtPrenom";
         Query query = em.createQuery(texte);
-        query.setParameter("nometu", vNomEtPrenom+"%"); 
+        query.setParameter("nomEtPrenom", vNomEtPrenom+"%"); 
         return query.getResultList();
     }
     
