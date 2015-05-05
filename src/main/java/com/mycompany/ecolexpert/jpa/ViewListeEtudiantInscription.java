@@ -48,6 +48,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ViewListeEtudiantInscription.findByCodeNiveau", query = "SELECT v FROM ViewListeEtudiantInscription v WHERE v.codeNiveau = :codeNiveau"),
     @NamedQuery(name = "ViewListeEtudiantInscription.findByCodeClasse", query = "SELECT v FROM ViewListeEtudiantInscription v WHERE v.codeClasse = :codeClasse"),
     @NamedQuery(name = "ViewListeEtudiantInscription.findByCodeRegime", query = "SELECT v FROM ViewListeEtudiantInscription v WHERE v.codeRegime = :codeRegime"),
+    @NamedQuery(name = "ViewListeEtudiantInscription.findByInscriptionAPaye", query = "SELECT v FROM ViewListeEtudiantInscription v WHERE v.inscriptionAPaye = :inscriptionAPaye"),
+    @NamedQuery(name = "ViewListeEtudiantInscription.findByFormationAPaye", query = "SELECT v FROM ViewListeEtudiantInscription v WHERE v.formationAPaye = :formationAPaye"),
     @NamedQuery(name = "ViewListeEtudiantInscription.findByScolariteAPaye", query = "SELECT v FROM ViewListeEtudiantInscription v WHERE v.scolariteAPaye = :scolariteAPaye"),
     @NamedQuery(name = "ViewListeEtudiantInscription.findByScolaritePaye", query = "SELECT v FROM ViewListeEtudiantInscription v WHERE v.scolaritePaye = :scolaritePaye")})
 public class ViewListeEtudiantInscription implements Serializable {
@@ -56,7 +58,9 @@ public class ViewListeEtudiantInscription implements Serializable {
     @NotNull
     @Column(name = "IDINSCRIPTION")
     @Id
-    private int idinscription;    
+    private int idinscription;
+    @Basic(optional = false)
+    @NotNull
     @Size(max = 6)
     @Column(name = "NUMETU")
     private String numetu;
@@ -110,6 +114,14 @@ public class ViewListeEtudiantInscription implements Serializable {
     @Size(max = 50)
     @Column(name = "CODE_REGIME")
     private String codeRegime;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "INSCRIPTION_A_PAYE")
+    private int inscriptionAPaye;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "FORMATION_A_PAYE")
+    private int formationAPaye;
     @Basic(optional = false)
     @NotNull
     @Column(name = "SCOLARITE_A_PAYE")
@@ -272,6 +284,22 @@ public class ViewListeEtudiantInscription implements Serializable {
 
     public void setCodeRegime(String codeRegime) {
         this.codeRegime = codeRegime;
+    }
+
+    public int getInscriptionAPaye() {
+        return inscriptionAPaye;
+    }
+
+    public void setInscriptionAPaye(int inscriptionAPaye) {
+        this.inscriptionAPaye = inscriptionAPaye;
+    }
+
+    public int getFormationAPaye() {
+        return formationAPaye;
+    }
+
+    public void setFormationAPaye(int formationAPaye) {
+        this.formationAPaye = formationAPaye;
     }
 
     public int getScolariteAPaye() {
