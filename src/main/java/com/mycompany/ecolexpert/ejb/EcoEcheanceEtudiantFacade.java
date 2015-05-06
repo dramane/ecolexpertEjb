@@ -9,6 +9,7 @@ import com.mycompany.ecolexpert.jpa.EcoEcheanceEtudiant;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -26,6 +27,14 @@ public class EcoEcheanceEtudiantFacade extends AbstractFacade<EcoEcheanceEtudian
 
     public EcoEcheanceEtudiantFacade() {
         super(EcoEcheanceEtudiant.class);
+    }
+
+    @Override
+    public EcoEcheanceEtudiant findByMatricule(Object vMatricule) {
+        Query nQuery = em.createNamedQuery("EcoEcheanceEtudiant.findByMatricule");
+        nQuery.setParameter("matricule", vMatricule); 
+
+        return (EcoEcheanceEtudiant) nQuery.getSingleResult(); 
     }
     
 }

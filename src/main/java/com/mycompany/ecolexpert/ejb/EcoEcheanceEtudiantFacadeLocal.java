@@ -30,4 +30,5 @@ public interface EcoEcheanceEtudiantFacadeLocal {
 
     int count();
     
+    EcoEcheanceEtudiant findByMatricule(Object vMatricule);
 }
