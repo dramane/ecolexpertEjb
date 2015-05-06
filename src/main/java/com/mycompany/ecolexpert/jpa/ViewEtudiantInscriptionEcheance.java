@@ -48,6 +48,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ViewEtudiantInscriptionEcheance.findByCodeNiveau", query = "SELECT v FROM ViewEtudiantInscriptionEcheance v WHERE v.codeNiveau = :codeNiveau"),
     @NamedQuery(name = "ViewEtudiantInscriptionEcheance.findByCodeClasse", query = "SELECT v FROM ViewEtudiantInscriptionEcheance v WHERE v.codeClasse = :codeClasse"),
     @NamedQuery(name = "ViewEtudiantInscriptionEcheance.findByCodeRegime", query = "SELECT v FROM ViewEtudiantInscriptionEcheance v WHERE v.codeRegime = :codeRegime"),
+    @NamedQuery(name = "ViewEtudiantInscriptionEcheance.findByInscriptionAPaye", query = "SELECT v FROM ViewEtudiantInscriptionEcheance v WHERE v.inscriptionAPaye = :inscriptionAPaye"),
+    @NamedQuery(name = "ViewEtudiantInscriptionEcheance.findByFormationAPaye", query = "SELECT v FROM ViewEtudiantInscriptionEcheance v WHERE v.formationAPaye = :formationAPaye"),
     @NamedQuery(name = "ViewEtudiantInscriptionEcheance.findByScolariteAPaye", query = "SELECT v FROM ViewEtudiantInscriptionEcheance v WHERE v.scolariteAPaye = :scolariteAPaye"),
     @NamedQuery(name = "ViewEtudiantInscriptionEcheance.findByScolaritePaye", query = "SELECT v FROM ViewEtudiantInscriptionEcheance v WHERE v.scolaritePaye = :scolaritePaye"),
     @NamedQuery(name = "ViewEtudiantInscriptionEcheance.findByIdEcheanceEtu", query = "SELECT v FROM ViewEtudiantInscriptionEcheance v WHERE v.idEcheanceEtu = :idEcheanceEtu"),
@@ -119,6 +121,14 @@ public class ViewEtudiantInscriptionEcheance implements Serializable {
     @Size(max = 50)
     @Column(name = "CODE_REGIME")
     private String codeRegime;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "INSCRIPTION_A_PAYE")
+    private int inscriptionAPaye;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "FORMATION_A_PAYE")
+    private int formationAPaye;
     @Basic(optional = false)
     @NotNull
     @Column(name = "SCOLARITE_A_PAYE")
@@ -295,6 +305,22 @@ public class ViewEtudiantInscriptionEcheance implements Serializable {
 
     public void setCodeRegime(String codeRegime) {
         this.codeRegime = codeRegime;
+    }
+
+    public int getInscriptionAPaye() {
+        return inscriptionAPaye;
+    }
+
+    public void setInscriptionAPaye(int inscriptionAPaye) {
+        this.inscriptionAPaye = inscriptionAPaye;
+    }
+
+    public int getFormationAPaye() {
+        return formationAPaye;
+    }
+
+    public void setFormationAPaye(int formationAPaye) {
+        this.formationAPaye = formationAPaye;
     }
 
     public int getScolariteAPaye() {
