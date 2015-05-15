@@ -144,7 +144,7 @@ public class EcoSpecialiteFormation implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.ecolexpert.jpa.EcoSpecialiteFormation[ codeSpecialiteFormation=" + codeSpecialiteFormation + " ]";
+        return "com.mycompany.ecolexpert.ejb.EcoSpecialiteFormation[ codeSpecialiteFormation=" + codeSpecialiteFormation + " ]";
     }
     
 }
