@@ -42,12 +42,21 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoInscription.findByCours", query = "SELECT e FROM EcoInscription e WHERE e.cours = :cours"),
     @NamedQuery(name = "EcoInscription.findByDrtformaNormal", query = "SELECT e FROM EcoInscription e WHERE e.drtformaNormal = :drtformaNormal"),
     @NamedQuery(name = "EcoInscription.findByScolariteNormal", query = "SELECT e FROM EcoInscription e WHERE e.scolariteNormal = :scolariteNormal"),
-    @NamedQuery(name = "EcoInscription.findByNomclasse", query = "SELECT e FROM EcoInscription e WHERE e.nomclasse = :nomclasse"),
-    @NamedQuery(name = "EcoInscription.findByEcoleAnterieure", query = "SELECT e FROM EcoInscription e WHERE e.ecoleAnterieure = :ecoleAnterieure"),
+    @NamedQuery(name = "EcoInscription.findByDernierEtablisFreqte", query = "SELECT e FROM EcoInscription e WHERE e.dernierEtablisFreqte = :dernierEtablisFreqte"),
+    @NamedQuery(name = "EcoInscription.findByAnneeEtablisFreqte", query = "SELECT e FROM EcoInscription e WHERE e.anneeEtablisFreqte = :anneeEtablisFreqte"),
     @NamedQuery(name = "EcoInscription.findByClasseAnterieure", query = "SELECT e FROM EcoInscription e WHERE e.classeAnterieure = :classeAnterieure"),
+    @NamedQuery(name = "EcoInscription.findByOrigineRessource", query = "SELECT e FROM EcoInscription e WHERE e.origineRessource = :origineRessource"),
+    @NamedQuery(name = "EcoInscription.findByProfessionEtu", query = "SELECT e FROM EcoInscription e WHERE e.professionEtu = :professionEtu"),
+    @NamedQuery(name = "EcoInscription.findByActiviteEtu", query = "SELECT e FROM EcoInscription e WHERE e.activiteEtu = :activiteEtu"),
+    @NamedQuery(name = "EcoInscription.findByDomaineAtiviteEtu", query = "SELECT e FROM EcoInscription e WHERE e.domaineAtiviteEtu = :domaineAtiviteEtu"),
+    @NamedQuery(name = "EcoInscription.findByLangueVivante", query = "SELECT e FROM EcoInscription e WHERE e.langueVivante = :langueVivante"),
+    @NamedQuery(name = "EcoInscription.findByDemandeurEmploi", query = "SELECT e FROM EcoInscription e WHERE e.demandeurEmploi = :demandeurEmploi"),
+    @NamedQuery(name = "EcoInscription.findByInterruptionEtude", query = "SELECT e FROM EcoInscription e WHERE e.interruptionEtude = :interruptionEtude"),
+    @NamedQuery(name = "EcoInscription.findByDureeInterruption", query = "SELECT e FROM EcoInscription e WHERE e.dureeInterruption = :dureeInterruption"),
+    @NamedQuery(name = "EcoInscription.findBySportifHautNivo", query = "SELECT e FROM EcoInscription e WHERE e.sportifHautNivo = :sportifHautNivo"),
+    @NamedQuery(name = "EcoInscription.findByServiceNational", query = "SELECT e FROM EcoInscription e WHERE e.serviceNational = :serviceNational"),
     @NamedQuery(name = "EcoInscription.findByStatut", query = "SELECT e FROM EcoInscription e WHERE e.statut = :statut"),
     @NamedQuery(name = "EcoInscription.findByAnneeDecision", query = "SELECT e FROM EcoInscription e WHERE e.anneeDecision = :anneeDecision"),
-    @NamedQuery(name = "EcoInscription.findByTypeEtudiant", query = "SELECT e FROM EcoInscription e WHERE e.typeEtudiant = :typeEtudiant"),
     @NamedQuery(name = "EcoInscription.findByNumDecision", query = "SELECT e FROM EcoInscription e WHERE e.numDecision = :numDecision"),
     @NamedQuery(name = "EcoInscription.findByExtrait", query = "SELECT e FROM EcoInscription e WHERE e.extrait = :extrait"),
     @NamedQuery(name = "EcoInscription.findByCv", query = "SELECT e FROM EcoInscription e WHERE e.cv = :cv"),
@@ -123,24 +132,51 @@ public class EcoInscription implements Serializable {
     @NotNull
     @Column(name = "SCOLARITE_NORMAL")
     private int scolariteNormal;
-    @Size(max = 10)
-    @Column(name = "NOMCLASSE")
-    private String nomclasse;
     @Size(max = 70)
-    @Column(name = "ECOLE_ANTERIEURE")
-    private String ecoleAnterieure;
+    @Column(name = "DERNIER_ETABLIS_FREQTE")
+    private String dernierEtablisFreqte;
+    @Size(max = 9)
+    @Column(name = "ANNEE_ETABLIS_FREQTE")
+    private String anneeEtablisFreqte;
     @Size(max = 10)
     @Column(name = "CLASSE_ANTERIEURE")
     private String classeAnterieure;
+    @Size(max = 20)
+    @Column(name = "ORIGINE_RESSOURCE")
+    private String origineRessource;
+    @Size(max = 45)
+    @Column(name = "PROFESSION_ETU")
+    private String professionEtu;
+    @Size(max = 45)
+    @Column(name = "ACTIVITE_ETU")
+    private String activiteEtu;
+    @Size(max = 30)
+    @Column(name = "DOMAINE_ATIVITE_ETU")
+    private String domaineAtiviteEtu;
+    @Size(max = 20)
+    @Column(name = "LANGUE_VIVANTE")
+    private String langueVivante;
+    @Size(max = 3)
+    @Column(name = "DEMANDEUR_EMPLOI")
+    private String demandeurEmploi;
+    @Size(max = 3)
+    @Column(name = "INTERRUPTION_ETUDE")
+    private String interruptionEtude;
+    @Size(max = 2)
+    @Column(name = "DUREE_INTERRUPTION")
+    private String dureeInterruption;
+    @Size(max = 3)
+    @Column(name = "SPORTIF_HAUT_NIVO")
+    private String sportifHautNivo;
+    @Size(max = 40)
+    @Column(name = "SERVICE_NATIONAL")
+    private String serviceNational;
     @Size(max = 25)
     @Column(name = "STATUT")
     private String statut;
     @Size(max = 9)
     @Column(name = "ANNEE_DECISION")
     private String anneeDecision;
-    @Size(max = 25)
-    @Column(name = "TYPE_ETUDIANT")
-    private String typeEtudiant;
     @Size(max = 14)
     @Column(name = "NUM_DECISION")
     private String numDecision;
@@ -399,20 +435,20 @@ public class EcoInscription implements Serializable {
         this.scolariteNormal = scolariteNormal;
     }
 
-    public String getNomclasse() {
-        return nomclasse;
+    public String getDernierEtablisFreqte() {
+        return dernierEtablisFreqte;
     }
 
-    public void setNomclasse(String nomclasse) {
-        this.nomclasse = nomclasse;
+    public void setDernierEtablisFreqte(String dernierEtablisFreqte) {
+        this.dernierEtablisFreqte = dernierEtablisFreqte;
     }
 
-    public String getEcoleAnterieure() {
-        return ecoleAnterieure;
+    public String getAnneeEtablisFreqte() {
+        return anneeEtablisFreqte;
     }
 
-    public void setEcoleAnterieure(String ecoleAnterieure) {
-        this.ecoleAnterieure = ecoleAnterieure;
+    public void setAnneeEtablisFreqte(String anneeEtablisFreqte) {
+        this.anneeEtablisFreqte = anneeEtablisFreqte;
     }
 
     public String getClasseAnterieure() {
@@ -421,6 +457,86 @@ public class EcoInscription implements Serializable {
 
     public void setClasseAnterieure(String classeAnterieure) {
         this.classeAnterieure = classeAnterieure;
+    }
+
+    public String getOrigineRessource() {
+        return origineRessource;
+    }
+
+    public void setOrigineRessource(String origineRessource) {
+        this.origineRessource = origineRessource;
+    }
+
+    public String getProfessionEtu() {
+        return professionEtu;
+    }
+
+    public void setProfessionEtu(String professionEtu) {
+        this.professionEtu = professionEtu;
+    }
+
+    public String getActiviteEtu() {
+        return activiteEtu;
+    }
+
+    public void setActiviteEtu(String activiteEtu) {
+        this.activiteEtu = activiteEtu;
+    }
+
+    public String getDomaineAtiviteEtu() {
+        return domaineAtiviteEtu;
+    }
+
+    public void setDomaineAtiviteEtu(String domaineAtiviteEtu) {
+        this.domaineAtiviteEtu = domaineAtiviteEtu;
+    }
+
+    public String getLangueVivante() {
+        return langueVivante;
+    }
+
+    public void setLangueVivante(String langueVivante) {
+        this.langueVivante = langueVivante;
+    }
+
+    public String getDemandeurEmploi() {
+        return demandeurEmploi;
+    }
+
+    public void setDemandeurEmploi(String demandeurEmploi) {
+        this.demandeurEmploi = demandeurEmploi;
+    }
+
+    public String getInterruptionEtude() {
+        return interruptionEtude;
+    }
+
+    public void setInterruptionEtude(String interruptionEtude) {
+        this.interruptionEtude = interruptionEtude;
+    }
+
+    public String getDureeInterruption() {
+        return dureeInterruption;
+    }
+
+    public void setDureeInterruption(String dureeInterruption) {
+        this.dureeInterruption = dureeInterruption;
+    }
+
+    public String getSportifHautNivo() {
+        return sportifHautNivo;
+    }
+
+    public void setSportifHautNivo(String sportifHautNivo) {
+        this.sportifHautNivo = sportifHautNivo;
+    }
+
+    public String getServiceNational() {
+        return serviceNational;
+    }
+
+    public void setServiceNational(String serviceNational) {
+        this.serviceNational = serviceNational;
     }
 
     public String getStatut() {
@@ -437,14 +553,6 @@ public class EcoInscription implements Serializable {
 
     public void setAnneeDecision(String anneeDecision) {
         this.anneeDecision = anneeDecision;
-    }
-
-    public String getTypeEtudiant() {
-        return typeEtudiant;
-    }
-
-    public void setTypeEtudiant(String typeEtudiant) {
-        this.typeEtudiant = typeEtudiant;
     }
 
     public String getNumDecision() {

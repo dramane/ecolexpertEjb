@@ -51,7 +51,21 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoEtudiant.findByCheminPhoto", query = "SELECT e FROM EcoEtudiant e WHERE e.cheminPhoto = :cheminPhoto"),
     @NamedQuery(name = "EcoEtudiant.findByCompte", query = "SELECT e FROM EcoEtudiant e WHERE e.compte = :compte"),
     @NamedQuery(name = "EcoEtudiant.findByIntitule", query = "SELECT e FROM EcoEtudiant e WHERE e.intitule = :intitule"),
-    @NamedQuery(name = "EcoEtudiant.findByTypeCompte", query = "SELECT e FROM EcoEtudiant e WHERE e.typeCompte = :typeCompte")})
+    @NamedQuery(name = "EcoEtudiant.findByTypeCompte", query = "SELECT e FROM EcoEtudiant e WHERE e.typeCompte = :typeCompte"),
+    @NamedQuery(name = "EcoEtudiant.findBySerieBac", query = "SELECT e FROM EcoEtudiant e WHERE e.serieBac = :serieBac"),
+    @NamedQuery(name = "EcoEtudiant.findByMentionBac", query = "SELECT e FROM EcoEtudiant e WHERE e.mentionBac = :mentionBac"),
+    @NamedQuery(name = "EcoEtudiant.findByAnneeBac", query = "SELECT e FROM EcoEtudiant e WHERE e.anneeBac = :anneeBac"),
+    @NamedQuery(name = "EcoEtudiant.findByPaysBac", query = "SELECT e FROM EcoEtudiant e WHERE e.paysBac = :paysBac"),
+    @NamedQuery(name = "EcoEtudiant.findByVilleBac", query = "SELECT e FROM EcoEtudiant e WHERE e.villeBac = :villeBac"),
+    @NamedQuery(name = "EcoEtudiant.findByEtablissementBac", query = "SELECT e FROM EcoEtudiant e WHERE e.etablissementBac = :etablissementBac"),
+    @NamedQuery(name = "EcoEtudiant.findByAnneePremInscripUniversite", query = "SELECT e FROM EcoEtudiant e WHERE e.anneePremInscripUniversite = :anneePremInscripUniversite"),
+    @NamedQuery(name = "EcoEtudiant.findByUniversitePremInscrip", query = "SELECT e FROM EcoEtudiant e WHERE e.universitePremInscrip = :universitePremInscrip"),
+    @NamedQuery(name = "EcoEtudiant.findByDernierDiplomeObtenu", query = "SELECT e FROM EcoEtudiant e WHERE e.dernierDiplomeObtenu = :dernierDiplomeObtenu"),
+    @NamedQuery(name = "EcoEtudiant.findByLibelleDernierDiplo", query = "SELECT e FROM EcoEtudiant e WHERE e.libelleDernierDiplo = :libelleDernierDiplo"),
+    @NamedQuery(name = "EcoEtudiant.findByDateDernierDiplo", query = "SELECT e FROM EcoEtudiant e WHERE e.dateDernierDiplo = :dateDernierDiplo"),
+    @NamedQuery(name = "EcoEtudiant.findByPaysDernierDiplo", query = "SELECT e FROM EcoEtudiant e WHERE e.paysDernierDiplo = :paysDernierDiplo"),
+    @NamedQuery(name = "EcoEtudiant.findByVilleDernierDiplo", query = "SELECT e FROM EcoEtudiant e WHERE e.villeDernierDiplo = :villeDernierDiplo"),
+    @NamedQuery(name = "EcoEtudiant.findByEtablissementDernierDiplo", query = "SELECT e FROM EcoEtudiant e WHERE e.etablissementDernierDiplo = :etablissementDernierDiplo")})
 public class EcoEtudiant implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -129,6 +143,48 @@ public class EcoEtudiant implements Serializable {
     private String intitule;
     @Column(name = "TYPE_COMPTE")
     private Character typeCompte;
+    @Size(max = 2)
+    @Column(name = "SERIE_BAC")
+    private String serieBac;
+    @Size(max = 11)
+    @Column(name = "MENTION_BAC")
+    private String mentionBac;
+    @Size(max = 4)
+    @Column(name = "ANNEE_BAC")
+    private String anneeBac;
+    @Size(max = 30)
+    @Column(name = "PAYS_BAC")
+    private String paysBac;
+    @Size(max = 30)
+    @Column(name = "VILLE_BAC")
+    private String villeBac;
+    @Size(max = 45)
+    @Column(name = "ETABLISSEMENT_BAC")
+    private String etablissementBac;
+    @Size(max = 9)
+    @Column(name = "ANNEE_PREM_INSCRIP_UNIVERSITE")
+    private String anneePremInscripUniversite;
+    @Size(max = 50)
+    @Column(name = "UNIVERSITE_PREM_INSCRIP")
+    private String universitePremInscrip;
+    @Size(max = 60)
+    @Column(name = "DERNIER_DIPLOME_OBTENU")
+    private String dernierDiplomeObtenu;
+    @Size(max = 60)
+    @Column(name = "LIBELLE_DERNIER_DIPLO")
+    private String libelleDernierDiplo;
+    @Size(max = 4)
+    @Column(name = "DATE_DERNIER_DIPLO")
+    private String dateDernierDiplo;
+    @Size(max = 30)
+    @Column(name = "PAYS_DERNIER_DIPLO")
+    private String paysDernierDiplo;
+    @Size(max = 30)
+    @Column(name = "VILLE_DERNIER_DIPLO")
+    private String villeDernierDiplo;
+    @Size(max = 70)
+    @Column(name = "ETABLISSEMENT_DERNIER_DIPLO")
+    private String etablissementDernierDiplo;
 
     public EcoEtudiant() {
     }
@@ -327,6 +383,118 @@ public class EcoEtudiant implements Serializable {
 
     public void setTypeCompte(Character typeCompte) {
         this.typeCompte = typeCompte;
+    }
+
+    public String getSerieBac() {
+        return serieBac;
+    }
+
+    public void setSerieBac(String serieBac) {
+        this.serieBac = serieBac;
+    }
+
+    public String getMentionBac() {
+        return mentionBac;
+    }
+
+    public void setMentionBac(String mentionBac) {
+        this.mentionBac = mentionBac;
+    }
+
+    public String getAnneeBac() {
+        return anneeBac;
+    }
+
+    public void setAnneeBac(String anneeBac) {
+        this.anneeBac = anneeBac;
+    }
+
+    public String getPaysBac() {
+        return paysBac;
+    }
+
+    public void setPaysBac(String paysBac) {
+        this.paysBac = paysBac;
+    }
+
+    public String getVilleBac() {
+        return villeBac;
+    }
+
+    public void setVilleBac(String villeBac) {
+        this.villeBac = villeBac;
+    }
+
+    public String getEtablissementBac() {
+        return etablissementBac;
+    }
+
+    public void setEtablissementBac(String etablissementBac) {
+        this.etablissementBac = etablissementBac;
+    }
+
+    public String getAnneePremInscripUniversite() {
+        return anneePremInscripUniversite;
+    }
+
+    public void setAnneePremInscripUniversite(String anneePremInscripUniversite) {
+        this.anneePremInscripUniversite = anneePremInscripUniversite;
+    }
+
+    public String getUniversitePremInscrip() {
+        return universitePremInscrip;
+    }
+
+    public void setUniversitePremInscrip(String universitePremInscrip) {
+        this.universitePremInscrip = universitePremInscrip;
+    }
+
+    public String getDernierDiplomeObtenu() {
+        return dernierDiplomeObtenu;
+    }
+
+    public void setDernierDiplomeObtenu(String dernierDiplomeObtenu) {
+        this.dernierDiplomeObtenu = dernierDiplomeObtenu;
+    }
+
+    public String getLibelleDernierDiplo() {
+        return libelleDernierDiplo;
+    }
+
+    public void setLibelleDernierDiplo(String libelleDernierDiplo) {
+        this.libelleDernierDiplo = libelleDernierDiplo;
+    }
+
+    public String getDateDernierDiplo() {
+        return dateDernierDiplo;
+    }
+
+    public void setDateDernierDiplo(String dateDernierDiplo) {
+        this.dateDernierDiplo = dateDernierDiplo;
+    }
+
+    public String getPaysDernierDiplo() {
+        return paysDernierDiplo;
+    }
+
+    public void setPaysDernierDiplo(String paysDernierDiplo) {
+        this.paysDernierDiplo = paysDernierDiplo;
+    }
+
+    public String getVilleDernierDiplo() {
+        return villeDernierDiplo;
+    }
+
+    public void setVilleDernierDiplo(String villeDernierDiplo) {
+        this.villeDernierDiplo = villeDernierDiplo;
+    }
+
+    public String getEtablissementDernierDiplo() {
+        return etablissementDernierDiplo;
+    }
+
+    public void setEtablissementDernierDiplo(String etablissementDernierDiplo) {
+        this.etablissementDernierDiplo = etablissementDernierDiplo;
     }
 
     @Override

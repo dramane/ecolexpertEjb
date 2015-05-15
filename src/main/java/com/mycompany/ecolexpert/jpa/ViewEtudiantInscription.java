@@ -40,6 +40,19 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ViewEtudiantInscription.findByAnneeaca", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.anneeaca = :anneeaca"),
     @NamedQuery(name = "ViewEtudiantInscription.findByDtinscri", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.dtinscri = :dtinscri"),
     @NamedQuery(name = "ViewEtudiantInscription.findByCours", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.cours = :cours"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByDernierEtablisFreqte", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.dernierEtablisFreqte = :dernierEtablisFreqte"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByAnneeEtablisFreqte", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.anneeEtablisFreqte = :anneeEtablisFreqte"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByClasseAnterieure", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.classeAnterieure = :classeAnterieure"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByOrigineRessource", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.origineRessource = :origineRessource"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByProfessionEtu", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.professionEtu = :professionEtu"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByActiviteEtu", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.activiteEtu = :activiteEtu"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByDomaineAtiviteEtu", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.domaineAtiviteEtu = :domaineAtiviteEtu"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByLangueVivante", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.langueVivante = :langueVivante"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByDemandeurEmploi", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.demandeurEmploi = :demandeurEmploi"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByInterruptionEtude", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.interruptionEtude = :interruptionEtude"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByDureeInterruption", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.dureeInterruption = :dureeInterruption"),
+    @NamedQuery(name = "ViewEtudiantInscription.findBySportifHautNivo", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.sportifHautNivo = :sportifHautNivo"),
+    @NamedQuery(name = "ViewEtudiantInscription.findByServiceNational", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.serviceNational = :serviceNational"),
     @NamedQuery(name = "ViewEtudiantInscription.findByCodeCycle", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.codeCycle = :codeCycle"),
     @NamedQuery(name = "ViewEtudiantInscription.findByCodeNiveau", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.codeNiveau = :codeNiveau"),
     @NamedQuery(name = "ViewEtudiantInscription.findByCodeClasse", query = "SELECT v FROM ViewEtudiantInscription v WHERE v.codeClasse = :codeClasse"),
@@ -51,7 +64,7 @@ public class ViewEtudiantInscription implements Serializable {
     @NotNull
     @Column(name = "IDINSCRIPTION")
     @Id
-    private int idinscription;    
+    private int idinscription;
     @Size(max = 6)
     @Column(name = "NUMETU")
     private String numetu;
@@ -82,6 +95,45 @@ public class ViewEtudiantInscription implements Serializable {
     @Size(max = 4)
     @Column(name = "COURS")
     private String cours;
+    @Size(max = 70)
+    @Column(name = "DERNIER_ETABLIS_FREQTE")
+    private String dernierEtablisFreqte;
+    @Size(max = 9)
+    @Column(name = "ANNEE_ETABLIS_FREQTE")
+    private String anneeEtablisFreqte;
+    @Size(max = 10)
+    @Column(name = "CLASSE_ANTERIEURE")
+    private String classeAnterieure;
+    @Size(max = 20)
+    @Column(name = "ORIGINE_RESSOURCE")
+    private String origineRessource;
+    @Size(max = 45)
+    @Column(name = "PROFESSION_ETU")
+    private String professionEtu;
+    @Size(max = 45)
+    @Column(name = "ACTIVITE_ETU")
+    private String activiteEtu;
+    @Size(max = 30)
+    @Column(name = "DOMAINE_ATIVITE_ETU")
+    private String domaineAtiviteEtu;
+    @Size(max = 20)
+    @Column(name = "LANGUE_VIVANTE")
+    private String langueVivante;
+    @Size(max = 3)
+    @Column(name = "DEMANDEUR_EMPLOI")
+    private String demandeurEmploi;
+    @Size(max = 3)
+    @Column(name = "INTERRUPTION_ETUDE")
+    private String interruptionEtude;
+    @Size(max = 2)
+    @Column(name = "DUREE_INTERRUPTION")
+    private String dureeInterruption;
+    @Size(max = 3)
+    @Column(name = "SPORTIF_HAUT_NIVO")
+    private String sportifHautNivo;
+    @Size(max = 40)
+    @Column(name = "SERVICE_NATIONAL")
+    private String serviceNational;
     @Size(max = 3)
     @Column(name = "CODE_CYCLE")
     private String codeCycle;
@@ -189,6 +241,110 @@ public class ViewEtudiantInscription implements Serializable {
 
     public void setCours(String cours) {
         this.cours = cours;
+    }
+
+    public String getDernierEtablisFreqte() {
+        return dernierEtablisFreqte;
+    }
+
+    public void setDernierEtablisFreqte(String dernierEtablisFreqte) {
+        this.dernierEtablisFreqte = dernierEtablisFreqte;
+    }
+
+    public String getAnneeEtablisFreqte() {
+        return anneeEtablisFreqte;
+    }
+
+    public void setAnneeEtablisFreqte(String anneeEtablisFreqte) {
+        this.anneeEtablisFreqte = anneeEtablisFreqte;
+    }
+
+    public String getClasseAnterieure() {
+        return classeAnterieure;
+    }
+
+    public void setClasseAnterieure(String classeAnterieure) {
+        this.classeAnterieure = classeAnterieure;
+    }
+
+    public String getOrigineRessource() {
+        return origineRessource;
+    }
+
+    public void setOrigineRessource(String origineRessource) {
+        this.origineRessource = origineRessource;
+    }
+
+    public String getProfessionEtu() {
+        return professionEtu;
+    }
+
+    public void setProfessionEtu(String professionEtu) {
+        this.professionEtu = professionEtu;
+    }
+
+    public String getActiviteEtu() {
+        return activiteEtu;
+    }
+
+    public void setActiviteEtu(String activiteEtu) {
+        this.activiteEtu = activiteEtu;
+    }
+
+    public String getDomaineAtiviteEtu() {
+        return domaineAtiviteEtu;
+    }
+
+    public void setDomaineAtiviteEtu(String domaineAtiviteEtu) {
+        this.domaineAtiviteEtu = domaineAtiviteEtu;
+    }
+
+    public String getLangueVivante() {
+        return langueVivante;
+    }
+
+    public void setLangueVivante(String langueVivante) {
+        this.langueVivante = langueVivante;
+    }
+
+    public String getDemandeurEmploi() {
+        return demandeurEmploi;
+    }
+
+    public void setDemandeurEmploi(String demandeurEmploi) {
+        this.demandeurEmploi = demandeurEmploi;
+    }
+
+    public String getInterruptionEtude() {
+        return interruptionEtude;
+    }
+
+    public void setInterruptionEtude(String interruptionEtude) {
+        this.interruptionEtude = interruptionEtude;
+    }
+
+    public String getDureeInterruption() {
+        return dureeInterruption;
+    }
+
+    public void setDureeInterruption(String dureeInterruption) {
+        this.dureeInterruption = dureeInterruption;
+    }
+
+    public String getSportifHautNivo() {
+        return sportifHautNivo;
+    }
+
+    public void setSportifHautNivo(String sportifHautNivo) {
+        this.sportifHautNivo = sportifHautNivo;
+    }
+
+    public String getServiceNational() {
+        return serviceNational;
+    }
+
+    public void setServiceNational(String serviceNational) {
+        this.serviceNational = serviceNational;
     }
 
     public String getCodeCycle() {
