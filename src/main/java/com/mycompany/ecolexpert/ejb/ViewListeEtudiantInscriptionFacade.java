@@ -70,15 +70,25 @@ public class ViewListeEtudiantInscriptionFacade extends AbstractFacade<ViewListe
         return query.getResultList();
     }
     
+//    @Override
+//    public List<ViewListeEtudiantInscription> findEtudInscripByAnneCycleClasseWithJocker(String vAnneeAca, String vCycle, String vClasse) {
+//        String texte = "SELECT v FROM ViewListeEtudiantInscription v WHERE v.anneeaca LIKE :anneeaca AND v.codeCycle LIKE :codeCycle AND v.codeClasse LIKE :codeClasse ORDER BY v.nomEtPrenom ASC";
+//        Query query = em.createQuery(texte);
+//        query.setParameter("anneeaca", vAnneeAca+"%");  
+//        query.setParameter("codeCycle", vCycle+"%"); 
+//        query.setParameter("codeClasse", vClasse+"%"); 
+//        return query.getResultList();
+//    }  
+    
     @Override
     public List<ViewListeEtudiantInscription> findEtudInscripByAnneCycleClasseWithJocker(String vAnneeAca, String vCycle, String vClasse) {
-        String texte = "SELECT v FROM ViewListeEtudiantInscription v WHERE v.anneeaca LIKE :anneeaca AND v.codeCycle LIKE :codeCycle AND v.codeClasse LIKE :codeClasse ORDER BY v.nomEtPrenom ASC";
+        String texte = "SELECT v FROM ViewListeEtudiantInscription v WHERE v.anneeaca = :anneeaca AND v.codeCycle = :codeCycle AND v.codeClasse = :codeClasse ORDER BY v.nomEtPrenom ASC";
         Query query = em.createQuery(texte);
-        query.setParameter("anneeaca", vAnneeAca+"%");  
-        query.setParameter("codeCycle", vCycle+"%"); 
-        query.setParameter("codeClasse", vClasse+"%"); 
+        query.setParameter("anneeaca", vAnneeAca);  
+        query.setParameter("codeCycle", vCycle); 
+        query.setParameter("codeClasse", vClasse); 
         return query.getResultList();
-    }    
+    }
 
     @Override
     public ViewListeEtudiantInscription findByMatricule(Object vMatricule) {
