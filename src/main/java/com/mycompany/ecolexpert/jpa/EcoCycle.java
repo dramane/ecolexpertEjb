@@ -31,8 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoCycle.findByDesignation", query = "SELECT e FROM EcoCycle e WHERE e.designation = :designation"),
     @NamedQuery(name = "EcoCycle.findByDescription", query = "SELECT e FROM EcoCycle e WHERE e.description = :description"),
     @NamedQuery(name = "EcoCycle.findByNombreNiveau", query = "SELECT e FROM EcoCycle e WHERE e.nombreNiveau = :nombreNiveau"),
-    @NamedQuery(name = "EcoCycle.findByActif", query = "SELECT e FROM EcoCycle e WHERE e.actif = :actif"),
-    @NamedQuery(name = "EcoCycle.findByCodeAcademique", query = "SELECT e FROM EcoCycle e WHERE e.codeAcademique = :codeAcademique")})
+    @NamedQuery(name = "EcoCycle.findByActif", query = "SELECT e FROM EcoCycle e WHERE e.actif = :actif")})
 public class EcoCycle implements Serializable {
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -55,9 +54,6 @@ public class EcoCycle implements Serializable {
     @Size(max = 3)
     @Column(name = "ACTIF")
     private String actif;
-    @Size(max = 10)
-    @Column(name = "CODE_ACADEMIQUE")
-    private String codeAcademique;
 
     public EcoCycle() {
     }
@@ -118,15 +114,7 @@ public class EcoCycle implements Serializable {
     public void setActif(String actif) {
         this.actif = actif;
     }
-
-    public String getCodeAcademique() {
-        return codeAcademique;
-    }
-
-    public void setCodeAcademique(String codeAcademique) {
-        this.codeAcademique = codeAcademique;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;

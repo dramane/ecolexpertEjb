@@ -30,5 +30,4 @@ public interface EcoFiliereFacadeLocal {
     List<EcoFiliere> findRange(int[] range);
 
     int count();
-    
 }

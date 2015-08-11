@@ -33,7 +33,7 @@ public class EcoDomaineFormation implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(max = 50)
+    @Size(max = 10)
     @Column(name = "CODE_DOMAINE")
     private String codeDomaine;
     @Size(max = 100)

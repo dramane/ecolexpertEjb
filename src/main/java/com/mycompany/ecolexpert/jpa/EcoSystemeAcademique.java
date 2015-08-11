@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.ecolexpert.jpa;
 
 import java.io.Serializable;
@@ -20,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author TOSHIBA
+ * @author HP
  */
 @Entity
 @Table(name = "eco_systeme_academique")
@@ -29,8 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoSystemeAcademique.findAll", query = "SELECT e FROM EcoSystemeAcademique e"),
     @NamedQuery(name = "EcoSystemeAcademique.findByCodeAcademique", query = "SELECT e FROM EcoSystemeAcademique e WHERE e.codeAcademique = :codeAcademique"),
     @NamedQuery(name = "EcoSystemeAcademique.findByDesignation", query = "SELECT e FROM EcoSystemeAcademique e WHERE e.designation = :designation"),
-    @NamedQuery(name = "EcoSystemeAcademique.findByDescription", query = "SELECT e FROM EcoSystemeAcademique e WHERE e.description = :description"),
-    @NamedQuery(name = "EcoSystemeAcademique.findByCodeEducatif", query = "SELECT e FROM EcoSystemeAcademique e WHERE e.codeEducatif = :codeEducatif")})
+    @NamedQuery(name = "EcoSystemeAcademique.findByDescription", query = "SELECT e FROM EcoSystemeAcademique e WHERE e.description = :description")})
 public class EcoSystemeAcademique implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,9 +43,6 @@ public class EcoSystemeAcademique implements Serializable {
     @Size(max = 255)
     @Column(name = "DESCRIPTION")
     private String description;
-    @Size(max = 3)
-    @Column(name = "CODE_EDUCATIF")
-    private String codeEducatif;
 
     public EcoSystemeAcademique() {
     }
@@ -78,14 +73,6 @@ public class EcoSystemeAcademique implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getCodeEducatif() {
-        return codeEducatif;
-    }
-
-    public void setCodeEducatif(String codeEducatif) {
-        this.codeEducatif = codeEducatif;
     }
 
     @Override

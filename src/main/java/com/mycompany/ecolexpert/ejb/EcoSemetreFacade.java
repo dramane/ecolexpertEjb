@@ -5,17 +5,17 @@
  */
 package com.mycompany.ecolexpert.ejb;
 
-import com.mycompany.ecolexpert.jpa.EcoSpecialiteFormation;
+import com.mycompany.ecolexpert.jpa.EcoSemetre;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author HARRISON
+ * @author HP
  */
 @Stateless
-public class EcoSpecialiteFormationFacade extends AbstractFacade<EcoSpecialiteFormation> implements EcoSpecialiteFormationFacadeLocal {
+public class EcoSemetreFacade extends AbstractFacade<EcoSemetre> implements EcoSemetreFacadeLocal {
     @PersistenceContext(unitName = "com.mycompany_ecolexpertEjb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -24,8 +24,8 @@ public class EcoSpecialiteFormationFacade extends AbstractFacade<EcoSpecialiteFo
         return em;
     }
 
-    public EcoSpecialiteFormationFacade() {
-        super(EcoSpecialiteFormation.class);
+    public EcoSemetreFacade() {
+        super(EcoSemetre.class);
     }
     
 }

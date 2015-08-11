@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.ecolexpert.jpa;
 
 import java.io.Serializable;
@@ -20,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author TOSHIBA
+ * @author HP
  */
 @Entity
 @Table(name = "eco_filiere")
@@ -31,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoFiliere.findByCodeFiliere", query = "SELECT e FROM EcoFiliere e WHERE e.codeFiliere = :codeFiliere"),
     @NamedQuery(name = "EcoFiliere.findByDesignation", query = "SELECT e FROM EcoFiliere e WHERE e.designation = :designation"),
     @NamedQuery(name = "EcoFiliere.findByDescription", query = "SELECT e FROM EcoFiliere e WHERE e.description = :description"),
-    @NamedQuery(name = "EcoFiliere.findByCodeCycle", query = "SELECT e FROM EcoFiliere e WHERE e.codeCycle = :codeCycle"),
+    @NamedQuery(name = "EcoFiliere.findByCodeDomaine", query = "SELECT e FROM EcoFiliere e WHERE e.codeDomaine = :codeDomaine"),
     @NamedQuery(name = "EcoFiliere.findByActif", query = "SELECT e FROM EcoFiliere e WHERE e.actif = :actif")})
 public class EcoFiliere implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -50,9 +49,9 @@ public class EcoFiliere implements Serializable {
     @Size(max = 255)
     @Column(name = "DESCRIPTION")
     private String description;
-    @Size(max = 3)
-    @Column(name = "CODE_CYCLE")
-    private String codeCycle;
+    @Size(max = 10)
+    @Column(name = "CODE_DOMAINE")
+    private String codeDomaine;
     @Size(max = 3)
     @Column(name = "ACTIF")
     private String actif;
@@ -101,12 +100,12 @@ public class EcoFiliere implements Serializable {
         this.description = description;
     }
 
-    public String getCodeCycle() {
-        return codeCycle;
+    public String getCodeDomaine() {
+        return codeDomaine;
     }
 
-    public void setCodeCycle(String codeCycle) {
-        this.codeCycle = codeCycle;
+    public void setCodeDomaine(String codeDomaine) {
+        this.codeDomaine = codeDomaine;
     }
 
     public String getActif() {
