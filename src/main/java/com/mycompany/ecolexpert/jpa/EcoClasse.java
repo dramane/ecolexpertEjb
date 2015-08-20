@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EcoClasse.findByCodeClasse", query = "SELECT e FROM EcoClasse e WHERE e.codeClasse = :codeClasse"),
     @NamedQuery(name = "EcoClasse.findByNomclasse", query = "SELECT e FROM EcoClasse e WHERE e.nomclasse = :nomclasse"),
     @NamedQuery(name = "EcoClasse.findByCodeFiliere", query = "SELECT e FROM EcoClasse e WHERE e.codeFiliere = :codeFiliere"),
+    @NamedQuery(name = "EcoClasse.findByCodeSpecialite", query = "SELECT e FROM EcoClasse e WHERE e.codeSpecialite = :codeSpecialite"),
     @NamedQuery(name = "EcoClasse.findByCodeCycle", query = "SELECT e FROM EcoClasse e WHERE e.codeCycle = :codeCycle"),
     @NamedQuery(name = "EcoClasse.findByCodeNiveau", query = "SELECT e FROM EcoClasse e WHERE e.codeNiveau = :codeNiveau"),
     @NamedQuery(name = "EcoClasse.findByFormation", query = "SELECT e FROM EcoClasse e WHERE e.formation = :formation"),
@@ -55,6 +56,9 @@ public class EcoClasse implements Serializable {
     @Size(max = 50)
     @Column(name = "CODE_FILIERE")
     private String codeFiliere;
+    @Size(max = 50)
+    @Column(name = "CODE_SPECIALITE")
+    private String codeSpecialite;
     @Size(max = 3)
     @Column(name = "CODE_CYCLE")
     private String codeCycle;
@@ -120,6 +124,14 @@ public class EcoClasse implements Serializable {
 
     public void setCodeFiliere(String codeFiliere) {
         this.codeFiliere = codeFiliere;
+    }
+    
+    public String getCodeSpecialite() {
+        return codeSpecialite;
+    }
+
+    public void setCodeSpecialite(String codeSpecialite) {
+        this.codeSpecialite = codeSpecialite;
     }
 
     public String getCodeCycle() {
