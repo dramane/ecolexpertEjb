@@ -6,9 +6,11 @@
 package com.mycompany.ecolexpert.ejb;
 
 import com.mycompany.ecolexpert.jpa.EcoSpecialite;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -26,6 +28,13 @@ public class EcoSpecialiteFacade extends AbstractFacade<EcoSpecialite> implement
 
     public EcoSpecialiteFacade() {
         super(EcoSpecialite.class);
+    }
+
+    @Override
+    public List<EcoSpecialite> findByCodeFiliere(String vCodeFiliere) {
+        Query nQuery = em.createNamedQuery("EcoSpecialite.findByCodeFiliere");
+        nQuery.setParameter("codeFiliere", vCodeFiliere);        
+        return nQuery.getResultList(); 
     }
     
 }

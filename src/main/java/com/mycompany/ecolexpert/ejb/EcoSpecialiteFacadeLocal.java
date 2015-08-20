@@ -30,4 +30,5 @@ public interface EcoSpecialiteFacadeLocal {
 
     int count();
     
+    List<EcoSpecialite> findByCodeFiliere(String vCodeFiliere);
 }
